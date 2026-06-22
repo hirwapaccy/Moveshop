@@ -81,8 +81,8 @@ form button {
 form button:hover { background-color: #333; }
 </style>
 </head>
-<body>
 
+<body>
 <header>
   <h1>Media Shop</h1>
   <nav>
@@ -123,16 +123,23 @@ form button:hover { background-color: #333; }
     <div class="card">
       <img src="oshakuru.jpg" alt="Oshakuru Movie">
       <h3>Oshakuru</h3>
-      <button>Watch</button>
-      <button>Share</button>
-      <button>Download</button>
+      <button onclick="watchMovie('oshakuru.mp4')">Watch</button>
+      <a href="oshakuru.mp4" download><button>Download</button></a>
+      <button onclick="shareMovie('Oshakuru','oshakuru.mp4')">Share</button>
     </div>
     <div class="card">
       <img src="agasobanuye.jpg" alt="Agasobanuye Movie">
       <h3>Agasobanuye</h3>
-      <button>Watch</button>
-      <button>Share</button>
-      <button>Download</button>
+      <button onclick="watchMovie('agasobanuye.mp4')">Watch</button>
+      <a href="agasobanuye.mp4" download><button>Download</button></a>
+      <button onclick="shareMovie('Agasobanuye','agasobanuye.mp4')">Share</button>
+    </div>
+    <div class="card">
+      <img src="moviebox.jpg" alt="Movie Box">
+      <h3>Movie Box</h3>
+      <button onclick="watchMovie('moviebox.mp4')">Watch</button>
+      <a href="moviebox.mp4" download><button>Download</button></a>
+      <button onclick="shareMovie('Movie Box','moviebox.mp4')">Share</button>
     </div>
   </div>
 </section>
@@ -140,22 +147,24 @@ form button:hover { background-color: #333; }
 <!-- Music -->
 <section id="music">
   <h2>Trending Songs</h2>
-  <p>Rwanda, Tanzania, East Africa, Asia, Europe, America</p>
   <div class="container">
     <div class="card">
-      <h3>Song Title - Rwanda</h3>
-      <button>Play</button>
-      <button>Download</button>
+      <h3>Song Rwanda</h3>
+      <button onclick="playSong('song_rwanda.mp3')">Play</button>
+      <a href="song_rwanda.mp3" download><button>Download</button></a>
+      <button onclick="shareSong('Song Rwanda','song_rwanda.mp3')">Share</button>
     </div>
     <div class="card">
-      <h3>Song Title - Tanzania</h3>
-      <button>Play</button>
-      <button>Download</button>
+      <h3>Song Tanzania</h3>
+      <button onclick="playSong('song_tanzania.mp3')">Play</button>
+      <a href="song_tanzania.mp3" download><button>Download</button></a>
+      <button onclick="shareSong('Song Tanzania','song_tanzania.mp3')">Share</button>
     </div>
     <div class="card">
-      <h3>Song Title - Europe</h3>
-      <button>Play</button>
-      <button>Download</button>
+      <h3>Song Europe</h3>
+      <button onclick="playSong('song_europe.mp3')">Play</button>
+      <a href="song_europe.mp3" download><button>Download</button></a>
+      <button onclick="shareSong('Song Europe','song_europe.mp3')">Share</button>
     </div>
   </div>
 </section>
@@ -190,6 +199,42 @@ form button:hover { background-color: #333; }
     </div>
   </div>
 </section>
+
+<!-- JavaScript Functions -->
+<script>
+function watchMovie(file) {
+  const player = document.createElement('video');
+  player.src = file;
+  player.controls = true;
+  player.style.width = '100%';
+  document.body.appendChild(player);
+  player.play();
+}
+
+function playSong(file) {
+  const player = document.createElement('audio');
+  player.src = file;
+  player.controls = true;
+  document.body.appendChild(player);
+  player.play();
+}
+
+function shareMovie(title, url) {
+  if (navigator.share) {
+    navigator.share({ title: title, url: url });
+  } else {
+    alert("Sharing not supported on this browser");
+  }
+}
+
+function shareSong(title, url) {
+  if (navigator.share) {
+    navigator.share({ title: title, url: url });
+  } else {
+    alert("Sharing not supported on this browser");
+  }
+}
+</script>
 
 </body>
 </html>
