@@ -1,578 +1,254 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hirwa Paccy Movieshop</title>
-  <style>
-    /* Premium Modern Dark Cinematic Theme Design */
-    :root {
-      --primary: #00e5ff;
-      --bg-dark: #0a0f1d;
-      --card-bg: #141b2d;
-      --text: #ffffff;
-      --text-muted: #8a99ad;
-      --accent: #ff007f;
-    }
-    body { font-family: 'Segoe UI', Arial, sans-serif; margin:0; padding:0; background: var(--bg-dark); color: var(--text); line-height: 1.6; }
-    
-    /* Header and Brand Layout */
-    header { background: linear-gradient(135deg, #020813 0%, #0d1b3e 100%); text-align:center; padding:30px 15px; border-bottom: 3px solid var(--primary); box-shadow: 0 4px 20px rgba(0,229,255,0.2); }
-    header h1 { margin: 0; font-size: 2.5rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text); text-shadow: 0 0 10px rgba(0,229,255,0.5); }
-    header p { margin: 5px 0 0; color: var(--primary); font-weight: bold; font-size: 0.95rem; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Shop</title>
 
-    /* Accessible Navigation Bar */
-    nav { background:#0d1527; padding:5px; text-align:center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 4px 10px rgba(0,0,0,0.5); border-bottom: 1px solid #1f2d4a; }
-    nav a { color: var(--text-muted); margin:0 10px; padding: 12px 18px; text-decoration:none; cursor:pointer; font-weight:bold; display: inline-block; transition: all 0.3s ease; font-size: 0.95rem; border-radius: 4px; }
-    nav a:hover, nav a.active-nav { color: var(--primary); background: rgba(0,229,255,0.1); border-bottom: 2px solid var(--primary); }
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#0d0d0d;
+  color:white;
+}
 
-    /* Container System */
-    .container { max-width: 1300px; margin: 0 auto; padding: 20px; }
-    section { display:none; animation: fadeIn 0.4s ease-in-out; }
-    section.active { display:block; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px;
+  background:linear-gradient(145deg,#111,#222);
+  box-shadow:0 5px 15px black;
+  position:sticky;
+  top:0;
+}
 
-    h2 { color: var(--primary); font-size: 1.8rem; border-left: 5px solid var(--accent); padding-left: 10px; margin-bottom: 25px; }
+.logo{
+  font-size:22px;
+  font-weight:bold;
+  text-shadow:2px 2px 5px red;
+}
 
-    /* Flex Grid Layout for Content Items */
-    .grid-layout { display: grid; grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); gap: 25px; }
-    @media(max-width: 500px) { .grid-layout { grid-template-columns: 1fr; } }
+/* BUTTONS */
+button{
+  padding:8px 10px;
+  border:none;
+  cursor:pointer;
+  border-radius:5px;
+  margin:2px;
+}
 
-    /* Item Card Modules */
-    .item { background: var(--card-bg); border: 1px solid #1f2d4a; padding:15px; border-radius:12px; box-shadow:0 5px 15px rgba(0,0,0,0.3); display: flex; flex-direction: column; justify-content: space-between; transition: transform 0.3s; }
-    .item:hover { transform: translateY(-5px); border-color: var(--primary); }
-    .item h3 { margin: 0 0 10px; font-size: 1.15rem; color: #fff; border-bottom: 1px solid #1f2d4a; padding-bottom: 8px; }
-    
-    video, audio { width: 100%; border-radius: 8px; background: #000; outline: none; margin-bottom: 10px; }
+.btn{
+  background:red;
+  color:white;
+}
 
-    /* Control Track Sub-Modules */
-    .controls-row { background: #0d1527; padding: 12px; border-radius: 8px; margin: 8px 0; border: 1px solid #1f2d4a; }
-    .audio-selector, .volume-control { display: block; margin-bottom: 8px; }
-    .audio-selector:last-child, .volume-control:last-child { margin-bottom: 0; }
-    label { font-size: 12px; font-weight: bold; color: var(--text-muted); display: block; margin-bottom: 4px; text-transform: uppercase; }
-    select { width: 100%; padding: 6px; background: var(--card-bg); color: #fff; border: 1px solid #1f2d4a; border-radius: 4px; outline: none; }
-    input[type="range"] { width: 100%; accent-color: var(--primary); }
+/* SEARCH */
+#search{
+  padding:8px;
+  border-radius:5px;
+  border:none;
+}
 
-    /* Buttons Configuration */
-    .action-buttons { display: flex; gap: 10px; margin-top: 10px; }
-    .btn { flex: 1; padding: 10px; cursor:pointer; font-weight:bold; border:none; border-radius: 6px; font-size: 0.9rem; text-align: center; display: inline-block; text-decoration: none; transition: background 0.2s; }
-    .btn-share { background: var(--accent); color: white; }
-    .btn-share:hover { background: #cc0066; }
-    .btn-download { background: var(--primary); color: #020813; }
-    .btn-download:hover { background: #00b8cc; }
+/* HERO */
+.hero{
+  text-align:center;
+  padding:40px;
+  background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+  url('https://via.placeholder.com/1200x400');
+}
 
-    /* Modern Web-Engine Custom Popups */
-    .modal-overlay { display: none; position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.85); z-index:9999; justify-content:center; align-items:center; opacity: 0; transition: opacity 0.3s ease; }
-    .modal-overlay.active { display: flex; opacity: 1; }
-    .modal { background: var(--card-bg); border: 2px solid var(--primary); padding: 25px; border-radius: 14px; width: 90%; max-width: 450px; box-shadow: 0 0 30px rgba(0,229,255,0.3); position: relative; animation: slideUp 0.3s ease; }
-    @keyframes slideUp { from { transform: translateY(20px); } to { transform: translateY(0); } }
-    .modal-close { position: absolute; top: 10px; right: 15px; font-size: 24px; color: var(--text-muted); cursor: pointer; }
-    .modal-close:hover { color: #fff; }
-    .modal h4 { margin: 0 0 15px; color: var(--primary); font-size: 1.3rem; text-align: center; }
-    .share-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 15px; }
-    .share-channel { background: #0d1527; border: 1px solid #1f2d4a; border-radius: 8px; padding: 10px 5px; text-align: center; cursor: pointer; transition: all 0.2s; color: #fff; text-decoration: none; display: block; }
-    .share-channel:hover { border-color: var(--primary); background: rgba(0,229,255,0.05); transform: scale(1.05); }
-    .share-icon { font-size: 22px; margin-bottom: 4px; display: block; }
-    .share-label { font-size: 11px; font-weight: bold; color: var(--text-muted); display: block; }
-    .copy-box { display: flex; background: #0d1527; padding: 5px; border-radius: 6px; border: 1px solid #1f2d4a; }
-    .copy-box input { flex:1; background:transparent; border:none; color:#fff; padding:6px; font-size:12px; outline:none; }
-    .copy-box button { background: var(--primary); color:#000; border:none; padding:6px 12px; border-radius:4px; font-size:12px; font-weight:bold; cursor:pointer; }
+/* MOVIES */
+.movies{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+  gap:15px;
+  padding:20px;
+}
 
-    /* Web Search Setup */
-    .search-wrapper { text-align: center; background: var(--card-bg); padding: 30px; border-radius: 12px; border: 1px solid #1f2d4a; max-width: 600px; margin: 0 auto 30px; }
-    .search-wrapper input[type="text"] { padding:12px; width:70%; background:#0d1527; border:1px solid #1f2d4a; border-radius:6px; color:#fff; font-size:1rem; outline:none; }
-    .search-wrapper input[type="text"]:focus { border-color: var(--primary); }
-    .search-wrapper button { padding:12px 20px; background:var(--primary); color:#000; border:none; border-radius:6px; font-size:1rem; font-weight:bold; cursor:pointer; margin-left:10px; }
-    
-    /* Footer Style Matrix */
-    footer { background: #020813; color: var(--text-muted); text-align:center; padding:25px 15px; border-top: 1px solid #1f2d4a; margin-top: 60px; font-size: 0.9rem; }
-    footer p { margin: 5px 0; }
-  </style>
+.card{
+  background:#1a1a1a;
+  padding:10px;
+  border-radius:10px;
+  text-align:center;
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:scale(1.08);
+}
+
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* MODAL VIDEO */
+#videoModal{
+  display:none;
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+}
+
+#videoModal video{
+  width:80%;
+}
+
+/* LOGIN PANEL */
+#loginBox, #adminBox{
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  background:#222;
+  padding:20px;
+  border-radius:10px;
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:15px;
+  background:#111;
+  margin-top:20px;
+}
+</style>
 </head>
+
 <body>
 
-  <!-- Universal Header Layout Matrix -->
-  <header>
-    <h1>Hirwa Paccy Movieshop</h1>
-    <p>Premium Stream & Download Hub</p>
-  </header>
+<header>
+  <div class="logo">🎬 Movie Shop</div>
 
-  <!-- Horizontal Navigation Controls -->
-  <nav id="navbar">
-    <a onclick="showSection('movies')" id="nav-movies" class="active-nav">Movies</a>
-    <a onclick="showSection('music')" id="nav-music">Music</a>
-    <a onclick="showSection('sports')" id="nav-sports">Sports</a>
-    <a onclick="showSection('news')" id="nav-news">News Bulletin</a>
-    <a onclick="showSection('search')" id="nav-search">Smart Search</a>
-  </nav>
+  <input id="search" placeholder="Search movies...">
 
-  <div class="container">
-
-    <!-- 1. Movies Section Block (50 items built on AgasobanuyeNow, MovieBox, Oshakiru Engine) -->
-    <section id="movies" class="active">
-      <h2>Exclusive Commentary Cinema</h2>
-      <div class="grid-layout" id="movies-container"></div>
-    </section>
-
-    <!-- 2. Music Section Block (25 items built on GenYouTube, Vidmate, Spotify Engine) -->
-    <section id="music">
-      <h2>Trending Audio Tracks</h2>
-      <div class="grid-layout" id="music-container"></div>
-    </section>
-
-    <!-- 3. Sports Section Block (25 items built on RBA, Inyarwanda, LiveScore Engine) -->
-    <section id="sports">
-      <h2>Sports Matches & Highlights</h2>
-      <div class="grid-layout" id="sports-container"></div>
-    </section>
-
-    <!-- 4. News Section Block (25 items built on RBA, BBC, France 24, ImvahoNshya, NewTimes Engine) -->
-    <section id="news">
-      <h2>Global Press Reports</h2>
-      <div class="grid-layout" id="news-container"></div>
-    </section>
-
-    <!-- 5. Search Engine Block Module Area -->
-    <section id="search">
-      <h2>Database Query Terminal</h2>
-      <div class="search-wrapper">
-        <input type="text" id="searchQuery" placeholder="Search the web securely...">
-        <button onclick="searchWeb()">Launch Query</button>
-      </div>
-      <div id="searchResults"></div>
-    </section>
-
+  <div>
+    <button class="btn" onclick="openLogin()">Login</button>
+    <button class="btn" onclick="openAdmin()">Admin</button>
   </div>
+</header>
 
-  <!-- Omnichannel Social Share Lightbox Subsystem -->
-  <div class="modal-overlay" id="shareModal" onclick="closeShareModal(event)">
-    <div class="modal">
-      <span class="modal-close" onclick="closeShareModal(null, true)">&times;</span>
-      <h4 id="modalItemTitle">Share Asset Access Link</h4>
-      <div class="share-grid">
-        <a class="share-channel" id="share-wa" target="_blank">
-          <span class="share-icon">🟢</span><span class="share-label">WhatsApp</span>
-        </a>
-        <a class="share-channel" id="share-fb" target="_blank">
-          <span class="share-icon">🔵</span><span class="share-label">Facebook</span>
-        </a>
-        <a class="share-channel" id="share-x" target="_blank">
-          <span class="share-icon">⚫</span><span class="share-label">X / Twitter</span>
-        </a>
-        <a class="share-channel" id="share-ig" target="_blank">
-          <span class="share-icon">📸</span><span class="share-label">Instagram</span>
-        </a>
-        <a class="share-channel" id="share-email">
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hirwa Paccy Movieshop</title>
-  <style>
-    /* Identical MovieBox & AgasobanuyeBox Dark Theme Style */
-    :root {
-      --bg-main: #060a12;
-      --bg-card: #111827;
-      --primary-cyan: #00e5ff;
-      --neon-pink: #ff007f;
-      --text-white: #ffffff;
-      --text-gray: #9ca3af;
-      --border-blue: #1f2937;
-    }
+<section class="hero">
+  <h1>Welcome to Movie Shop</h1>
+  <p>Watch & Upload Movies Like Agasobanuyenow</p>
+</section>
 
-    body {
-      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: var(--bg-main);
-      color: var(--text-white);
-      line-height: 1.5;
-    }
-    
-    /* Premium Box Header */
-    header {
-      background: linear-gradient(180deg, #02060c 0%, var(--bg-main) 100%);
-      text-align: center;
-      padding: 35px 20px;
-      border-bottom: 2px solid var(--primary-cyan);
-      box-shadow: 0 5px 25px rgba(0, 229, 255, 0.15);
-    }
-    header h1 {
-      margin: 0;
-      font-size: 2.6rem;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      text-shadow: 0 0 15px rgba(0, 229, 255, 0.6);
-    }
-    header p {
-      margin: 8px 0 0;
-      color: var(--text-gray);
-      font-size: 1rem;
-      letter-spacing: 0.5px;
-    }
-    header p span {
-      color: var(--primary-cyan);
-      font-weight: bold;
-    }
+<section class="movies" id="movieList"></section>
 
-    /* Modern MovieBox Navigation Bar System */
-    nav {
-      background-color: #0b111e;
-      padding: 0;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.6);
-      border-bottom: 1px solid var(--border-blue);
-      text-align: center;
-    }
-    nav a {
-      color: var(--text-gray);
-      margin: 0;
-      padding: 18px 22px;
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: 700;
-      display: inline-block;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      font-size: 0.95rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      position: relative;
-    }
-    nav a:hover {
-      color: var(--primary-cyan);
-      background-color: rgba(0, 229, 255, 0.04);
-    }
-    nav a.active-nav {
-      color: var(--primary-cyan);
-      background-color: rgba(0, 229, 255, 0.08);
-    }
-    nav a.active-nav::after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background-color: var(--primary-cyan);
-      box-shadow: 0 0 10px var(--primary-cyan);
-    }
+<footer>
+  © 2026 Movie Shop | Designed by <b>Hirwa Paccy</b>
+</footer>
 
-    /* Content Layout Containers */
-    .container {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 25px 20px;
-    }
-    section {
-      display: none;
-    }
-    section.active {
-      display: block;
-    }
+<!-- VIDEO PLAYER -->
+<div id="videoModal" onclick="closeVideo()">
+  <video id="videoPlayer" controls></video>
+</div>
 
-    h2 {
-      color: var(--text-white);
-      font-size: 1.7rem;
-      font-weight: 700;
-      margin-bottom: 30px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    h2::before {
-      content: '';
-      display: inline-block;
-      width: 6px;
-      height: 24px;
-      background-color: var(--neon-pink);
-      border-radius: 2px;
-      box-shadow: 0 0 8px var(--neon-pink);
-    }
+<!-- LOGIN -->
+<div id="loginBox">
+  <h3>Login</h3>
+  <input id="user" placeholder="Username"><br><br>
+  <input id="pass" type="password" placeholder="Password"><br><br>
+  <button onclick="login()">Enter</button>
+</div>
 
-    /* Identical MovieBox Grid Structure Layout */
-    .grid-layout {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 30px;
-    }
-    @media(max-width: 640px) {
-      .grid-layout {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-        gap: 20px;
-      }
-    }
+<!-- ADMIN -->
+<div id="adminBox">
+  <h3>Add Movie</h3>
+  <input id="title" placeholder="Movie title"><br><br>
+  <input id="img" placeholder="Image URL"><br><br>
+  <input id="video" placeholder="Video URL"><br><br>
+  <button onclick="addMovie()">Add</button>
+</div>
 
-    /* Premium Movie Box Display Cards */
-    .item {
-      background-color: var(--bg-card);
-      border: 1px solid var(--border-blue);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      display: flex;
-      flex-direction: column;
-      transition: all 0.3s ease;
-    }
-    .item:hover {
-      transform: translateY(-8px);
-      border-color: var(--primary-cyan);
-      box-shadow: 0 12px 30px rgba(0, 229, 255, 0.15);
-    }
+<script>
+let movies = JSON.parse(localStorage.getItem("movies")) || [];
 
-    /* Cover Art Layer for MovieBox View */
-    .card-cover-art {
-      width: 100%;
-      height: 160px;
-      background: linear-gradient(45deg, #1f2937, #111827);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-      border-bottom: 1px solid var(--border-blue);
-    }
-    .card-cover-art span {
-      font-size: 3.5rem;
-      opacity: 0.2;
-    }
-    .card-badge {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background-color: var(--neon-pink);
-      color: var(--text-white);
-      font-size: 11px;
-      font-weight: 800;
-      padding: 4px 8px;
-      border-radius: 4px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      box-shadow: 0 2px 6px rgba(255,0,127,0.4);
-    }
+/* default movies */
+if(movies.length === 0){
+  movies = [
+    {title:"Action Movie", img:"https://via.placeholder.com/200x300", video:"https://www.w3schools.com/html/mov_bbb.mp4"},
+    {title:"Drama Movie", img:"https://via.placeholder.com/200x300", video:"https://www.w3schools.com/html/movie.mp4"}
+  ];
+  localStorage.setItem("movies", JSON.stringify(movies));
+}
 
-    .card-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-    .item h3 {
-      margin: 0 0 12px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      color: var(--text-white);
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-    
-    video, audio {
-      width: 100%;
-      border-radius: 6px;
-      background-color: #000000;
-      outline: none;
-      margin-bottom: 12px;
-    }
+function showMovies(){
+  let box = document.getElementById("movieList");
+  box.innerHTML = "";
 
-    /* Commentary Audio Track Selector Module */
-    .controls-row {
-      background-color: #090d16;
-      padding: 12px;
-      border-radius: 8px;
-      margin-bottom: 14px;
-      border: 1px solid #1e293b;
-    }
-    .audio-selector, .volume-control {
-      margin-bottom: 10px;
-    }
-    .audio-selector:last-child, .volume-control:last-child {
-      margin-bottom: 0;
-    }
-    label {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-gray);
-      display: block;
-      margin-bottom: 6px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-    }
-    select {
-      width: 100%;
-      padding: 8px;
-      background-color: var(--bg-card);
-      color: var(--text-white);
-      border: 1px solid var(--border-blue);
-      border-radius: 6px;
-      outline: none;
-      font-size: 12px;
-      cursor: pointer;
-    }
-    select:focus {
-      border-color: var(--primary-cyan);
-    }
-    input[type="range"] {
-      width: 100%;
-      accent-color: var(--primary-cyan);
-      background: var(--border-blue);
-      height: 5px;
-      border-radius: 3px;
-      cursor: pointer;
-    }
+  movies.forEach((m,i)=>{
+    box.innerHTML += `
+      <div class="card">
+        <img src="${m.img}">
+        <h3>${m.title}</h3>
+        <button class="btn" onclick="watch(${i})">Watch Now</button>
+      </div>
+    `;
+  });
+}
+showMovies();
 
-    /* Action Buttons Design Matrix */
-    .action-buttons {
-      display: flex;
-      gap: 10px;
-      margin-top: auto;
-    }
-    .btn {
-      flex: 1;
-      padding: 11px;
-      cursor: pointer;
-      font-weight: 700;
-      border: none;
-      border-radius: 6px;
-      font-size: 0.85rem;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      text-align: center;
-      display: inline-block;
-      text-decoration: none;
-      transition: all 0.2s ease;
-    }
-    .btn-share {
-      background-color: #1e293b;
-      color: var(--text-white);
-      border: 1px solid var(--border-blue);
-    }
-    .btn-share:hover {
-      background-color: #334155;
-      border-color: var(--text-gray);
-    }
-    .btn-download {
-      background-color: var(--primary-cyan);
-      color: #02060c;
-      box-shadow: 0 2px 10px rgba(0, 229, 255, 0.2);
-    }
-    .btn-download:hover {
-      background-color: #00b8cc;
-      box-shadow: 0 4px 15px rgba(0, 229, 255, 0.4);
-    }
+/* SEARCH */
+document.getElementById("search").addEventListener("keyup",function(){
+  let v = this.value.toLowerCase();
+  document.querySelectorAll(".card").forEach(c=>{
+    c.style.display = c.innerText.toLowerCase().includes(v) ? "block":"none";
+  });
+});
 
-    /* Universal Social Share Modal Box */
-    .modal-overlay {
-      display: none;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(2, 6, 12, 0.9);
-      z-index: 9999;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-    .modal-overlay.active {
-      display: flex;
-      opacity: 1;
-    }
-    .modal {
-      background-color: var(--bg-card);
-      border: 1px solid var(--primary-cyan);
-      padding: 25px;
-      border-radius: 14px;
-      width: 90%;
-      max-width: 440px;
-      box-shadow: 0 0 35px rgba(0,229,255,0.2);
-      position: relative;
-    }
-    .modal-close {
-      position: absolute;
-      top: 12px;
-      right: 16px;
-      font-size: 26px;
-      color: var(--text-gray);
-      cursor: pointer;
-      line-height: 1;
-    }
-    .modal-close:hover {
-      color: var(--text-white);
-    }
-    .modal h4 {
-      margin: 0 0 20px;
-      color: var(--text-white);
-      font-size: 1.25rem;
-      text-align: center;
-      font-weight: 700;
-    }
-    .share-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-bottom: 20px;
-    }
-    .share-channel {
-      background-color: #0b111e;
-      border: 1px solid var(--border-blue);
-      border-radius: 8px;
-      padding: 12px 5px;
-      text-align: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-      color: var(--text-white);
-      text-decoration: none;
-      display: block;
-    }
-    .share-channel:hover {
-      border-color: var(--primary-cyan);
-      background-color: rgba(0, 229, 255, 0.05);
-      transform: scale(1.04);
-    }
-    .share-icon {
-      font-size: 24px;
-      margin-bottom: 6px;
-      display: block;
-    }
-    .share-label {
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--text-gray);
-      display: block;
-    }
-    .copy-box {
-      display: flex;
-      background-color: #0b111e;
-      padding: 6px;
-      border-radius: 8px;
-      border: 1px solid var(--border-blue);
-    }
-    .copy-box input {
-      flex: 1;
-      background: transparent;
-      border: none;
-      color: var(--text-white);
-      padding: 6px 10px;
-      font-size: 12px;
-      outline: none;
-    }
-    .copy-box button {
-      background-color: var(--primary-cyan);
-      color: #02060c;
-      border: none;
-      padding: 6px 16px;
-      border-radius: 6px;
-      font-size: 12px;
-      font-weight: 700;
-      cursor: pointer;
-    }
+/* VIDEO */
+function watch(i){
+  let modal = document.getElementById("videoModal");
+  let player = document.getElementById("videoPlayer");
+  player.src = movies[i].video;
+  modal.style.display = "flex";
+}
 
-    /* Embedded Web Query Engine Layout */
-    .search-wrapper {
-      text-align: center;
-      background-color: var(--bg-card);
+function closeVideo(){
+  document.getElementById("videoModal").style.display="none";
+}
+
+/* LOGIN */
+function openLogin(){
+  document.getElementById("loginBox").style.display="block";
+}
+
+function login(){
+  let u = document.getElementById("user").value;
+  let p = document.getElementById("pass").value;
+
+  if(u && p){
+    alert("Login successful");
+    document.getElementById("loginBox").style.display="none";
+  }
+}
+
+/* ADMIN */
+function openAdmin(){
+  document.getElementById("adminBox").style.display="block";
+}
+
+function addMovie(){
+  let t = document.getElementById("title").value;
+  let i = document.getElementById("img").value;
+  let v = document.getElementById("video").value;
+
+  movies.push({title:t,img:i,video:v});
+  localStorage.setItem("movies", JSON.stringify(movies));
+
+  showMovies();
+  document.getElementById("adminBox").style.display="none";
+  alert("Movie added!");
+}
+</script>
+
+</body>
+</html>
