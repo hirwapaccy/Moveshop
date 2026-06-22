@@ -1,310 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Movie shop with hirwa paccy - Premium Media Central</title>
-  <style>
-    /* Premium Midnight Cinematic Color Profiles mimicking AgasobanuyeNow */
-    :root {
-      --bg-main: #0c0d12;
-      --bg-card: #161822;
-      --bg-nav: #0f1016;
-      --accent-red: #ff2a3b;
-      --accent-gold: #ffbe24;
-      --whatsapp-modern-green: #008f6c;
-      --text-bright: #ffffff;
-      --text-gray: #8b929e;
-    }
+# Agasobanuye x Oshakur Script Format
 
-    body { 
-      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; 
-      margin: 0; 
-      padding: 0; 
-      background-color: var(--bg-main); 
-      color: var(--text-bright);
-      padding-bottom: 95px;
-    }
+This repository uses a dual-narrative structural format. It combines the raw, philosophical poetry of **Oshakur** with the high-energy, real-time voice-over commentary of **Agasobanuye**.
 
-    /* Fixed Top Header with Custom 3D Text Architecture */
-    header { 
-      background-color: rgba(22, 24, 34, 0.96); 
-      padding: 16px; 
-      text-align: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid #232735;
-      backdrop-filter: blur(12px);
-    }
-    
-    /* Modern 3D Text Typography styling for Title Branding */
-    .brand-3d-title {
-      margin: 0;
-      font-size: 1.35rem;
-      font-weight: 900;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      color: var(--text-bright);
-      text-shadow: 
-        0 1px 0 #ccc,
-        0 2px 0 #c5c5c5,
-        0 3px 0 #bbb,
-        0 4px 0 #b0b0b0,
-        0 5px 0 #a0a0a0,
-        0 6px 1px rgba(0,0,0,0.1),
-        0 0 5px rgba(0,0,0,0.1),
-        0 1px 3px rgba(0,0,0,0.3),
-        0 3px 5px rgba(0,0,0,0.2),
-        0 5px 10px rgba(0,0,0,0.25),
-        0 10px 10px rgba(0,0,0,0.2),
-        0 20px 20px rgba(0,0,0,0.15);
-    }
-    .brand-3d-title span {
-      color: var(--accent-red);
-      text-shadow: 
-        0 1px 0 #b3121f,
-        0 2px 0 #990f1a,
-        0 3px 0 #800c15,
-        0 5px 10px rgba(255,42,59,0.3);
-    }
+---
 
-    /* Fixed Bottom Web Page Footer Component */
-    footer {
-      background-color: var(--bg-nav);
-      padding: 15px;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--text-gray);
-      border-top: 1px solid #1c1f2b;
-      margin-top: 30px;
-    }
-    footer strong {
-      color: var(--accent-red);
-    }
+## 📋 The Structure
 
-    /* High-Conversion WhatsApp Core Connection Action Button */
-    .whatsapp-direct-connector { 
-      background: linear-gradient(135deg, #02c396, var(--whatsapp-modern-green)); 
-      margin: 14px; 
-      padding: 15px; 
-      border-radius: 8px; 
-      text-align: center; 
-      box-shadow: 0 4px 15px rgba(0, 143, 108, 0.3);
-      border: 1px solid rgba(255,255,255,0.1);
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .whatsapp-direct-connector:active {
-      transform: scale(0.98);
-    }
-    .whatsapp-direct-connector p { 
-      margin: 0 0 8px 0; 
-      font-size: 0.85rem; 
-      font-weight: 700; 
-      letter-spacing: 0.2px;
-    }
-    .whatsapp-action-lbl {
-      display: inline-block;
-      background-color: var(--text-bright);
-      color: #00664d;
-      padding: 7px 18px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-      font-weight: 800;
-      text-decoration: none;
-    }
+### 1. The Setup (Intro)
+*   `[Oshakur Quote]` -> A short, deep quote setting the emotional mood.
+*   `[Agasobanuye Intro]` -> The commentator breaks the wall, introduces the character, and hypes the drama.
 
-    /* Section Page Window States configuration */
-    .page-view { display: none; padding: 0 0 25px 0; }
-    .page-view.active-page { display: block; }
+### 2. The Verse & Voice-Over (The Core)
+*   `[Oshakur Bars]` -> Active-voice lines dealing with survival, pain, or hope.
+*   `[Agasobanuye Translation]` -> High-energy summary translating the deep meaning into street-smart warnings.
 
-    h2 { 
-      font-size: 1.05rem; 
-      margin: 22px 0 12px 16px; 
-      font-weight: 800;
-      letter-spacing: 0.4px;
-      text-transform: uppercase;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding-right: 16px;
-      color: #e2e8f0;
-    }
-    h2 .row-count-badge { 
-      font-size: 0.7rem; 
-      color: var(--accent-gold); 
-      background: rgba(255, 200, 59, 0.1); 
-      padding: 2px 7px; 
-      border-radius: 4px; 
-      border: 1px solid rgba(255, 200, 59, 0.2);
-    }
+### 3. The Climax (The Conflict)
+*   `[Oshakur Heat]` -> A tense, dramatic lyrical moment.
+*   `[Agasobanuye Breakdown]` -> Beat-by-beat explanation of the action so the audience gets the lesson.
 
-    /* AgasobanuyeNow Horizontal Touch Slide Row Carousels */
-    .swipe-row {
-      display: flex;
-      overflow-x: auto;
-      gap: 12px;
-      padding: 5px 16px 16px 16px;
-      scroll-behavior: smooth;
-    }
-    .swipe-row::-webkit-scrollbar { display: none; }
+### 4. The Outro (The Lesson)
+*   `[Oshakur Final Word]` -> A philosophical sign-off about society or growth.
+*   `[Agasobanuye Fade Out]` -> Commentator closes the show, leaving the audience hyped.
 
-    /* Universal Media Card Poster blocks */
-    .media-card { 
-      flex: 0 0 115px; 
-      background-color: var(--bg-card); 
-      border-radius: 6px; 
-      overflow: hidden; 
-      display: flex; 
-      flex-direction: column; 
-      cursor: pointer;
-      border: 1px solid #232735;
-    }
-    .thumbnail-box { 
-      width: 100%; 
-      aspect-ratio: 2/3; 
-      background: #1e2230 center/cover; 
-      position: relative; 
-    }
-    .quality-tag {
-      position: absolute;
-      top: 5px;
-      left: 5px;
-      background: var(--accent-red);
-      padding: 2px 5px;
-      font-size: 0.6rem;
-      font-weight: 900;
-      border-radius: 2px;
-    }
-    .info-box { padding: 8px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
-    .card-title { 
-      font-size: 0.78rem;
-      font-weight: 700; 
-      margin: 0 0 4px 0;
-      white-space: nowrap; 
-      overflow: hidden; 
-      text-overflow: ellipsis; 
-    }
-    .card-subtitle { font-size: 0.68rem; color: var(--text-gray); margin-bottom: 4px; }
-    .card-interpreter { color: var(--accent-gold); font-size: 0.68rem; font-weight: 700; }
+---
 
-    /* Vertical Navigation Lists Grids */
-    .vertical-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-      gap: 12px;
-      padding: 16px;
-    }
+## 📝 Script Template (Copy & Paste)
 
-    /* Native Media Cinema Screening Stage Overlay */
-    .player-panel { background-color: #000; padding: 10px; text-align: center; }
-    .btn-row { display: flex; gap: 10px; padding: 16px; }
-    .action-btn { flex: 1; padding: 14px; border-radius: 4px; border: none; font-weight: 700; cursor: pointer; font-size: 0.85rem; }
-    .action-btn.download { background-color: var(--accent-red); color: white; }
-    .action-btn.back { background-color: #242936; color: white; }
+```text
+===================================================================
+[INTRO]
+===================================================================
+OSHAKUR:
+> "Insert deep, poetic lyric about the struggle here."
 
-    /* Info Bar Strips for secondary menus */
-    .list-item-strip {
-      background-color: var(--bg-card);
-      padding: 16px;
-      margin: 8px 16px;
-      border-radius: 6px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      text-decoration: none;
-      color: white;
-      font-weight: 700;
-      font-size: 0.85rem;
-      border: 1px solid #232735;
-    }
-    .list-item-strip span.sub-lbl { font-size: 0.72rem; color: var(--text-gray); font-weight: 400; display: block; margin-top: 2px; }
+AGASOBANUYE:
+> "Yego kabisa! Look at our brother now. Watch closely, the story starts here!"
 
-    /* Persistent Bottom Navigation Menu Bar (Houses 6 items) */
-    nav.bottom-app-bar { 
-      position: fixed; 
-      bottom: 0; 
-      left: 0; 
-      right: 0; 
-      background-color: var(--bg-nav); 
-      display: flex; 
-      justify-content: space-around; 
-      padding: 12px 0 14px 0; 
-      border-top: 1px solid #1e2230; 
-      z-index: 2000; 
-    }
-    .tab-item { 
-      background: none; 
-      border: none; 
-      color: #5d6475; 
-      font-size: 0.62rem; 
-      cursor: pointer; 
-      display: flex; 
-      flex-direction: column; 
-      align-items: center; 
-      gap: 5px;
-      width: 16%;
-      font-weight: 700;
-    }
-    .tab-item.active-tab { color: var(--text-bright); }
-    .tab-item svg { width: 20px; height: 20px; fill: currentColor; }
-    .tab-item.active-tab svg { fill: var(--accent-red); }
-  </style>
-</head>
-<body>
+===================================================================
+[BODY VERSE]
+===================================================================
+OSHAKUR:
+> "Insert short lines about survival, friends, or betrayal here."
 
-  <!-- Top Sticky Header branded with custom name rules -->
-  <header>
-    <h1 class="brand-3d-title">Movie shop with <span>hirwa paccy</span></h1>
-  </header>
+AGASOBANUYE:
+> "Urakoze! Did you hear that? He says watch out for fake people! Look at that guy!"
 
-  <!-- ================= AUTOMATED WHATSAPP ROUTING DISPATCHER ================= -->
-  <div class="whatsapp-direct-connector" onclick="redirectToWhatsApp()">
-    <p>💬 Dukurikire Kuri WhatsApp Ubone Filme N'Indirimbo Nshyashya Kugihe!</p>
-    <span class="whatsapp-action-lbl">FUNGURA WHATSAPP YACU NOW</span>
-  </div>
+===================================================================
+[THE CLIMAX]
+===================================================================
+OSHAKUR:
+> "Insert the most intense, dramatic lines here."
 
-  <!-- ================= PAGE 1: HOME PANEL ================= -->
-  <section id="view-home" class="page-view active-page">
-    <h2>Trending Movies <span class="row-count-badge">LATEST</span></h2>
-    <div class="swipe-row" id="home-trending-swipe"></div>
+AGASOBANUYE:
+> "Ayiee! It is going down! He has to make a choice right now!"
 
-    <h2>Popular Series Box <span class="row-count-badge">EPISODES</span></h2>
-    <div class="swipe-row" id="home-series-swipe"></div>
-  </section>
+===================================================================
+[OUTRO]
+===================================================================
+OSHAKUR:
+> "Insert a final philosophical thought about tomorrow here."
 
-  <!-- ================= PAGE 2: MOVIES LIBRARY DIRECTORY ================= -->
-  <section id="view-movies" class="page-view">
-    <h2>All Movies Catalog</h2>
-    <div class="vertical-grid" id="movies-all-grid"></div>
-  </section>
-
-  <!-- ================= PAGE 3: SERIES DIRECTORY ================= -->
-  <section id="view-series" class="page-view">
-    <h2>All Series Seasons</h2>
-    <div class="vertical-grid" id="series-all-grid"></div>
-  </section>
-
-  <!-- ================= PAGE 4: MUSIC DIRECTORY LOUNGE ================= -->
-  <section id="view-music" class="page-view">
-    <h2>Agasobanuye Music Releases</h2>
-    <div class="list-item-strip" onclick="launchAudio('Bwiza - Ready (Soba Mix)', 'music/song1.mp3')">
-      <div>🎵 Bwiza - Ready <span class="sub-lbl">Audio • Local Translation</span></div>
-      <span>▶ Play Track</span>
-    </div>
-    <div class="list-item-strip" onclick="launchAudio('Bruce Melodie - Love Me', 'music/song2.mp3')">
-      <div>🎵 Bruce Melodie - Love Me <span class="sub-lbl">Audio • Popular Hit</span></div>
-      <span>▶ Play Track</span>
-    </div>
-
-    <!-- Live Audio Playback Widget Block -->
-    <div id="audio-widget-card" style="display:none; margin:20px 16px; padding:15px; background:var(--bg-card); border-radius:6px; border:1px solid #232735;">
-      <p id="audio-lbl" style="margin:0 0 10px 0; font-weight:700; font-size:0.8rem; color:var(--accent-gold);"></p>
-      <audio id="audio-engine" controls style="width:100%;"></audio>
-    </div>
-  </section>
-
-  <!-- ================= PAGE 5: SPORTS DIRECTORY ================= -->
-  <section id="view-sports" class="page-view">
-    <h2>Live Match Portals & Highlights</h2>
+AGASOBANUYE:
+> "And that is how it ends. Keep your head up. Seamless cut, peace!"
+===================================================================
+```
