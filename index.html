@@ -224,7 +224,49 @@
         let url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
         document.getElementById('searchResults').innerHTML = `<iframe src="${url}" width="100%" height="600"></iframe>`;
       }
-    }
+    }<section id="movies">
+  <h2>Movies Collection</h2>
+  <!-- 50 movies -->
+  <div class="item">
+    <p>Movie 1 (Oshakuru)</p>
+    <video width="560" controls>
+      <source src="movies/movie1.mp4" type="video/mp4">
+    </video><br>
+    <button onclick="shareContent('Movie 1','movies/movie1.mp4')">Share</button>
+    <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE1/movie.mp4/file','_blank')">Download</button>
+  </div>
+  <div class="item">
+    <p>Movie 2 (Agasobanuye Now)</p>
+    <video width="560" controls>
+      <source src="movies/movie2.mp4" type="video/mp4">
+    </video><br>
+    <button onclick="shareContent('Movie 2','movies/movie2.mp4')">Share</button>
+    <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE2/movie.mp4/file','_blank')">Download</button>
+  </div>
+  <!-- … continue up to Movie 50 -->
+</section>
+<section id="movies">
+  <h2>Movies Collection</h2>
+  <!-- 50 movies -->
+  <div class="item">
+    <p>Movie 1 (Oshakuru)</p>
+    <video width="560" controls>
+      <source src="movies/movie1.mp4" type="video/mp4">
+    </video><br>
+    <button onclick="shareContent('Movie 1','movies/movie1.mp4')">Share</button>
+    <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE1/movie.mp4/file','_blank')">Download</button>
+  </div>
+  <div class="item">
+    <p>Movie 2 (Agasobanuye Now)</p>
+    <video width="560" controls>
+      <source src="movies/movie2.mp4" type="video/mp4">
+    </video><br>
+    <button onclick="shareContent('Movie 2','movies/movie2.mp4')">Share</button>
+    <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE2/movie.mp4/file','_blank')">Download</button>
+  </div>
+  <!-- … continue up to Movie 50 -->
+</section>
+
   </script>
 
 </body>
