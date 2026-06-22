@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Movie Shop</title>
+<title>Movie Shop Pro</title>
 
 <style>
 body{
   margin:0;
   font-family:Arial;
-  background:#0d0d0d;
+  background:#0b0b0b;
   color:white;
 }
 
@@ -19,8 +19,7 @@ header{
   justify-content:space-between;
   align-items:center;
   padding:15px;
-  background:linear-gradient(145deg,#111,#222);
-  box-shadow:0 5px 15px black;
+  background:#111;
   position:sticky;
   top:0;
 }
@@ -28,21 +27,18 @@ header{
 .logo{
   font-size:22px;
   font-weight:bold;
-  text-shadow:2px 2px 5px red;
+  color:red;
 }
 
 /* BUTTONS */
 button{
-  padding:8px 10px;
-  border:none;
-  cursor:pointer;
-  border-radius:5px;
-  margin:2px;
-}
-
-.btn{
   background:red;
   color:white;
+  border:none;
+  padding:8px 10px;
+  margin:3px;
+  cursor:pointer;
+  border-radius:5px;
 }
 
 /* SEARCH */
@@ -55,13 +51,33 @@ button{
 /* HERO */
 .hero{
   text-align:center;
-  padding:40px;
-  background:linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)),
+  padding:30px;
+  background:linear-gradient(rgba(0,0,0,0.8),rgba(0,0,0,0.8)),
   url('https://via.placeholder.com/1200x400');
 }
 
-/* MOVIES */
-.movies{
+/* CATEGORIES */
+.categories{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin:15px;
+  flex-wrap:wrap;
+}
+
+.cat{
+  background:#222;
+  padding:10px;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.cat.active{
+  background:red;
+}
+
+/* GRID */
+.grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
   gap:15px;
@@ -77,7 +93,7 @@ button{
 }
 
 .card:hover{
-  transform:scale(1.08);
+  transform:scale(1.05);
 }
 
 .card img{
@@ -85,23 +101,23 @@ button{
   border-radius:10px;
 }
 
-/* MODAL VIDEO */
-#videoModal{
+/* MODAL PLAYER */
+#player{
   display:none;
   position:fixed;
   top:0;left:0;
   width:100%;height:100%;
-  background:rgba(0,0,0,0.9);
-  justify-content:center;
-  align-items:center;
+  background:black;
+  z-index:999;
 }
 
-#videoModal video{
-  width:80%;
+iframe{
+  width:100%;
+  height:100%;
 }
 
-/* LOGIN PANEL */
-#loginBox, #adminBox{
+/* LOGIN / ADMIN */
+.box{
   display:none;
   position:fixed;
   top:50%;
@@ -117,7 +133,6 @@ footer{
   text-align:center;
   padding:15px;
   background:#111;
-  margin-top:20px;
 }
 </style>
 </head>
@@ -125,128 +140,144 @@ footer{
 <body>
 
 <header>
-  <div class="logo">🎬 Movie Shop</div>
-
+  <div class="logo">🎬 Movie Shop Pro</div>
   <input id="search" placeholder="Search movies...">
-
   <div>
-    <button class="btn" onclick="openLogin()">Login</button>
-    <button class="btn" onclick="openAdmin()">Admin</button>
+    <button onclick="openLogin()">Login</button>
+    <button onclick="openAdmin()">Admin</button>
   </div>
 </header>
 
-<section class="hero">
-  <h1>Welcome to Movie Shop</h1>
-  <p>Watch & Upload Movies Like Agasobanuyenow</p>
-</section>
+<div class="hero">
+  <h1>Welcome to Movie Shop Pro</h1>
+  <p>Netflix-style Movie & Music Platform</p>
+</div>
 
-<section class="movies" id="movieList"></section>
+<!-- CATEGORIES -->
+<div class="categories">
+  <div class="cat active" onclick="setCat('all')">All</div>
+  <div class="cat" onclick="setCat('movies')">Movies</div>
+  <div class="cat" onclick="setCat('music')">Music</div>
+  <div class="cat" onclick="setCat('action')">Action</div>
+  <div class="cat" onclick="setCat('drama')">Drama</div>
+</div>
+
+<!-- CONTENT -->
+<div class="grid" id="grid"></div>
 
 <footer>
-  © 2026 Movie Shop | Designed by <b>Hirwa Paccy</b>
+© 2026 Movie Shop Pro | Designed by Hirwa Paccy
 </footer>
 
-<!-- VIDEO PLAYER -->
-<div id="videoModal" onclick="closeVideo()">
-  <video id="videoPlayer" controls></video>
+<!-- PLAYER -->
+<div id="player" onclick="closePlayer()">
+  <iframe id="frame"></iframe>
 </div>
 
 <!-- LOGIN -->
-<div id="loginBox">
+<div class="box" id="loginBox">
   <h3>Login</h3>
-  <input id="user" placeholder="Username"><br><br>
-  <input id="pass" type="password" placeholder="Password"><br><br>
+  <input id="u" placeholder="Username"><br><br>
+  <input id="p" type="password" placeholder="Password"><br><br>
   <button onclick="login()">Enter</button>
 </div>
 
 <!-- ADMIN -->
-<div id="adminBox">
-  <h3>Add Movie</h3>
-  <input id="title" placeholder="Movie title"><br><br>
-  <input id="img" placeholder="Image URL"><br><br>
-  <input id="video" placeholder="Video URL"><br><br>
-  <button onclick="addMovie()">Add</button>
+<div class="box" id="adminBox">
+  <h3>Add Content</h3>
+  <input id="t" placeholder="Title"><br><br>
+  <input id="i" placeholder="Image URL"><br><br>
+  <input id="l" placeholder="YouTube Embed URL"><br><br>
+  <select id="c">
+    <option value="movies">Movies</option>
+    <option value="music">Music</option>
+    <option value="action">Action</option>
+    <option value="drama">Drama</option>
+  </select><br><br>
+  <button onclick="add()">Add</button>
 </div>
 
 <script>
-let movies = JSON.parse(localStorage.getItem("movies")) || [];
 
-/* default movies */
-if(movies.length === 0){
-  movies = [
-    {title:"Action Movie", img:"https://via.placeholder.com/200x300", video:"https://www.w3schools.com/html/mov_bbb.mp4"},
-    {title:"Drama Movie", img:"https://via.placeholder.com/200x300", video:"https://www.w3schools.com/html/movie.mp4"}
-  ];
-  localStorage.setItem("movies", JSON.stringify(movies));
-}
+/* DEFAULT DATA (LEGAL CONTENT) */
+let data = JSON.parse(localStorage.getItem("data")) || [
+  {title:"Action Trailer",img:"https://img.youtube.com/vi/2LqzF5WauAw/0.jpg",link:"https://www.youtube.com/embed/2LqzF5WauAw",cat:"action"},
+  {title:"Drama Film",img:"https://img.youtube.com/vi/3Zl9puhwiyw/0.jpg",link:"https://www.youtube.com/embed/3Zl9puhwiyw",cat:"drama"},
+  {title:"Music One",img:"https://img.youtube.com/vi/kJQP7kiw5Fk/0.jpg",link:"https://www.youtube.com/embed/kJQP7kiw5Fk",cat:"music"}
+];
 
-function showMovies(){
-  let box = document.getElementById("movieList");
-  box.innerHTML = "";
+let currentCat = "all";
 
-  movies.forEach((m,i)=>{
-    box.innerHTML += `
+/* SHOW */
+function show(){
+  let g = document.getElementById("grid");
+  g.innerHTML="";
+
+  let filtered = data.filter(d=>{
+    return currentCat==="all" || d.cat===currentCat;
+  });
+
+  filtered.forEach((d,i)=>{
+    g.innerHTML += `
       <div class="card">
-        <img src="${m.img}">
-        <h3>${m.title}</h3>
-        <button class="btn" onclick="watch(${i})">Watch Now</button>
+        <img src="${d.img}">
+        <h3>${d.title}</h3>
+        <button onclick="play('${d.link}')">Watch</button>
       </div>
     `;
   });
 }
-showMovies();
+show();
+
+/* CATEGORY */
+function setCat(c){
+  currentCat = c;
+  document.querySelectorAll(".cat").forEach(x=>x.classList.remove("active"));
+  event.target.classList.add("active");
+  show();
+}
 
 /* SEARCH */
 document.getElementById("search").addEventListener("keyup",function(){
-  let v = this.value.toLowerCase();
+  let v=this.value.toLowerCase();
   document.querySelectorAll(".card").forEach(c=>{
-    c.style.display = c.innerText.toLowerCase().includes(v) ? "block":"none";
+    c.style.display=c.innerText.toLowerCase().includes(v)?"block":"none";
   });
 });
 
-/* VIDEO */
-function watch(i){
-  let modal = document.getElementById("videoModal");
-  let player = document.getElementById("videoPlayer");
-  player.src = movies[i].video;
-  modal.style.display = "flex";
+/* PLAYER */
+function play(link){
+  document.getElementById("player").style.display="block";
+  document.getElementById("frame").src=link;
 }
-
-function closeVideo(){
-  document.getElementById("videoModal").style.display="none";
+function closePlayer(){
+  document.getElementById("player").style.display="none";
+  document.getElementById("frame").src="";
 }
 
 /* LOGIN */
-function openLogin(){
-  document.getElementById("loginBox").style.display="block";
-}
-
+function openLogin(){document.getElementById("loginBox").style.display="block";}
 function login(){
-  let u = document.getElementById("user").value;
-  let p = document.getElementById("pass").value;
-
-  if(u && p){
-    alert("Login successful");
+  if(document.getElementById("u").value){
+    alert("Login success");
     document.getElementById("loginBox").style.display="none";
   }
 }
 
 /* ADMIN */
-function openAdmin(){
-  document.getElementById("adminBox").style.display="block";
-}
-
-function addMovie(){
-  let t = document.getElementById("title").value;
-  let i = document.getElementById("img").value;
-  let v = document.getElementById("video").value;
-
-  movies.push({title:t,img:i,video:v});
-  localStorage.setItem("movies", JSON.stringify(movies));
-
-  showMovies();
-  document.getElementById("adminBox").style.display="none";
-  alert("Movie added!");
+function openAdmin(){document.getElementById("adminBox").style.display="block";}
+function add(){
+  let obj={
+    title:t.value,
+    img:i.value,
+    link:l.value,
+    cat:c.value
+  };
+  data.push(obj);
+  localStorage.setItem("data",JSON.stringify(data));
+  show();
+  adminBox.style.display="none";
+  alert("Added!");
 }
 </script>
 
