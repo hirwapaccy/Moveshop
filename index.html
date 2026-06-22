@@ -399,4 +399,204 @@ footer{
 </footer>
 
 </body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Shop Pro</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">🎬 Movie Shop</div>
+
+  <nav>
+    <a href="#movies">Movies</a>
+    <a href="#music">Music</a>
+    <a href="#sports">Sports</a>
+    <a href="#news">News</a>
+    <a href="#upload">Upload</a>
+    <a href="#profile">Profile</a>
+  </nav>
+
+  <input id="search" type="search" placeholder="Search...">
+
+  <button onclick="developerLogin()">Admin</button>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <h1>Welcome to Movie Shop Pro</h1>
+  <p>Movies • Music • Sports • News</p>
+</section>
+
+<!-- MOVIES -->
+<section id="movies" class="section">
+  <h2>🎬 Movies</h2>
+  <div class="row" id="movieRow"></div>
+</section>
+
+<!-- MUSIC -->
+<section id="music" class="section">
+  <h2>🎵 Music</h2>
+  <div class="row" id="musicRow"></div>
+</section>
+
+<!-- SPORTS -->
+<section id="sports" class="section">
+  <h2>🏆 Sports</h2>
+  <div class="row" id="sportsRow"></div>
+</section>
+
+<!-- NEWS -->
+<section id="news" class="section">
+  <h2>📰 News</h2>
+  <div class="row" id="newsRow"></div>
+</section>
+
+<!-- UPLOAD -->
+<section id="upload" class="section upload">
+  <h2>📤 Upload Content (From Phone)</h2>
+
+  <input id="title" type="text" placeholder="Title">
+
+  <select id="category">
+    <option value="movies">Movie</option>
+    <option value="music">Music</option>
+    <option value="sports">Sports</option>
+    <option value="news">News</option>
+  </select>
+
+  <input id="file" type="file">
+
+  <button onclick="uploadContent()">Upload</button>
+</section>
+
+<!-- PROFILE -->
+<section id="profile" class="section">
+  <h2>👤 Profile</h2>
+  <p>User profile will appear here.</p>
+</section>
+
+<!-- ADMIN PANEL -->
+<section id="adminPanel" class="section admin">
+  <h2>🔐 Developer Panel</h2>
+  <p>Only developer can manage content.</p>
+
+  <button onclick="clearAll()">Clear All Content</button>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h3>🎬 Movie Shop</h3>
+  <p>Movies • Music • Sports • News</p>
+
+  <h4>Contact</h4>
+  <p>Facebook: Hirwa Paccy</p>
+  <p>Instagram: ishimwehirwapacifique@gmail.com</p>
+  <p>WhatsApp: +250795609913</p>
+
+  <p>© 2026 Movie Shop</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
 </html>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#141414;
+  color:white;
+}
+
+/* HEADER */
+header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:black;
+  padding:15px;
+  position:sticky;
+  top:0;
+}
+
+.logo{
+  color:#e50914;
+  font-size:26px;
+  font-weight:bold;
+}
+
+nav a{
+  color:white;
+  margin:0 8px;
+  text-decoration:none;
+}
+
+nav a:hover{
+  color:#e50914;
+}
+
+input{
+  padding:8px;
+  border:none;
+  border-radius:5px;
+}
+
+/* HERO */
+.hero{
+  padding:80px;
+  text-align:center;
+  background:#222;
+}
+
+/* SECTIONS */
+.section{
+  padding:20px;
+}
+
+.row{
+  display:flex;
+  overflow-x:auto;
+  gap:10px;
+}
+
+/* CARDS */
+.card{
+  min-width:200px;
+  background:#222;
+  padding:10px;
+  border-radius:10px;
+}
+
+.card video,
+.card img{
+  width:100%;
+  border-radius:10px;
+}
+
+/* UPLOAD */
+.upload input, .upload select{
+  display:block;
+  width:100%;
+  margin:10px 0;
+  padding:10px;
+}
+
+/* ADMIN */
+.admin{
+  background:#111;
+  padding:20px;
+}
+
+/* FOOTER */
+footer{
+  background:black;
+  padding:30px;
+  text-align:center;
+  margin-top:20px;
+}</html>
+</body>
