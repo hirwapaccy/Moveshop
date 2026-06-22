@@ -1,66 +1,330 @@
-# Agasobanuye x Oshakur Script Format
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agasobanuye Hub - Modern 3D Orange Style</title>
+    <style>
+        /* Base Themes and Dark Colors */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-This repository uses a dual-narrative structural format. It combines the raw, philosophical poetry of **Oshakur** with the high-energy, real-time voice-over commentary of **Agasobanuye**.
+        body {
+            background-color: #0b0c10;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
 
----
+        /* Modern 3D Floating Header in MovieShop Orange */
+        header {
+            background: linear-gradient(145deg, #ff8c00, #e65c00);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 15px;
+            margin: 15px 2%;
+            border-radius: 16px;
+            z-index: 100;
+            
+            /* High-End 3D Shadows and Highlights */
+            box-shadow: 
+                0 10px 20px rgba(230, 92, 0, 0.3),
+                inset 0 3px 0 rgba(255, 255, 255, 0.4),
+                inset 0 -4px 0 rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 140, 0, 0.5);
+            transform: perspective(1px) translateZ(0);
+            transition: transform 0.3s ease;
+        }
 
-## 📋 The Structure
+        header:hover {
+            transform: translateY(-2px) scale(1.005);
+        }
 
-### 1. The Setup (Intro)
-*   `[Oshakur Quote]` -> A short, deep quote setting the emotional mood.
-*   `[Agasobanuye Intro]` -> The commentator breaks the wall, introduces the character, and hypes the drama.
+        .logo {
+            font-size: 26px;
+            font-weight: 900;
+            color: #ffffff;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            
+            /* 3D Text Effect */
+            text-shadow: 
+                0 1px 0 #ccc,
+                0 2px 0 #c5c5c5,
+                0 3px 0 #bbb,
+                0 4px 0 #b0b0b0,
+                0 5px 6px rgba(0,0,0,0.6);
+        }
 
-### 2. The Verse & Voice-Over (The Core)
-*   `[Oshakur Bars]` -> Active-voice lines dealing with survival, pain, or hope.
-*   `[Agasobanuye Translation]` -> High-energy summary translating the deep meaning into street-smart warnings.
+        .logo span {
+            color: #11141a;
+            text-shadow: none;
+            background: #ffffff;
+            padding: 2px 8px;
+            border-radius: 6px;
+            margin-left: 5px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
+        }
 
-### 3. The Climax (The Conflict)
-*   `[Oshakur Heat]` -> A tense, dramatic lyrical moment.
-*   `[Agasobanuye Breakdown]` -> Beat-by-beat explanation of the action so the audience gets the lesson.
+        nav ul {
+            display: flex;
+            list-style: none;
+            align-items: center;
+        }
 
-### 4. The Outro (The Lesson)
-*   `[Oshakur Final Word]` -> A philosophical sign-off about society or growth.
-*   `[Agasobanuye Fade Out]` -> Commentator closes the show, leaving the audience hyped.
+        nav ul li {
+            margin: 0 10px;
+        }
 
----
+        /* Premium Nav Buttons with Inner 3D depth */
+        nav ul li a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
 
-## 📝 Script Template (Copy & Paste)
+        nav ul li a:hover, nav ul li a.active {
+            background: rgba(0, 0, 0, 0.15);
+            box-shadow: 
+                inset 0 2px 5px rgba(0,0,0,0.3),
+                0 1px 0 rgba(255,255,255,0.2);
+            transform: translateY(1px);
+        }
 
-```text
-===================================================================
-[INTRO]
-===================================================================
-OSHAKUR:
-> "Insert deep, poetic lyric about the struggle here."
+        /* Hero Banner with HTML5 Video Background */
+        .hero-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 5%;
+            margin-top: -10px;
+        }
 
-AGASOBANUYE:
-> "Yego kabisa! Look at our brother now. Watch closely, the story starts here!"
+        #bg-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+        }
 
-===================================================================
-[BODY VERSE]
-===================================================================
-OSHAKUR:
-> "Insert short lines about survival, friends, or betrayal here."
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(rgba(11, 12, 16, 0.3), #0b0c10);
+            z-index: -99;
+        }
 
-AGASOBANUYE:
-> "Urakoze! Did you hear that? He says watch out for fake people! Look at that guy!"
+        .hero-container h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
 
-===================================================================
-[THE CLIMAX]
-===================================================================
-OSHAKUR:
-> "Insert the most intense, dramatic lines here."
+        .hero-container p {
+            color: #ff8c00;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+        }
 
-AGASOBANUYE:
-> "Ayiee! It is going down! He has to make a choice right now!"
+        /* Main Grid Containers */
+        .container {
+            padding: 40px 5%;
+        }
 
-===================================================================
-[OUTRO]
-===================================================================
-OSHAKUR:
-> "Insert a final philosophical thought about tomorrow here."
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 25px;
+            border-left: 5px solid #ff8c00;
+            padding-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-AGASOBANUYE:
-> "And that is how it ends. Keep your head up. Seamless cut, peace!"
-===================================================================
-```
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        /* Item Display Cards */
+        .card {
+            background-color: #1a1f29;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            position: relative;
+            border: 1px solid #2f3542;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
+        }
+
+        .card img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+        }
+
+        .card-info {
+            padding: 15px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: bold;
+            margin-bottom: 8px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .card-meta {
+            font-size: 13px;
+            color: #ff8c00;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .badge {
+            background: linear-gradient(135deg, #ff8c00, #e65c00);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 11px;
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+
+        /* MovieShop-Style Modern 3D Matte Footer */
+        footer {
+            background: linear-gradient(0deg, #11141a 0%, #1a1f29 100%);
+            border-top: 5px solid #ff8c00;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 40px;
+            font-size: 14px;
+            color: #c5c6c7;
+            position: relative;
+            box-shadow: 
+                0 -10px 30px rgba(0, 0, 0, 0.5),
+                inset 0 2px 0 rgba(255, 140, 0, 0.2);
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 800;
+            color: #ff8c00;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        footer p {
+            color: #a4b0be;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation with MovieShop Orange Theme -->
+    <header>
+        <div class="logo">MOVIESHOP<span>BOX</span></div>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">Ahabanza</a></li>
+                <li><a href="#filime">Filime</a></li>
+                <li><a href="#gukurikirana">Uruhererekane</a></li>
+                <li><a href="#umuziki">Umuziki</a></li>
+                <li><a href="#imikino">Imikino</a></li>
+                <li><a href="#amakuru">Amakuru</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Welcome Display Banner with active Video Background -->
+    <div class="hero-container">
+        <video autoplay loop muted playsinline id="bg-video">
+            <source src="https://googleapis.com" type="video/mp4">
+            Your browser does not support HTML5 video.
+        </video>
+        <div class="hero-overlay"></div>
+        <h1>Filime Zisobanuye Neza</h1>
+        <p>Shaka Agasobanuye Gashya Kandi Kubuntu</p>
+    </div>
+
+    <div class="container">
+
+        <!-- Movies Section (Filime) -->
+        <h2 class="section-title" id="filime">Filime Zisobanuye Zigezweho</h2>
+        <div class="grid">
+            <div class="card">
+                <span class="badge">Rocky Kirabiranya</span>
+                <img src="https://unsplash.com" alt="Movie Layout">
+                <div class="card-info">
+                    <div class="card-title">The Polygamist</div>
+                    <div class="card-meta"><span>2026</span><span>Action</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="badge">Junior Giti</span>
+                <img src="https://unsplash.com" alt="Movie Layout">
+                <div class="card-info">
+                    <div class="card-title">Extraction 3</div>
+                    <div class="card-meta"><span>2026</span><span>Drama</span></div>
+                </div>
+            </div>
+            <div class="card">
+                <span class="badge">Sankara</span>
+                <img src="https://unsplash.com" alt="Movie Layout">
+                <div class="card-info">
+                    <div class="card-title">Nemesis Elite</div>
+                    <div class="card-meta"><span>2026</span><span>Thriller</span></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Series Section (Uruhererekane) -->
+        <h2 class="section-title" id="gukurikirana">Uruhererekane (Series)</h2>
+        <div class="grid">
+            <div class="card">
