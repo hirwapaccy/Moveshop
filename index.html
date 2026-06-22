@@ -1,330 +1,228 @@
 <!DOCTYPE html>
-<html lang="rw">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Agasobanuye Hub - Modern 3D Orange Style</title>
-    <style>
-        /* Base Themes and Dark Colors */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: #0b0c10;
-            color: #ffffff;
-            overflow-x: hidden;
-        }
-
-        /* Modern 3D Floating Header in MovieShop Orange */
-        header {
-            background: linear-gradient(145deg, #ff8c00, #e65c00);
-            padding: 15px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            position: sticky;
-            top: 15px;
-            margin: 15px 2%;
-            border-radius: 16px;
-            z-index: 100;
-            
-            /* High-End 3D Shadows and Highlights */
-            box-shadow: 
-                0 10px 20px rgba(230, 92, 0, 0.3),
-                inset 0 3px 0 rgba(255, 255, 255, 0.4),
-                inset 0 -4px 0 rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255, 140, 0, 0.5);
-            transform: perspective(1px) translateZ(0);
-            transition: transform 0.3s ease;
-        }
-
-        header:hover {
-            transform: translateY(-2px) scale(1.005);
-        }
-
-        .logo {
-            font-size: 26px;
-            font-weight: 900;
-            color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            
-            /* 3D Text Effect */
-            text-shadow: 
-                0 1px 0 #ccc,
-                0 2px 0 #c5c5c5,
-                0 3px 0 #bbb,
-                0 4px 0 #b0b0b0,
-                0 5px 6px rgba(0,0,0,0.6);
-        }
-
-        .logo span {
-            color: #11141a;
-            text-shadow: none;
-            background: #ffffff;
-            padding: 2px 8px;
-            border-radius: 6px;
-            margin-left: 5px;
-            box-shadow: inset 0 2px 4px rgba(0,0,0,0.3);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            align-items: center;
-        }
-
-        nav ul li {
-            margin: 0 10px;
-        }
-
-        /* Premium Nav Buttons with Inner 3D depth */
-        nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 700;
-            text-transform: uppercase;
-            padding: 8px 16px;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            display: inline-block;
-        }
-
-        nav ul li a:hover, nav ul li a.active {
-            background: rgba(0, 0, 0, 0.15);
-            box-shadow: 
-                inset 0 2px 5px rgba(0,0,0,0.3),
-                0 1px 0 rgba(255,255,255,0.2);
-            transform: translateY(1px);
-        }
-
-        /* Hero Banner with HTML5 Video Background */
-        .hero-container {
-            position: relative;
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding-left: 5%;
-            margin-top: -10px;
-        }
-
-        #bg-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            z-index: -100;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(11, 12, 16, 0.3), #0b0c10);
-            z-index: -99;
-        }
-
-        .hero-container h1 {
-            font-size: 48px;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-        }
-
-        .hero-container p {
-            color: #ff8c00;
-            font-size: 20px;
-            font-weight: bold;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-        }
-
-        /* Main Grid Containers */
-        .container {
-            padding: 40px 5%;
-        }
-
-        .section-title {
-            font-size: 24px;
-            margin-bottom: 25px;
-            border-left: 5px solid #ff8c00;
-            padding-left: 12px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
-            margin-bottom: 50px;
-        }
-
-        /* Item Display Cards */
-        .card {
-            background-color: #1a1f29;
-            border-radius: 8px;
-            overflow: hidden;
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-            position: relative;
-            border: 1px solid #2f3542;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 8px 20px rgba(255, 140, 0, 0.3);
-        }
-
-        .card img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-        }
-
-        .card-info {
-            padding: 15px;
-        }
-
-        .card-title {
-            font-size: 15px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .card-meta {
-            font-size: 13px;
-            color: #ff8c00;
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .badge {
-            background: linear-gradient(135deg, #ff8c00, #e65c00);
-            color: white;
-            padding: 4px 10px;
-            border-radius: 6px;
-            font-size: 11px;
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            font-weight: bold;
-            text-transform: uppercase;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
-        }
-
-        /* MovieShop-Style Modern 3D Matte Footer */
-        footer {
-            background: linear-gradient(0deg, #11141a 0%, #1a1f29 100%);
-            border-top: 5px solid #ff8c00;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
-            font-size: 14px;
-            color: #c5c6c7;
-            position: relative;
-            box-shadow: 
-                0 -10px 30px rgba(0, 0, 0, 0.5),
-                inset 0 2px 0 rgba(255, 140, 0, 0.2);
-        }
-
-        .footer-content {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .footer-logo {
-            font-size: 20px;
-            font-weight: 800;
-            color: #ff8c00;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        footer p {
-            color: #a4b0be;
-            font-size: 13px;
-            line-height: 1.6;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Hirwa Paccy Movieshop</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
+    header, footer { background:#004080; color:white; text-align:center; padding:15px; }
+    nav { background:#333; padding:10px; text-align:center; }
+    nav a { color:white; margin:0 15px; text-decoration:none; cursor:pointer; font-weight:bold; }
+    section { display:none; padding:20px; }
+    section.active { display:block; }
+    button { margin:5px 0; padding:8px 12px; cursor:pointer; background:#004080; color:white; border:none; border-radius:4px; font-weight:bold; }
+    button:hover { background:#002853; }
+    input[type="text"] { padding:8px; width:300px; }
+    .item { margin-bottom:35px; background:white; padding:20px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
+    h2 { color:#004080; border-bottom: 2px solid #004080; padding-bottom: 5px; }
+    .controls-row { background: #eee; padding: 10px; border-radius: 6px; margin-top: 10px; max-width: 540px; }
+    .audio-selector, .volume-control { display: inline-block; margin-right: 15px; vertical-align: middle; }
+    .audio-selector label, .volume-control label { font-size: 13px; font-weight: bold; margin-right: 5px; }
+    .action-buttons { margin-top: 10px; }
+  </style>
 </head>
 <body>
 
-    <!-- Header Navigation with MovieShop Orange Theme -->
-    <header>
-        <div class="logo">MOVIESHOP<span>BOX</span></div>
-        <nav>
-            <ul>
-                <li><a href="#" class="active">Ahabanza</a></li>
-                <li><a href="#filime">Filime</a></li>
-                <li><a href="#gukurikirana">Uruhererekane</a></li>
-                <li><a href="#umuziki">Umuziki</a></li>
-                <li><a href="#imikino">Imikino</a></li>
-                <li><a href="#amakuru">Amakuru</a></li>
-            </ul>
-        </nav>
-    </header>
+  <!-- Header -->
+  <header>
+    <h1>Hirwa Paccy Movieshop</h1>
+  </header>
 
-    <!-- Welcome Display Banner with active Video Background -->
-    <div class="hero-container">
-        <video autoplay loop muted playsinline id="bg-video">
-            <source src="https://googleapis.com" type="video/mp4">
-            Your browser does not support HTML5 video.
-        </video>
-        <div class="hero-overlay"></div>
-        <h1>Filime Zisobanuye Neza</h1>
-        <p>Shaka Agasobanuye Gashya Kandi Kubuntu</p>
+  <!-- Navigation -->
+  <nav>
+    <a onclick="showSection('movies')">Movies</a>
+    <a onclick="showSection('music')">Music</a>
+    <a onclick="showSection('sports')">Sports</a>
+    <a onclick="showSection('news')">News</a>
+    <a onclick="showSection('search')">Search</a>
+  </nav>
+
+  <!-- Movies Section -->
+  <section id="movies" class="active">
+    <h2>Movies Collection</h2>
+    
+    <!-- Movie 1 -->
+    <div class="item" data-id="movie1">
+      <h3>Movie 1 (Agasobanuye x Oshakur Commentary)</h3>
+      <video id="movie1-video" width="560" controls>
+        <source src="movies/movie1.mp4" type="video/mp4">
+      </video>
+      <audio id="movie1-agasobanuye" src="audio/agasobanuye1.mp3" preload="auto"></audio>
+      <audio id="movie1-oshakur" src="audio/oshakur1.mp3" preload="auto"></audio>
+      <div class="controls-row">
+        <div class="audio-selector">
+          <label>Audio:</label>
+          <select id="movie1-track" onchange="syncAudioTrack('movie1')">
+            <option value="original">Original Film Sound</option>
+            <option value="agasobanuye">Agasobanuye Track (Hype)</option>
+            <option value="oshakur">Oshakur Track (Street Truth)</option>
+          </select>
+        </div>
+        <div class="volume-control">
+          <label>Commentary Vol:</label>
+          <input type="range" id="movie1-vol" min="0" max="1" step="0.1" value="1" oninput="adjustVolume('movie1')">
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button onclick="shareContent('Movie 1','movies/movie1.mp4')">Share</button>
+        <button onclick="window.open('https://mediafire.com')">Download</button>
+      </div>
     </div>
 
-    <div class="container">
-
-        <!-- Movies Section (Filime) -->
-        <h2 class="section-title" id="filime">Filime Zisobanuye Zigezweho</h2>
-        <div class="grid">
-            <div class="card">
-                <span class="badge">Rocky Kirabiranya</span>
-                <img src="https://unsplash.com" alt="Movie Layout">
-                <div class="card-info">
-                    <div class="card-title">The Polygamist</div>
-                    <div class="card-meta"><span>2026</span><span>Action</span></div>
-                </div>
-            </div>
-            <div class="card">
-                <span class="badge">Junior Giti</span>
-                <img src="https://unsplash.com" alt="Movie Layout">
-                <div class="card-info">
-                    <div class="card-title">Extraction 3</div>
-                    <div class="card-meta"><span>2026</span><span>Drama</span></div>
-                </div>
-            </div>
-            <div class="card">
-                <span class="badge">Sankara</span>
-                <img src="https://unsplash.com" alt="Movie Layout">
-                <div class="card-info">
-                    <div class="card-title">Nemesis Elite</div>
-                    <div class="card-meta"><span>2026</span><span>Thriller</span></div>
-                </div>
-            </div>
+    <!-- Movie 2 -->
+    <div class="item" data-id="movie2">
+      <h3>Movie 2 (Agasobanuye x Oshakur Commentary)</h3>
+      <video id="movie2-video" width="560" controls>
+        <source src="movies/movie2.mp4" type="video/mp4">
+      </video>
+      <audio id="movie2-agasobanuye" src="audio/agasobanuye2.mp3" preload="auto"></audio>
+      <audio id="movie2-oshakur" src="audio/oshakur2.mp3" preload="auto"></audio>
+      <div class="controls-row">
+        <div class="audio-selector">
+          <label>Audio:</label>
+          <select id="movie2-track" onchange="syncAudioTrack('movie2')">
+            <option value="original">Original Film Sound</option>
+            <option value="agasobanuye">Agasobanuye Track (Hype)</option>
+            <option value="oshakur">Oshakur Track (Street Truth)</option>
+          </select>
         </div>
+        <div class="volume-control">
+          <label>Commentary Vol:</label>
+          <input type="range" id="movie2-vol" min="0" max="1" step="0.1" value="1" oninput="adjustVolume('movie2')">
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button onclick="shareContent('Movie 2','movies/movie2.mp4')">Share</button>
+        <button onclick="window.open('https://mediafire.com')">Download</button>
+      </div>
+    </div>
 
-        <!-- Series Section (Uruhererekane) -->
-        <h2 class="section-title" id="gukurikirana">Uruhererekane (Series)</h2>
-        <div class="grid">
-            <div class="card">
+    <!-- Movie 3 -->
+    <div class="item" data-id="movie3">
+      <h3>Movie 3 (Agasobanuye x Oshakur Commentary)</h3>
+      <video id="movie3-video" width="560" controls>
+        <source src="movies/movie3.mp4" type="video/mp4">
+      </video>
+      <audio id="movie3-agasobanuye" src="audio/agasobanuye3.mp3" preload="auto"></audio>
+      <audio id="movie3-oshakur" src="audio/oshakur3.mp3" preload="auto"></audio>
+      <div class="controls-row">
+        <div class="audio-selector">
+          <label>Audio:</label>
+          <select id="movie3-track" onchange="syncAudioTrack('movie3')">
+            <option value="original">Original Film Sound</option>
+            <option value="agasobanuye">Agasobanuye Track (Hype)</option>
+            <option value="oshakur">Oshakur Track (Street Truth)</option>
+          </select>
+        </div>
+        <div class="volume-control">
+          <label>Commentary Vol:</label>
+          <input type="range" id="movie3-vol" min="0" max="1" step="0.1" value="1" oninput="adjustVolume('movie3')">
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button onclick="shareContent('Movie 3','movies/movie3.mp4')">Share</button>
+        <button onclick="window.open('https://mediafire.com')">Download</button>
+      </div>
+    </div>
+
+    <!-- Movie 4 -->
+    <div class="item" data-id="movie4">
+      <h3>Movie 4 (Agasobanuye x Oshakur Commentary)</h3>
+      <video id="movie4-video" width="560" controls>
+        <source src="movies/movie4.mp4" type="video/mp4">
+      </video>
+      <audio id="movie4-agasobanuye" src="audio/agasobanuye4.mp3" preload="auto"></audio>
+      <audio id="movie4-oshakur" src="audio/oshakur4.mp3" preload="auto"></audio>
+      <div class="controls-row">
+        <div class="audio-selector">
+          <label>Audio:</label>
+          <select id="movie4-track" onchange="syncAudioTrack('movie4')">
+            <option value="original">Original Film Sound</option>
+            <option value="agasobanuye">Agasobanuye Track (Hype)</option>
+            <option value="oshakur">Oshakur Track (Street Truth)</option>
+          </select>
+        </div>
+        <div class="volume-control">
+          <label>Commentary Vol:</label>
+          <input type="range" id="movie4-vol" min="0" max="1" step="0.1" value="1" oninput="adjustVolume('movie4')">
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button onclick="shareContent('Movie 4','movies/movie4.mp4')">Share</button>
+        <button onclick="window.open('https://mediafire.com')">Download</button>
+      </div>
+    </div>
+
+    <!-- Movie 5 -->
+    <div class="item" data-id="movie5">
+      <h3>Movie 5 (Agasobanuye x Oshakur Commentary)</h3>
+      <video id="movie5-video" width="560" controls>
+        <source src="movies/movie5.mp4" type="video/mp4">
+      </video>
+      <audio id="movie5-agasobanuye" src="audio/agasobanuye5.mp3" preload="auto"></audio>
+      <audio id="movie5-oshakur" src="audio/oshakur5.mp3" preload="auto"></audio>
+      <div class="controls-row">
+        <div class="audio-selector">
+          <label>Audio:</label>
+          <select id="movie5-track" onchange="syncAudioTrack('movie5')">
+            <option value="original">Original Film Sound</option>
+            <option value="agasobanuye">Agasobanuye Track (Hype)</option>
+            <option value="oshakur">Oshakur Track (Street Truth)</option>
+          </select>
+        </div>
+        <div class="volume-control">
+          <label>Commentary Vol:</label>
+          <input type="range" id="movie5-vol" min="0" max="1" step="0.1" value="1" oninput="adjustVolume('movie5')">
+        </div>
+      </div>
+      <div class="action-buttons">
+        <button onclick="shareContent('Movie 5','movies/movie5.mp4')">Share</button>
+        <button onclick="window.open('https://mediafire.com')">Download</button>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- Music Section -->
+  <section id="music">
+    <h2>Music Collection</h2>
+    <div class="item">
+      <p>Song 1 (Interpreter)</p>
+      <audio controls>
+        <source src="music/song1.mp3" type="audio/mpeg">
+      </audio><br>
+      <button onclick="shareContent('Song 1','music/song1.mp3')">Share</button>
+      <button onclick="window.open('https://mediafire.com')">Download</button>
+    </div>
+  </section>
+
+  <!-- Sports Section -->
+  <section id="sports">
+    <h2>Sports Highlights</h2>
+    <div class="item">
+      <p>Sport Highlight 1</p>
+      <video width="560" controls>
+        <source src="sports/sport1.mp4" type="video/mp4">
+      </video><br>
+      <button onclick="shareContent('Sport Highlight 1','sports/sport1.mp4')">Share</button>
+      <button onclick="window.open('https://mediafire.com')">Download</button>
+    </div>
+  </section>
+
+  <!-- News Section -->
+  <section id="news">
+    <h2>Latest News</h2>
+    <div class="item">
+      <p>News Clip 1</p>
+      <video width="560" controls>
+        <source src="news/news1.mp4" type="video/mp4">
+      </video>
+    </div>
+  </section>
+
+  <!-- Search Section -->
+  <section id="search">
+    <h2>Search the Web</h2>
+    <input type="text" id="searchQuery" placeholder="Type your search here...">
+    <button onclick="searchWeb()">Search</button>
+    <div id="searchResults"></div>
