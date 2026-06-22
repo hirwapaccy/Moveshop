@@ -1,207 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hirwa Paccy Movieshop</title>
-
-<!-- Firebase SDKs -->
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
-
-<style>
-body {
-    font-family: Arial, sans-serif;
-    margin: 0; padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
-header, footer {
-    background-color: #1a1a2e;
-    color: white;
-    text-align: center;
-    padding: 15px;
-}
-header nav a {
-    color: #fff; margin: 0 10px;
-    text-decoration: none;
-}
-header nav a:hover { text-decoration: underline; }
-.container {
-    max-width: 1000px;
-    margin: 20px auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-}
-.card {
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    padding: 15px;
-    text-align: center;
-}
-.card img { width: 100%; border-radius: 8px; }
-.card button {
-    margin: 5px; padding: 8px;
-    border: none; border-radius: 4px;
-    background-color: #1a1a2e; color: white;
-    cursor: pointer;
-}
-.card button:hover { background-color: #333; }
-form input {
-    display: block; margin: 10px auto;
-    padding: 8px; width: 80%;
-}
-form button {
-    padding: 10px; background-color: #1a1a2e;
-    color: white; border: none; cursor: pointer;
-}
-form button:hover { background-color: #333; }
-</style>
+  <meta charset="UTF-8">
+  <title>Moveshop Web</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; }
+    nav { background:#333; padding:10px; }
+    nav a { color:white; margin:0 15px; text-decoration:none; cursor:pointer; }
+    section { display:none; padding:20px; }
+    section.active { display:block; }
+    iframe { margin:10px 0; }
+  </style>
 </head>
-
 <body>
-<header>
-  <h1>Hirwa Paccy Movieshop</h1>
+
+  <!-- Navigation -->
   <nav>
-    <a href="#login">Login</a>
-    <a href="#signup">Sign Up</a>
-    <a href="#movies">Movies</a>
-    <a href="#music">Music</a>
-    <a href="#sports">Sports</a>
-    <a href="#news">News</a>
+    <a onclick="showSection('movies')">Movies</a>
+    <a onclick="showSection('music')">Music</a>
+    <a onclick="showSection('news')">News</a>
   </nav>
-</header>
 
-<!-- Login -->
-<section id="login">
-  <h2>Login</h2>
-  <form onsubmit="loginUser(); return false;">
-    <input id="loginEmail" type="email" placeholder="Email" required>
-    <input id="loginPassword" type="password" placeholder="Password" required>
-    <button type="submit">Login</button>
-  </form>
-  <button onclick="googleLogin()">Login with Google</button>
-</section>
+  <!-- Movies Section -->
+  <section id="movies">
+    <h2>Trending Movies</h2>
+    <!-- Oshakuru -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_OSHAKURU" frameborder="0" allowfullscreen></iframe>
+    <!-- Agasobanuye -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_AGASOBANUYE" frameborder="0" allowfullscreen></iframe>
+    <!-- Movie Box -->
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_MOVIEBOX" frameborder="0" allowfullscreen></iframe>
+  </section>
 
-<!-- Signup -->
-<section id="signup">
-  <h2>Sign Up</h2>
-  <form onsubmit="signupUser(); return false;">
-    <input id="signupEmail" type="email" placeholder="Email" required>
-    <input id="signupPassword" type="password" placeholder="Password" required>
-    <button type="submit">Create Account</button>
-  </form>
-</section>
+  <!-- Music Section -->
+  <section id="music">
+    <h2>Trending Music</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_RWANDA" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_TANZANIA" frameborder="0" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_EAC" frameborder="0" allowfullscreen></iframe>
+  </section>
 
-<!-- Movies -->
-<section id="movies">
-  <h2>Trending Movies</h2>
-  <div class="container">
-    <div class="card">
-      <img src="oshakuru.jpg" alt="Oshakuru Movie">
-      <h3>Oshakuru</h3>
-      <button onclick="watchMovie('oshakuru.mp4')">Watch</button>
-      <a href="https://www.mediafire.com/file/your_oshakuru_file" target="_blank"><button>Download</button></a>
-      <button onclick="shareMovie('Oshakuru','https://www.mediafire.com/file/your_oshakuru_file')">Share</button>
-    </div>
-    <div class="card">
-      <img src="agasobanuye.jpg" alt="Agasobanuye Movie">
-      <h3>Agasobanuye</h3>
-      <button onclick="watchMovie('agasobanuye.mp4')">Watch</button>
-      <a href="https://www.mediafire.com/file/your_agasobanuye_file" target="_blank"><button>Download</button></a>
-      <button onclick="shareMovie('Agasobanuye','https://www.mediafire.com/file/your_agasobanuye_file')">Share</button>
-    </div>
-    <div class="card">
-      <img src="moviebox.jpg" alt="Movie Box">
-      <h3>Movie Box</h3>
-      <button onclick="watchMovie('moviebox.mp4')">Watch</button>
-      <a href="https://www.mediafire.com/file/your_moviebox_file" target="_blank"><button>Download</button></a>
-      <button onclick="shareMovie('Movie Box','https://www.mediafire.com/file/your_moviebox_file')">Share</button>
-    </div>
-  </div>
-</section>
+  <!-- News Section -->
+  <section id="news">
+    <h2>Latest News</h2>
+    <!-- Igihe -->
+    <iframe src="https://igihe.com" width="100%" height="600"></iframe>
+    <!-- RBA -->
+    <iframe src="https://rba.co.rw" width="100%" height="600"></iframe>
+    <!-- The New Times -->
+    <iframe src="https://www.newtimes.co.rw" width="100%" height="600"></iframe>
+  </section>
 
-<!-- Music -->
-<section id="music">
-  <h2>Trending Songs</h2>
-  <div class="container">
-    <div class="card">
-      <h3>Song Rwanda</h3>
-      <button onclick="playSong('song_rwanda.mp3')">Play</button>
-      <a href="https://www.mediafire.com/file/your_song_rwanda_file" target="_blank"><button>Download</button></a>
-      <button onclick="shareSong('Song Rwanda','https://www.mediafire.com/file/your_song_rwanda_file')">Share</button>
-    </div>
-    <div class="card">
-      <h3>Song Tanzania</h3>
-      <button onclick="playSong('song_tanzania.mp3')">Play</button>
-      <a href="https://www.mediafire.com/file/your_song_tanzania_file" target="_blank"><button>Download</button></a>
-      <button onclick="shareSong('Song Tanzania','https://www.mediafire.com/file/your_song_tanzania_file')">Share</button>
-    </div>
-    <div class="card">
-      <h3>Song Europe</h3>
-      <button onclick="playSong('song_europe.mp3')">Play</button>
-      <a href="https://www.mediafire.com/file/your_song_europe_file" target="_blank"><button>Download</button></a>
-      <button onclick="shareSong('Song Europe','https://www.mediafire.com/file/your_song_europe_file')">Share</button>
-    </div>
-  </div>
-</section>
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 
-<!-- Sports -->
-<section id="sports">
-  <h2>Sports</h2>
-  <p>Select your sport:</p>
-  <ul>
-    <li><a href="https://www.livescore.com" target="_blank">Football (LiveScore)</a></li>
-    <li><a href="https://www.espn.com" target="_blank">Basketball (ESPN)</a></li>
-    <li><a href="https://www.flashscore.com" target="_blank">Volleyball (FlashScore)</a></li>
-    <li><a href="https://www.atptour.com" target="_blank">Tennis (ATP Tour)</a></li>
-  </ul>
-</section>
-
-<!-- News -->
-<section id="news">
-  <h2>Trending News</h2>
-  <p>Rwanda | East Africa | Africa | World</p>
-  <div class="container">
-    <div class="card">
-      <h3>Headline - Rwanda</h3>
-      <p>Short summary...</p>
-    </div>
-    <div class="card">
-      <h3>Headline - World</h3>
-      <p>Short summary...</p>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <p>© 2026 Hirwa Paccy Movieshop</p>
-</footer>
-
-<!-- JavaScript -->
-<script>
-// Firebase config (replace with your own project keys from Firebase Console)
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "your-project.firebaseapp.com",
-  projectId: "your-project",
-  storageBucket: "your-project.appspot.com",
-  messagingSenderId: "YOUR_SENDER_ID",
-  appId: "YOUR_APP_ID"
-};
-firebase.initializeApp(firebaseConfig);
-const auth = firebase.auth();
-
-function signupUser() {
-  const email = document.getElementById("signupEmail").value;
-  const password = document.getElementById("signupPassword").value;
-  auth.createUserWithEmailAndPassword(email, password)
-    .then(userCredential => alert("Account created for " + userCredential.user.email))
-    .catch(error => alert(error.message));
-}
-function loginUser() {
-  const email = document.getElementById("loginEmail").value;
-  const password = document.get
+</body>
+</html>
