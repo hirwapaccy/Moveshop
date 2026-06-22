@@ -3,80 +3,59 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Media Shop - Movies, Songs & Trends</title>
+<title>Hirwa Paccy Movieshop</title>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-auth.js"></script>
+
 <style>
-/* General Page Settings */
 body {
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+    margin: 0; padding: 0;
     background-color: #f4f4f9;
     color: #333;
 }
-
-header {
+header, footer {
     background-color: #1a1a2e;
     color: white;
-    padding: 20px;
     text-align: center;
+    padding: 15px;
 }
-
-header h1 { margin: 0; font-size: 24px; }
 header nav a {
-    color: #fff;
-    margin: 0 10px;
+    color: #fff; margin: 0 10px;
     text-decoration: none;
 }
 header nav a:hover { text-decoration: underline; }
-
-/* Store Layout Grid */
 .container {
     max-width: 1000px;
     margin: 20px auto;
-    padding: 0 15px;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
 }
-
-/* Product Cards */
 .card {
     background: white;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    text-align: center;
     padding: 15px;
+    text-align: center;
 }
 .card img { width: 100%; border-radius: 8px; }
 .card button {
-    margin: 5px;
-    padding: 8px;
-    border: none;
-    background-color: #1a1a2e;
-    color: white;
-    border-radius: 4px;
+    margin: 5px; padding: 8px;
+    border: none; border-radius: 4px;
+    background-color: #1a1a2e; color: white;
     cursor: pointer;
 }
 .card button:hover { background-color: #333; }
-
-/* Sections */
-section { padding: 20px; }
-section h2 { color: #1a1a2e; }
 form input {
-    display: block;
-    margin: 10px 0;
-    padding: 8px;
-    width: 100%;
+    display: block; margin: 10px auto;
+    padding: 8px; width: 80%;
 }
 form button {
-    padding: 10px;
-    background-color: #1a1a2e;
-    color: white;
-    border: none;
-    cursor: pointer;
+    padding: 10px; background-color: #1a1a2e;
+    color: white; border: none; cursor: pointer;
 }
 form button:hover { background-color: #333; }
 </style>
@@ -84,7 +63,7 @@ form button:hover { background-color: #333; }
 
 <body>
 <header>
-  <h1>Media Shop</h1>
+  <h1>Hirwa Paccy Movieshop</h1>
   <nav>
     <a href="#login">Login</a>
     <a href="#signup">Sign Up</a>
@@ -98,20 +77,20 @@ form button:hover { background-color: #333; }
 <!-- Login -->
 <section id="login">
   <h2>Login</h2>
-  <form>
-    <input type="text" placeholder="Username" required>
-    <input type="password" placeholder="Password" required>
+  <form onsubmit="loginUser(); return false;">
+    <input id="loginEmail" type="email" placeholder="Email" required>
+    <input id="loginPassword" type="password" placeholder="Password" required>
     <button type="submit">Login</button>
   </form>
+  <button onclick="googleLogin()">Login with Google</button>
 </section>
 
 <!-- Signup -->
 <section id="signup">
   <h2>Sign Up</h2>
-  <form>
-    <input type="text" placeholder="Username" required>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" required>
+  <form onsubmit="signupUser(); return false;">
+    <input id="signupEmail" type="email" placeholder="Email" required>
+    <input id="signupPassword" type="password" placeholder="Password" required>
     <button type="submit">Create Account</button>
   </form>
 </section>
@@ -124,22 +103,22 @@ form button:hover { background-color: #333; }
       <img src="oshakuru.jpg" alt="Oshakuru Movie">
       <h3>Oshakuru</h3>
       <button onclick="watchMovie('oshakuru.mp4')">Watch</button>
-      <a href="oshakuru.mp4" download><button>Download</button></a>
-      <button onclick="shareMovie('Oshakuru','oshakuru.mp4')">Share</button>
+      <a href="https://www.mediafire.com/file/your_oshakuru_file" target="_blank"><button>Download</button></a>
+      <button onclick="shareMovie('Oshakuru','https://www.mediafire.com/file/your_oshakuru_file')">Share</button>
     </div>
     <div class="card">
       <img src="agasobanuye.jpg" alt="Agasobanuye Movie">
       <h3>Agasobanuye</h3>
       <button onclick="watchMovie('agasobanuye.mp4')">Watch</button>
-      <a href="agasobanuye.mp4" download><button>Download</button></a>
-      <button onclick="shareMovie('Agasobanuye','agasobanuye.mp4')">Share</button>
+      <a href="https://www.mediafire.com/file/your_agasobanuye_file" target="_blank"><button>Download</button></a>
+      <button onclick="shareMovie('Agasobanuye','https://www.mediafire.com/file/your_agasobanuye_file')">Share</button>
     </div>
     <div class="card">
       <img src="moviebox.jpg" alt="Movie Box">
       <h3>Movie Box</h3>
       <button onclick="watchMovie('moviebox.mp4')">Watch</button>
-      <a href="moviebox.mp4" download><button>Download</button></a>
-      <button onclick="shareMovie('Movie Box','moviebox.mp4')">Share</button>
+      <a href="https://www.mediafire.com/file/your_moviebox_file" target="_blank"><button>Download</button></a>
+      <button onclick="shareMovie('Movie Box','https://www.mediafire.com/file/your_moviebox_file')">Share</button>
     </div>
   </div>
 </section>
@@ -151,20 +130,20 @@ form button:hover { background-color: #333; }
     <div class="card">
       <h3>Song Rwanda</h3>
       <button onclick="playSong('song_rwanda.mp3')">Play</button>
-      <a href="song_rwanda.mp3" download><button>Download</button></a>
-      <button onclick="shareSong('Song Rwanda','song_rwanda.mp3')">Share</button>
+      <a href="https://www.mediafire.com/file/your_song_rwanda_file" target="_blank"><button>Download</button></a>
+      <button onclick="shareSong('Song Rwanda','https://www.mediafire.com/file/your_song_rwanda_file')">Share</button>
     </div>
     <div class="card">
       <h3>Song Tanzania</h3>
       <button onclick="playSong('song_tanzania.mp3')">Play</button>
-      <a href="song_tanzania.mp3" download><button>Download</button></a>
-      <button onclick="shareSong('Song Tanzania','song_tanzania.mp3')">Share</button>
+      <a href="https://www.mediafire.com/file/your_song_tanzania_file" target="_blank"><button>Download</button></a>
+      <button onclick="shareSong('Song Tanzania','https://www.mediafire.com/file/your_song_tanzania_file')">Share</button>
     </div>
     <div class="card">
       <h3>Song Europe</h3>
       <button onclick="playSong('song_europe.mp3')">Play</button>
-      <a href="song_europe.mp3" download><button>Download</button></a>
-      <button onclick="shareSong('Song Europe','song_europe.mp3')">Share</button>
+      <a href="https://www.mediafire.com/file/your_song_europe_file" target="_blank"><button>Download</button></a>
+      <button onclick="shareSong('Song Europe','https://www.mediafire.com/file/your_song_europe_file')">Share</button>
     </div>
   </div>
 </section>
@@ -172,16 +151,13 @@ form button:hover { background-color: #333; }
 <!-- Sports -->
 <section id="sports">
   <h2>Sports</h2>
+  <p>Select your sport:</p>
   <ul>
-    <li>Football</li>
-    <li>Basketball</li>
-    <li>Volleyball</li>
-    <li>Tennis</li>
+    <li><a href="https://www.livescore.com" target="_blank">Football (LiveScore)</a></li>
+    <li><a href="https://www.espn.com" target="_blank">Basketball (ESPN)</a></li>
+    <li><a href="https://www.flashscore.com" target="_blank">Volleyball (FlashScore)</a></li>
+    <li><a href="https://www.atptour.com" target="_blank">Tennis (ATP Tour)</a></li>
   </ul>
-  <h3>Live Matches</h3>
-  <p>Match results will appear here...</p>
-  <h3>Popular Matches</h3>
-  <p>Highlights of trending matches...</p>
 </section>
 
 <!-- News -->
@@ -200,41 +176,32 @@ form button:hover { background-color: #333; }
   </div>
 </section>
 
-<!-- JavaScript Functions -->
+<!-- Footer -->
+<footer>
+  <p>© 2026 Hirwa Paccy Movieshop</p>
+</footer>
+
+<!-- JavaScript -->
 <script>
-function watchMovie(file) {
-  const player = document.createElement('video');
-  player.src = file;
-  player.controls = true;
-  player.style.width = '100%';
-  document.body.appendChild(player);
-  player.play();
-}
+// Firebase config (replace with your own project keys from Firebase Console)
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "your-project.firebaseapp.com",
+  projectId: "your-project",
+  storageBucket: "your-project.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
 
-function playSong(file) {
-  const player = document.createElement('audio');
-  player.src = file;
-  player.controls = true;
-  document.body.appendChild(player);
-  player.play();
+function signupUser() {
+  const email = document.getElementById("signupEmail").value;
+  const password = document.getElementById("signupPassword").value;
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(userCredential => alert("Account created for " + userCredential.user.email))
+    .catch(error => alert(error.message));
 }
-
-function shareMovie(title, url) {
-  if (navigator.share) {
-    navigator.share({ title: title, url: url });
-  } else {
-    alert("Sharing not supported on this browser");
-  }
-}
-
-function shareSong(title, url) {
-  if (navigator.share) {
-    navigator.share({ title: title, url: url });
-  } else {
-    alert("Sharing not supported on this browser");
-  }
-}
-</script>
-
-</body>
-</html>
+function loginUser() {
+  const email = document.getElementById("loginEmail").value;
+  const password = document.get
