@@ -34,224 +34,22 @@
 
   <!-- Movies Section -->
   <section id="movies">
-    <h2>Trending Movies</h2>
-    <div class="item">
-      <p>Oshakuru Movie 1</p>
-      <video width="560" height="315" controls>
-        <source src="movies/oshakuru1.mp4" type="video/mp4">
-      </video><br>
-      <button onclick="shareContent('Oshakuru Movie 1','movies/oshakuru1.mp4')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_OSHAKURU1/movie.mp4/file','_blank')">Download</button>
-    </div>
-    <div class="item">
-      <p>Agasobanuye Movie 1</p>
-      <video width="560" height="315" controls>
-        <source src="movies/agasobanuye1.mp4" type="video/mp4">
-      </video><br>
-      <button onclick="shareContent('Agasobanuye Movie 1','movies/agasobanuye1.mp4')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_AGASOBANUYE1/movie.mp4/file','_blank')">Download</button>
-    </div>
-    <div class="item">
-      <p>Movie Box Feature</p>
-      <video width="560" height="315" controls>
-        <source src="movies/moviebox1.mp4" type="video/mp4">
-      </video><br>
-      <button onclick="shareContent('Movie Box Feature','movies/moviebox1.mp4')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIEBOX1/movie.mp4/file','_blank')">Download</button>
-    </div>
-  </section>
-
-  <!-- Music Section -->
-  <section id="music">
-    <h2>Trending Songs</h2>
-    <div class="item">
-      <p>Rwanda Hit Song</p>
-      <audio controls>
-        <source src="music/rwanda_hit.mp3" type="audio/mpeg">
-      </audio><br>
-      <button onclick="shareContent('Rwanda Hit Song','music/rwanda_hit.mp3')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_RWANDA/song.mp3/file','_blank')">Download</button>
-    </div>
-    <div class="item">
-      <p>Tanzania Bongo Flava</p>
-      <audio controls>
-        <source src="music/tanzania_bongo.mp3" type="audio/mpeg">
-      </audio><br>
-      <button onclick="shareContent('Tanzania Bongo Flava','music/tanzania_bongo.mp3')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_TANZANIA/song.mp3/file','_blank')">Download</button>
-    </div>
-    <div class="item">
-      <p>East Africa Collab</p>
-      <audio controls>
-        <source src="music/eac_collab.mp3" type="audio/mpeg">
-      </audio><br>
-      <button onclick="shareContent('East Africa Collab','music/eac_collab.mp3')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_EAC/song.mp3/file','_blank')">Download</button>
-    </div>
-  </section>
-
-  <!-- Sports Section -->
-  <section id="sports">
-    <h2>Sports</h2>
-    <ul>
-      <li><a href="https://www.livescore.com" target="_blank">Football (LiveScore)</a></li>
-      <li><a href="https://www.espn.com/nba/" target="_blank">Basketball</a></li>
-      <li><a href="https://www.volleybox.net/" target="_blank">Volleyball</a></li>
-      <li><a href="https://www.atptour.com/" target="_blank">Tennis</a></li>
-    </ul>
-  </section>
-
-  <!-- News Section -->
-  <section id="news">
-    <h2>Latest News</h2>
-    <div class="item">
-      <p>Rwanda Headlines</p>
-      <video width="560" height="315" controls>
-        <source src="news/rwanda_news.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="item">
-      <p>Africa Headlines</p>
-      <video width="560" height="315" controls>
-        <source src="news/africa_news.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="item">
-      <p>World Headlines</p>
-      <video width="560" height="315" controls>
-        <source src="news/world_news.mp4" type="video/mp4">
-      </video>
-    </div>
-  </section>
-
-  <!-- Search Section -->
-  <section id="search">
-    <h2>Search the Web</h2>
-    <input type="text" id="searchQuery" placeholder="Type your search here...">
-    <button onclick="searchWeb()">Search</button>
-    <div id="searchResults"></div>
-  </section>
-
-  <!-- Footer -->
-  <footer>
-    <p>&copy; 2026 Hirwa Paccy Movieshop | All Rights Reserved</p>
-  </footer>
-
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-
-    function shareContent(title, url) {
-      if (navigator.share) {
-        navigator.share({ title: title, url: url });
-      } else {
-        let fb = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-        let ig = `https://www.instagram.com/?url=${encodeURIComponent(url)}`;
-        let wa = `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`;
-        window.open(fb,'_blank'); // default to Facebook
-        alert("If you prefer Instagram or WhatsApp, copy this link:\nInstagram: " + ig + "\nWhatsApp: " + wa);
-      }
-    }
-
-    function searchWeb() {
-      let query = document.getElementById('searchQuery').value;
-      if(query) {
-        let url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
-        document.getElementById('searchResults').innerHTML = `<iframe src="${url}" width="100%" height="600"></iframe>`;
-      }
-    }
-  </script><!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Hirwa Paccy Movieshop</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#f9f9f9; }
-    header, footer { background:#004080; color:white; text-align:center; padding:15px; }
-    nav { background:#333; padding:10px; text-align:center; }
-    nav a { color:white; margin:0 15px; text-decoration:none; cursor:pointer; }
-    section { display:none; padding:20px; }
-    section.active { display:block; }
-    button { margin:5px; padding:8px 12px; cursor:pointer; }
-    input[type="text"] { padding:8px; width:300px; }
-    .item { margin-bottom:30px; background:white; padding:15px; border-radius:8px; box-shadow:0 2px 5px rgba(0,0,0,0.1); }
-    h2 { color:#004080; }
-  </style>
-</head>
-<body>
-
-  <!-- Header -->
-  <header>
-    <h1>Hirwa Paccy Movieshop</h1>
-  </header>
-
-  <!-- Navigation -->
-  <nav>
-    <a onclick="showSection('movies')">Movies</a>
-    <a onclick="showSection('music')">Music</a>
-    <a onclick="showSection('sports')">Sports</a>
-    <a onclick="showSection('news')">News</a>
-    <a onclick="showSection('search')">Search</a>
-  </nav>
-
-  <!-- Movies Section -->
-  <section id="movies">
     <h2>Movies Collection</h2>
-    <div class="item">
-      <p>Movie 1</p>
-      <video width="560" height="315" controls>
-        <source src="movies/movie1.mp4" type="video/mp4">
-      </video><br>
-      <button onclick="shareContent('Movie 1','movies/movie1.mp4')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE1/movie.mp4/file','_blank')">Download</button>
-    </div>
-    <div class="item">
-      <p>Movie 2</p>
-      <video width="560" height="315" controls>
-        <source src="movies/movie2.mp4" type="video/mp4">
-      </video><br>
-      <button onclick="shareContent('Movie 2','movies/movie2.mp4')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE2/movie.mp4/file','_blank')">Download</button>
-    </div>
-    <div class="item">
-      <p>Movie 3</p>
-      <video width="560" height="315" controls>
-        <source src="movies/movie3.mp4" type="video/mp4">
-      </video><br>
-      <button onclick="shareContent('Movie 3','movies/movie3.mp4')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE3/movie.mp4/file','_blank')">Download</button>
-    </div>
+    <div class="item"><p>Movie 1</p><video width="560" controls><source src="movies/movie1.mp4" type="video/mp4"></video><br><button onclick="shareContent('Movie 1','movies/movie1.mp4')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE1/movie.mp4/file','_blank')">Download</button></div>
+    <div class="item"><p>Movie 2</p><video width="560" controls><source src="movies/movie2.mp4" type="video/mp4"></video><br><button onclick="shareContent('Movie 2','movies/movie2.mp4')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE2/movie.mp4/file','_blank')">Download</button></div>
+    <div class="item"><p>Movie 3</p><video width="560" controls><source src="movies/movie3.mp4" type="video/mp4"></video><br><button onclick="shareContent('Movie 3','movies/movie3.mp4')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE3/movie.mp4/file','_blank')">Download</button></div>
+    <div class="item"><p>Movie 4</p><video width="560" controls><source src="movies/movie4.mp4" type="video/mp4"></video><br><button onclick="shareContent('Movie 4','movies/movie4.mp4')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE4/movie.mp4/file','_blank')">Download</button></div>
+    <div class="item"><p>Movie 5</p><video width="560" controls><source src="movies/movie5.mp4" type="video/mp4"></video><br><button onclick="shareContent('Movie 5','movies/movie5.mp4')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIE5/movie.mp4/file','_blank')">Download</button></div>
   </section>
 
   <!-- Music Section -->
   <section id="music">
     <h2>Music Collection</h2>
-    <div class="item">
-      <p>Song 1</p>
-      <audio controls>
-        <source src="music/song1.mp3" type="audio/mpeg">
-      </audio><br>
-      <button onclick="shareContent('Song 1','music/song1.mp3')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_SONG1/song.mp3/file','_blank')">Download</button>
-    </div>
-    <div class="item">
-      <p>Song 2</p>
-      <audio controls>
-        <source src="music/song2.mp3" type="audio/mpeg">
-      </audio><br>
-      <button onclick="shareContent('Song 2','music/song2.mp3')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_SONG2/song.mp3/file','_blank')">Download</button>
-    </div>
-    <div class="item">
-      <p>Song 3</p>
-      <audio controls>
-        <source src="music/song3.mp3" type="audio/mpeg">
-      </audio><br>
-      <button onclick="shareContent('Song 3','music/song3.mp3')">Share</button>
-      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_SONG3/song.mp3/file','_blank')">Download</button>
-    </div>
+    <div class="item"><p>Song 1</p><audio controls><source src="music/song1.mp3" type="audio/mpeg"></audio><br><button onclick="shareContent('Song 1','music/song1.mp3')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_SONG1/song.mp3/file','_blank')">Download</button></div>
+    <div class="item"><p>Song 2</p><audio controls><source src="music/song2.mp3" type="audio/mpeg"></audio><br><button onclick="shareContent('Song 2','music/song2.mp3')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_SONG2/song.mp3/file','_blank')">Download</button></div>
+    <div class="item"><p>Song 3</p><audio controls><source src="music/song3.mp3" type="audio/mpeg"></audio><br><button onclick="shareContent('Song 3','music/song3.mp3')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_SONG3/song.mp3/file','_blank')">Download</button></div>
+    <div class="item"><p>Song 4</p><audio controls><source src="music/song4.mp3" type="audio/mpeg"></audio><br><button onclick="shareContent('Song 4','music/song4.mp3')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_SONG4/song.mp3/file','_blank')">Download</button></div>
+    <div class="item"><p>Song 5</p><audio controls><source src="music/song5.mp3" type="audio/mpeg"></audio><br><button onclick="shareContent('Song 5','music/song5.mp3')">Share</button><button onclick="window.open('https://www.mediafire.com/file/FILE_ID_SONG5/song.mp3/file','_blank')">Download</button></div>
   </section>
 
   <!-- Sports Section -->
@@ -268,24 +66,11 @@
   <!-- News Section -->
   <section id="news">
     <h2>Latest News</h2>
-    <div class="item">
-      <p>News Clip 1</p>
-      <video width="560" height="315" controls>
-        <source src="news/news1.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="item">
-      <p>News Clip 2</p>
-      <video width="560" height="315" controls>
-        <source src="news/news2.mp4" type="video/mp4">
-      </video>
-    </div>
-    <div class="item">
-      <p>News Clip 3</p>
-      <video width="560" height="315" controls>
-        <source src="news/news3.mp4" type="video/mp4">
-      </video>
-    </div>
+    <div class="item"><p>News Clip 1</p><video width="560" controls><source src="news/news1.mp4" type="video/mp4"></video></div>
+    <div class="item"><p>News Clip 2</p><video width="560" controls><source src="news/news2.mp4" type="video/mp4"></video></div>
+    <div class="item"><p>News Clip 3</p><video width="560" controls><source src="news/news3.mp4" type="video/mp4"></video></div>
+    <div class="item"><p>News Clip 4</p><video width="560" controls><source src="news/news4.mp4" type="video/mp4"></video></div>
+    <div class="item"><p>News Clip 5</p><video width="560" controls><source src="news/news5.mp4" type="video/mp4"></video></div>
   </section>
 
   <!-- Search Section -->
@@ -311,26 +96,4 @@
       if (navigator.share) {
         navigator.share({ title: title, url: url });
       } else {
-        let fb = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
-        let ig = `https://www.instagram.com/?url=${encodeURIComponent(url)}`;
-        let wa = `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`;
-        window.open(fb,'_blank'); // default to Facebook
-        alert("If you prefer Instagram or WhatsApp, copy this link:\nInstagram: " + ig + "\nWhatsApp: " + wa);
-      }
-    }
-
-    function searchWeb() {
-      let query = document.getElementById('searchQuery').value;
-      if(query) {
-        let url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
-        document.getElementById('searchResults').innerHTML = `<iframe src="${url}" width="100%" height="600"></iframe>`;
-      }
-    }
-  </script>
-
-</body>
-</html>
-
-
-</body>
-</html>
+        let fb = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url
