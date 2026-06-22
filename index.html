@@ -107,4 +107,296 @@ header{
 }
     });
 }
-</script>
+</script><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Shop Pro</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,sans-serif;
+}
+
+body{
+    background:#141414;
+    color:white;
+}
+
+/* HEADER */
+header{
+    position:fixed;
+    top:0;
+    width:100%;
+    background:#000;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:1000;
+}
+
+.logo{
+    font-size:28px;
+    font-weight:bold;
+    color:#e50914;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 10px;
+}
+
+nav a:hover{
+    color:#e50914;
+}
+
+.search{
+    padding:8px;
+    border:none;
+    border-radius:5px;
+}
+
+/* HERO */
+.hero{
+    height:80vh;
+    background:url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1600')
+    center/cover no-repeat;
+    display:flex;
+    align-items:center;
+    padding:80px;
+}
+
+.hero-content{
+    max-width:600px;
+}
+
+.hero h1{
+    font-size:55px;
+}
+
+.hero p{
+    margin:20px 0;
+}
+
+.btn{
+    background:#e50914;
+    color:white;
+    border:none;
+    padding:12px 20px;
+    margin-right:10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+/* ROWS */
+.section{
+    padding:20px;
+}
+
+.section h2{
+    margin-bottom:15px;
+}
+
+.row{
+    display:flex;
+    overflow-x:auto;
+    gap:10px;
+}
+
+.card{
+    min-width:220px;
+    background:#222;
+    border-radius:10px;
+    overflow:hidden;
+    transition:.3s;
+}
+
+.card:hover{
+    transform:scale(1.08);
+}
+
+.card img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+}
+
+.card h3{
+    padding:10px;
+}
+
+/* UPLOAD */
+.upload{
+    padding:30px;
+    background:#111;
+}
+
+.upload input,
+.upload select{
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+/* COMMENTS */
+.comments{
+    padding:30px;
+}
+
+.comments textarea{
+    width:100%;
+    height:100px;
+}
+
+/* FOOTER */
+footer{
+    background:#000;
+    text-align:center;
+    padding:30px;
+    margin-top:30px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🎬 Movie Shop Pro</div>
+
+    <nav>
+        <a href="#movies">Movies</a>
+        <a href="#music">Music</a>
+        <a href="#sports">Sports</a>
+        <a href="#news">News</a>
+        <a href="#upload">Upload</a>
+        <a href="#profile">Profile</a>
+    </nav>
+
+    <input class="search" placeholder="Search...">
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Featured Content</h1>
+        <p>Watch movies, listen to music, follow sports and news.</p>
+
+        <button class="btn">▶ Play</button>
+        <button class="btn">ℹ More Info</button>
+    </div>
+</section>
+
+<section id="movies" class="section">
+    <h2>🔥 Trending Movies</h2>
+
+    <div class="row">
+        <div class="card">
+            <img src="https://picsum.photos/300/450?1">
+            <h3>Movie 1</h3>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/300/450?2">
+            <h3>Movie 2</h3>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/300/450?3">
+            <h3>Movie 3</h3>
+        </div>
+    </div>
+</section>
+
+<section id="music" class="section">
+    <h2>🎵 Popular Music</h2>
+
+    <div class="row">
+        <div class="card">
+            <img src="https://picsum.photos/300/450?4">
+            <h3>Music 1</h3>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/300/450?5">
+            <h3>Music 2</h3>
+        </div>
+    </div>
+</section>
+
+<section id="sports" class="section">
+    <h2>🏆 Sports Highlights</h2>
+
+    <div class="row">
+        <div class="card">
+            <img src="https://picsum.photos/300/450?6">
+            <h3>Sports 1</h3>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/300/450?7">
+            <h3>Sports 2</h3>
+        </div>
+    </div>
+</section>
+
+<section id="news" class="section">
+    <h2>📰 Latest News</h2>
+
+    <div class="row">
+        <div class="card">
+            <img src="https://picsum.photos/300/450?8">
+            <h3>News 1</h3>
+        </div>
+
+        <div class="card">
+            <img src="https://picsum.photos/300/450?9">
+            <h3>News 2</h3>
+        </div>
+    </div>
+</section>
+
+<section id="upload" class="upload">
+    <h2>📤 Upload Content From Phone</h2>
+
+    <input type="text" placeholder="Title">
+
+    <select>
+        <option>Movie</option>
+        <option>Music</option>
+        <option>Sports</option>
+        <option>News</option>
+    </select>
+
+    <input type="file">
+
+    <button class="btn">Upload</button>
+</section>
+
+<section class="comments">
+    <h2>💬 Comments</h2>
+
+    <textarea placeholder="Write a comment..."></textarea>
+    <br><br>
+
+    <button class="btn">Post Comment</button>
+</section>
+
+<section id="profile" class="section">
+    <h2>👤 Profile</h2>
+    <p>User information will appear here.</p>
+</section>
+
+<footer>
+    <h3>🎬 Movie Shop Pro</h3>
+    <p>Movies • Music • Sports • News</p>
+    <p>Designed by Hirwa Paccy</p>
+    <p>© 2026 Movie Shop Pro</p>
+</footer>
+
+</body>
+</html>
