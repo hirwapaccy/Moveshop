@@ -320,3 +320,307 @@
     <!-- The Download/Watch button gets your Google Drive or Mega link -->
     <a href="PASTE_YOUR_GOOGLE_DRIVE_OR_MEGA_LINK_HERE" class="card-btn watch-btn" target="_blank">Download</a>
 </div>
+<!DOCTYPE html>
+<html lang="rw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agasobanuye Now - Filime Zisobanuye</title>
+    <style>
+        /* Modern Dark Cinema Theme styling */
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #060913; /* Deep midnight black */
+            color: #ffffff;
+        }
+
+        /* 🍿 Header Navigation Bar */
+        nav {
+            background-color: #0d1224;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 2px solid #e11d48; /* Red neon accent line */
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: #e11d48;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+        .nav-links a {
+            color: #9ca3af;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active {
+            color: #e11d48;
+        }
+        .login-btn {
+            background-color: #e11d48;
+            color: #ffffff !important;
+            padding: 6px 15px;
+            border-radius: 4px;
+            text-transform: uppercase;
+        }
+
+        /* 🔍 Search and Hero Area */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, #0d1224, #060913);
+        }
+        header h1 { margin: 0; font-size: 36px; color: #fff; font-weight: 800; }
+        header p { margin: 10px 0 25px; color: #9ca3af; font-size: 16px; }
+        
+        .search-container {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+        }
+        .search-container input {
+            flex: 1;
+            padding: 12px;
+            border: 1px solid #374151;
+            background-color: #111827;
+            color: white;
+            border-radius: 6px 0 0 6px;
+            outline: none;
+        }
+        .search-container button {
+            padding: 12px 20px;
+            background-color: #e11d48;
+            border: none;
+            color: white;
+            font-weight: bold;
+            border-radius: 0 6px 6px 0;
+            cursor: pointer;
+        }
+
+        /* 📂 Genre Filter Categories */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px auto;
+            max-width: 800px;
+            flex-wrap: wrap;
+            padding: 0 15px;
+        }
+        .cat-badge {
+            background-color: #1f2937;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            cursor: pointer;
+            border: 1px solid #374151;
+            transition: all 0.2s;
+        }
+        .cat-badge:hover, .cat-badge.active {
+            background-color: #e11d48;
+            border-color: #e11d48;
+        }
+
+        /* 🎬 Movie Showcase Grid Layout */
+        .section-title {
+            max-width: 1200px;
+            margin: 30px auto 10px;
+            padding: 0 20px;
+            font-size: 22px;
+            font-weight: bold;
+            border-left: 4px solid #e11d48;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 10px auto 50px;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        /* 🎴 Advanced Movie Cards */
+        .movie-card {
+            background: #111827;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.6);
+            border: 1px solid #1f2937;
+            transition: transform 0.2s, border-color 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+        .movie-card:hover {
+            transform: translateY(-5px);
+            border-color: #e11d48;
+        }
+        .poster-box {
+            position: relative;
+            background-color: #1f2937;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        .poster-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .vj-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background-color: #e11d48;
+            color: white;
+            padding: 4px 12px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 20px;
+            text-transform: uppercase;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+        .quality-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            background-color: #10b981;
+            color: white;
+            padding: 4px 8px;
+            font-size: 11px;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+        .movie-info {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        .movie-title {
+            font-size: 17px;
+            font-weight: bold;
+            margin: 0 0 5px;
+            color: #fff;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .movie-meta {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 15px;
+        }
+        .price-tag {
+            color: #fbbf24;
+            font-weight: bold;
+        }
+
+        /* 📱 Interactive Action Buttons */
+        .action-row {
+            display: flex;
+            gap: 10px;
+            margin-top: auto;
+        }
+        .action-btn {
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 13px;
+            transition: opacity 0.2s;
+        }
+        .momo-btn { background-color: #eab308; color: #000; } 
+        .stream-btn { background-color: #2563eb; color: #fff; }
+        .action-btn:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+
+    <!-- 🌐 Navigation Bar -->
+    <nav>
+        <a href="#" class="logo">🍿 SobanuyeNow</a>
+        <ul class="nav-links">
+            <li><a href="#" class="active">Ahabanza</a></li>
+            <li><a href="#" onclick="alert('Filme nshya zigiye kuza vuba!')">Filme Nshya</a></li>
+            <li><a href="#" onclick="alert('Uzuza imyirondoro yawe hano')">My Credentials</a></li>
+            <li><a href="#" class="login-btn" onclick="alert('Injira muri konti yawe')">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- 🔍 Hero Section -->
+    <header>
+        <h1>Filme Zisobanuye Gashya</h1>
+        <p>Shakisha filime zikunzwe cyane uzihafutse ako kanya ku buntu!</p>
+        <div class="search-container">
+            <input type="text" placeholder="Shakisha filime cyangwa VJ...">
+            <button onclick="alert('Gushakisha biracyatunganywa!')">Shakisha</button>
+        </div>
+    </header>
+
+    <!-- 📂 Categories Navigation -->
+    <div class="categories">
+        <div class="cat-badge active">Zose</div>
+        <div class="cat-badge">Action</div>
+        <div class="cat-badge">Ubwoba (Horror)</div>
+        <div class="cat-badge">Gukundana</div>
+        <div class="cat-badge">Inshya</div>
+    </div>
+
+    <div class="section-title">Filme Zigezweho cyane</div>
+
+    <div class="container">
+
+        <!-- Movie Card 1 -->
+        <div class="movie-card">
+            <div class="poster-box">
+                <div class="vj-badge">VJ Rocky</div>
+                <div class="quality-badge">HD</div>
+                <!-- Standard abstract poster image placeholder -->
+                <img src="https://unsplash.com" alt="Movie Poster">
+            </div>
+            <div class="movie-info">
+                <div class="movie-title">The Iron Mission (2026)</div>
+                <div class="movie-meta">Action | Igiciro: <span class="price-tag">500 RWF</span></div>
+                <div class="action-row">
+                    <a href="https://wa.me" class="action-btn momo-btn">Gura kuri MoMo</a>
+                    <a href="#" class="action-btn stream-btn" onclick="alert('Kanda Gura kuri MoMo utwohereze ubutumwa, tukuhe link ya Google Drive ako kanya!')">Kureba</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Movie Card 2 -->
+        <div class="movie-card">
+            <div class="poster-box">
+                <div class="vj-badge">VJ Junior</div>
+                <div class="quality-badge">FULL HD</div>
+                <img src="https://unsplash.com" alt="Movie Poster">
+            </div>
+            <div class="movie-info">
+                <div class="movie-title">Commando Revenge</div>
+                <div class="movie-meta">Intambara | Igiciro: <span class="price-tag">500 RWF</span></div>
+                <div class="action-row">
+                    <a href="https://wa.me" class="action-btn momo-btn">Gura kuri MoMo</a>
