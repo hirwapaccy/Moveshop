@@ -60,3 +60,51 @@
 
 </body>
 </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Moveshop Web</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin:0; padding:0; }
+    nav { background:#333; padding:10px; }
+    nav a { color:white; margin:0 15px; text-decoration:none; cursor:pointer; }
+    section { display:none; padding:20px; }
+    section.active { display:block; }
+    button { margin:5px; padding:8px 12px; cursor:pointer; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav>
+    <a onclick="showSection('movies')">Movies</a>
+    <a onclick="showSection('music')">Music</a>
+    <a onclick="showSection('news')">News</a>
+  </nav>
+
+  <!-- Movies Section -->
+  <section id="movies">
+    <h2>Trending Movies</h2>
+    <div>
+      <p>Oshakuru Movie</p>
+      <button onclick="window.open('https://www.youtube.com/watch?v=VIDEO_ID_OSHAKURU','_blank')">Watch</button>
+      <button onclick="shareContent('Oshakuru Movie','https://www.youtube.com/watch?v=VIDEO_ID_OSHAKURU')">Share</button>
+    </div>
+    <div>
+      <p>Agasobanuye Now</p>
+      <button onclick="window.open('https://www.tiktok.com/@agasobanuye/video/VIDEO_ID','_blank')">Watch</button>
+      <button onclick="shareContent('Agasobanuye Now','https://www.tiktok.com/@agasobanuye/video/VIDEO_ID')">Share</button>
+    </div>
+    <div>
+      <p>Movie Box</p>
+      <button onclick="window.open('https://moviebox.com/trending','_blank')">Watch</button>
+      <button onclick="shareContent('Movie Box','https://moviebox.com/trending')">Share</button>
+    </div>
+  </section>
+
+  <!-- Music Section -->
+  <section id="music">
+    <h2>Trending Music</h2>
+    <div>
+      <p>Trending Song Rwanda</p>
