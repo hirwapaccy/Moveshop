@@ -3,189 +3,286 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Hirwa Paccy Movieshop</title>
+  <title>HirwaPaccyNow - Agasobanuye Kiriziya</title>
   <style>
-    /* Dark Theme Styles matching AgasobanuyeNow */
-    body { font-family: Arial, sans-serif; margin:0; padding:0; background:#0b0c10; color:#ffffff; padding-bottom: 70px; }
-    
-    /* Top Header Bar */
-    header { background:#1f2833; padding:15px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #333; }
-    header h1 { margin:0; font-size:1.2rem; color:#ff4d4d; font-weight:bold; }
-    .vip-btn { background:#ffb300; color:black; padding:5px 12px; font-weight:bold; border-radius:15px; font-size:0.8rem; text-decoration:none; }
-    
-    /* Main Featured Movie Hero Banner */
-    .hero-banner { position:relative; width:100%; height:320px; background:linear-gradient(to bottom, rgba(0,0,0,0.1), #0b0c10), url('movies/revenger_poster.jpg') center/cover; display:flex; align-items:flex-end; }
-    .hero-details { padding:20px; width:100%; box-sizing:border-box; }
-    .hero-meta { color:#ff4d4d; font-size:0.8rem; font-weight:bold; margin-bottom:5px; }
-    .hero-title { font-size:1.8rem; margin:0 0 2px 0; font-weight:bold; text-shadow:2px 2px 4px rgba(0,0,0,0.8); }
-    .hero-interpreter { font-size:0.9rem; color:#ccc; margin-bottom:15px; }
-    .hero-buttons { display:flex; flex-direction:column; gap:8px; }
-    .btn-watch { background:#ff4d4d; color:white; text-align:center; padding:12px; font-weight:bold; border-radius:6px; text-decoration:none; border:none; cursor:pointer; }
-    .btn-info { background:rgba(255,255,255,0.15); color:white; text-align:center; padding:10px; font-size:0.9rem; border-radius:6px; text-decoration:none; border:none; cursor:pointer; }
-    
-    /* Green WhatsApp Community Banner */
-    .wa-banner { background:#00a884; margin:15px; padding:12px; border-radius:10px; text-align:center; font-size:0.85rem; font-weight:bold; }
-    .wa-link { display:inline-block; background:white; color:#00a884; padding:6px 15px; border-radius:20px; text-decoration:none; margin-top:8px; }
-    
-    /* Sections styling */
-    section { display:none; padding:15px; }
-    section.active { display:block; }
-    h2 { font-size:1.1rem; color:#fff; margin:15px 0 10px 0; font-weight:bold; display:flex; align-items:center; justify-content:space-between; }
-    
-    /* Movie Grid for multiple displays */
-    .movie-grid { display:grid; grid-template-columns: repeat(auto-fill, minmax(105px, 1fr)); gap:10px; }
-    .movie-card { background:#1f2833; border-radius:6px; overflow:hidden; display:flex; flex-direction:column; text-decoration:none; color:white; font-size:0.8rem; border:1px solid #2c3540; }
-    .movie-thumb { width:100%; aspect-ratio:2/3; background:#333 center/cover; position:relative; }
-    .movie-card-title { padding:6px; font-weight:bold; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .movie-card-interpreter { padding:0 6px 6px 6px; color:#ff4d4d; font-size:0.7rem; }
-    
-    /* Fixed Bottom Mobile Navigation Bar */
-    nav { position:fixed; bottom:0; left:0; right:0; background:#121212; display:flex; justify-content:space-around; padding:8px 0; border-top:1px solid #222; z-index:100; }
-    nav button { background:none; border:none; color:#888; font-size:0.75rem; cursor:pointer; display:flex; flex-direction:column; align-items:center; gap:4px; }
-    nav button.active { color:#ff4d4d; font-weight:bold; }
-    nav button span { font-size:1.2rem; }
+    /* Exact AgasobanuyeNow Dark Theme & Color Scheme */
+    :root {
+      --bg-main: #141414;
+      --bg-card: #1f1f1f;
+      --bg-nav: #181818;
+      --accent-red: #e50914;
+      --accent-gold: #ffb300;
+      --text-white: #ffffff;
+      --text-gray: #aaaaaa;
+    }
+
+    body { 
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+      margin: 0; 
+      padding: 0; 
+      background-color: var(--bg-main); 
+      color: var(--text-white);
+      padding-bottom: 80px;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    /* Sticky Premium Header */
+    header { 
+      background-color: rgba(20, 20, 20, 0.95); 
+      padding: 15px 20px; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid #252525;
+    }
+    header h1 { 
+      margin: 0; 
+      font-size: 1.4rem; 
+      color: var(--accent-red); 
+      font-weight: 900; 
+      letter-spacing: -0.5px;
+    }
+    .vip-badge { 
+      background: linear-gradient(135deg, #fff3c4, var(--accent-gold)); 
+      color: #000; 
+      padding: 6px 16px; 
+      font-weight: bold; 
+      border-radius: 4px; 
+      font-size: 0.75rem; 
+      text-decoration: none;
+    }
+
+    /* WhatsApp Promo Box */
+    .wa-banner { 
+      background-color: #00a884; 
+      margin: 15px; 
+      padding: 15px; 
+      border-radius: 6px; 
+      text-align: center; 
+      font-size: 0.85rem; 
+      font-weight: bold;
+      line-height: 1.4;
+    }
+    .wa-banner a { 
+      display: inline-block; 
+      background-color: white; 
+      color: #00a884; 
+      padding: 6px 18px; 
+      border-radius: 4px; 
+      text-decoration: none; 
+      margin-top: 10px;
+    }
+
+    /* Multi-Page Switching System */
+    .page-view { display: none; padding: 0 0 20px 0; }
+    .page-view.active-page { display: block; }
+
+    /* Layout Headers */
+    h2 { 
+      font-size: 1.2rem; 
+      margin: 20px 0 10px 15px; 
+      font-weight: bold;
+      letter-spacing: 0.5px;
+    }
+
+    /* AgasobanuyeNow Signature Feature: Horizontal Swiping Row */
+    .swipe-row {
+      display: flex;
+      overflow-x: auto;
+      gap: 12px;
+      padding: 5px 15px 15px 15px;
+      scroll-behavior: smooth;
+    }
+    .swipe-row::-webkit-scrollbar { display: none; } /* Hide ugly scrollbars */
+
+    /* Premium Movie Poster Card */
+    .media-card { 
+      flex: 0 0 110px; /* Forces items to stay side-by-side */
+      background-color: var(--bg-card); 
+      border-radius: 6px; 
+      overflow: hidden; 
+      display: flex; 
+      flex-direction: column; 
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .thumbnail-box { 
+      width: 100%; 
+      aspect-ratio: 2/3; 
+      background: #2a2a2a center/cover; 
+      position: relative; 
+    }
+    .quality-tag {
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      background: var(--accent-red);
+      padding: 2px 5px;
+      font-size: 0.6rem;
+      font-weight: bold;
+      border-radius: 2px;
+    }
+    .info-box { padding: 8px; }
+    .card-title { 
+      font-size: 0.8rem;
+      font-weight: bold; 
+      margin: 0 0 4px 0;
+      white-space: nowrap; 
+      overflow: hidden; 
+      text-overflow: ellipsis; 
+    }
+    .card-subtitle { font-size: 0.7rem; color: var(--text-gray); margin-bottom: 4px; }
+    .card-interpreter { color: var(--accent-gold); font-size: 0.7rem; font-weight: bold; }
+
+    /* Vertical Grid Lists for Full Pages */
+    .vertical-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: 12px;
+      padding: 15px;
+    }
+
+    /* Native Media Video/Audio Player panel */
+    .player-panel { background-color: #000; padding: 10px; text-align: center; }
+    .btn-row { display: flex; gap: 10px; padding: 15px; }
+    .action-btn { flex: 1; padding: 14px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; }
+    .action-btn.download { background-color: var(--accent-red); color: white; }
+    .action-btn.back { background-color: #333; color: white; }
+
+    /* List items for Interpreters, Sports, and News */
+    .list-item-strip {
+      background-color: var(--bg-card);
+      padding: 18px;
+      margin: 10px 15px;
+      border-radius: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+
+    /* Fixed Bottom Application Bar */
+    nav.bottom-app-bar { 
+      position: fixed; 
+      bottom: 0; 
+      left: 0; 
+      right: 0; 
+      background-color: var(--bg-nav); 
+      display: flex; 
+      justify-content: space-around; 
+      padding: 12px 0; 
+      border-top: 1px solid #252525; 
+      z-index: 2000; 
+    }
+    .tab-item { 
+      background: none; 
+      border: none; 
+      color: #777777; 
+      font-size: 0.65rem; 
+      cursor: pointer; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      gap: 4px;
+    }
+    .tab-item.active-tab { color: var(--text-white); font-weight: bold; }
+    .tab-item svg { width: 22px; height: 22px; fill: currentColor; }
+    .tab-item.active-tab svg { fill: var(--accent-red); }
   </style>
 </head>
 <body>
 
-  <!-- Top Header Bar -->
+  <!-- Top Sticky Header -->
   <header>
     <h1>HirwaPaccyNow</h1>
-    <a href="#" class="vip-btn">👑 Go VIP</a>
+    <a href="#" class="vip-badge">Go VIP 👑</a>
   </header>
 
-  <!-- Navigation Views Container -->
-  
-  <!-- HOME VIEW WITH HERO BANNER -->
-  <section id="home" class="active">
-    <!-- Featured Hero Banner (Like Revenger) -->
-    <div class="hero-banner">
-      <div class="hero-details">
-        <div class="hero-meta">Martial Arts • 2018 • Movie</div>
-        <div class="hero-title">Revenger</div>
-        <div class="hero-interpreter">🎙️ Junior Giti</div>
-        <div class="hero-buttons">
-          <button class="btn-watch" onclick="watchMovie('Revenger', 'movies/movie1.mp4', 'https://mediafire.com')">▶ Watch Revenger Movie</button>
-          <button class="btn-info" onclick="alert('Revenger (2018): A former detective goes to a prison island to avenge his family.')">ℹ More Info About Revenger</button>
-        </div>
-      </div>
-    </div>
-
-    <!-- WhatsApp Promotional Box -->
+  <!-- ================= PAGE 1: HOME PAGE ================= -->
+  <section id="view-home" class="page-view active-page">
     <div class="wa-banner">
-      Dukurikire kuri WhatsApp Channel ubone filme nshyashya kugihe
+      Dukurikire kuri WhatsApp Channel ubone filme nshyashya kugihe cyose!
       <br>
-      <a href="https://wa.me" class="wa-link" target="_blank">💬 Dukukurikire</a>
+      <a href="https://wa.me" target="_blank">JOIN CHANNEL</a>
     </div>
 
-    <!-- Trending Row -->
-    <h2>Trending Today</h2>
-    <div class="movie-grid">
-      <!-- Movie Card 1 -->
-      <div class="movie-card" onclick="watchMovie('Revenger', 'movies/movie1.mp4', 'https://mediafire.com')">
-        <div class="movie-thumb" style="background-image: url('movies/thumb1.jpg');"></div>
-        <div class="movie-card-title">Revenger</div>
-        <div class="movie-card-interpreter">Junior Giti</div>
-      </div>
-      <!-- Movie Card 2 -->
-      <div class="movie-card" onclick="watchMovie('Oshakuru', 'movies/movie2.mp4', 'https://mediafire.com')">
-        <div class="movie-thumb" style="background-image: url('movies/thumb2.jpg');"></div>
-        <div class="movie-card-title">Oshakuru</div>
-        <div class="movie-card-interpreter">Oshakur</div>
-      </div>
-      <!-- Movie Card 3 -->
-      <div class="movie-card" onclick="watchMovie('Movie 3', 'movies/movie3.mp4', 'https://mediafire.com')">
-        <div class="movie-thumb" style="background-image: url('movies/thumb3.jpg');"></div>
-        <div class="movie-card-title">Blood Brothers</div>
-        <div class="movie-card-interpreter">Rama1aza</div>
-      </div>
+    <h2>Trending Agasobanuye</h2>
+    <div class="swipe-row" id="home-trending-swipe">
+      <!-- Injected Automatically -->
+    </div>
+
+    <h2>Popular Series</h2>
+    <div class="swipe-row" id="home-series-swipe">
+      <!-- Injected Automatically -->
     </div>
   </section>
 
-  <!-- MOVIES COLLECTION VIEW -->
-  <section id="movies">
+  <!-- ================= PAGE 2: MOVIES DIRECTORY ================= -->
+  <section id="view-movies" class="page-view">
     <h2>All Movies</h2>
-    <div class="movie-grid" id="all-movies-grid">
-      <!-- Additional cards can go here up to 50 items -->
+    <div class="vertical-grid" id="movies-all-grid">
+      <!-- Injected Automatically -->
     </div>
   </section>
 
-  <!-- INTERPRETERS VIEW -->
-  <section id="interpreters">
-    <h2>Popular Interpreters</h2>
-    <div style="background:#1f2833; padding:15px; border-radius:8px; margin-bottom:10px;">🎙️ Junior Giti</div>
-    <div style="background:#1f2833; padding:15px; border-radius:8px; margin-bottom:10px;">🎙️ Rocky Kimomo</div>
-    <div style="background:#1f2833; padding:15px; border-radius:8px; margin-bottom:10px;">🎙️ Master P</div>
-  </section>
-
-  <!-- WEB PLAYER COMPONENT (Hidden initially) -->
-  <section id="player-view">
-    <h2 id="playing-title">Now Playing</h2>
-    <video id="main-video-player" width="100%" controls style="background:black; border-radius:6px;"></video>
-    <div style="margin-top:15px; display:flex; gap:10px;">
-      <button class="btn-watch" id="download-now-btn" style="flex:1;" onclick="">📥 Download from MediaFire</button>
-      <button class="btn-info" style="flex:1;" onclick="showView('home')">⬅ Back Home</button>
+  <!-- ================= PAGE 3: SERIES DIRECTORY ================= -->
+  <section id="view-series" class="page-view">
+    <h2>All Series Seasons</h2>
+    <div class="vertical-grid" id="series-all-grid">
+      <!-- Injected Automatically -->
     </div>
   </section>
 
-  <!-- Bottom Sticky Mobile Navigation -->
-  <nav>
-    <button onclick="showView('home')" id="nav-home" class="active"><span>🏠</span>Home</button>
-    <button onclick="showView('movies')" id="nav-movies"><span>🎬</span>Movies</button>
-    <button onclick="showView('interpreters')" id="nav-interpreters"><span>🎙️</span>Interpreters</button>
-  </nav>
+  <!-- ================= PAGE 4: INTERPRETERS (ABASOBANUZI) ================= -->
+  <section id="view-interpreters" class="page-view">
+    <h2>Abasobanuzi Bose</h2>
+    <div class="list-item-strip" onclick="switchPage('movies')"><span>🎙️ Junior Giti</span><span>➔</span></div>
+    <div class="list-item-strip" onclick="switchPage('movies')"><span>🎙️ Rocky Kimomo</span><span>➔</span></div>
+    <div class="list-item-strip" onclick="switchPage('movies')"><span>🎙️ Movie Joker</span><span>➔</span></div>
+    <div class="list-item-strip" onclick="switchPage('movies')"><span>🎙️ Yanga</span><span>➔</span></div>
+  </section>
 
-  <script>
-    // Navigation logic
-    function showView(viewId) {
-      // Hide all main section blocks
-      document.querySelectorAll('body > section').forEach(sec => sec.classList.remove('active'));
-      // Show targeted view
-      document.getElementById(viewId).classList.add('active');
-      
-      // Update nav button color styles
-      document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
-      const activeNav = document.getElementById('nav-' + viewId);
-      if(activeNav) activeNav.classList.add('active');
-      
-      // Stop media playing if leaving player screen
-      if(viewId !== 'player-view') {
-        document.getElementById('main-video-player').pause();
-      }
-    }
+  <!-- ================= PAGE 5: SPORTS (ADDED EXTRA) ================= -->
+  <section id="view-sports" class="page-view">
+    <h2>Live Sports Scores</h2>
+    <a href="https://livescore.com" target="_blank" class="list-item-strip"><span>⚽ Football (LiveScore)</span><span>🌐 Open</span></a>
+    <a href="https://espn.com" target="_blank" class="list-item-strip"><span>🏀 Basketball (ESPN)</span><span>🌐 Open</span></a>
+    <a href="https://volleybox.net" target="_blank" class="list-item-strip"><span>🏐 Volleyball Box</span><span>🌐 Open</span></a>
+  </section>
 
-    // Interactive Player Configuration
-    function watchMovie(title, localVideoSrc, downloadUrl) {
-      showView('player-view');
-      document.getElementById('playing-title').innerText = "Watching: " + title;
-      
-      // Set media source options
-      const player = document.getElementById('main-video-player');
-      player.src = localVideoSrc;
-      player.load();
-      player.play().catch(() => { console.log("Autoplay blocked"); });
-      
-      // Configure target file download portal mapping
-      const dlBtn = document.getElementById('download-now-btn');
-      dlBtn.onclick = function() {
-        window.open(downloadUrl, '_blank');
-      };
-    }
+  <!-- ================= PAGE 6: NEWS (ADDED EXTRA) ================= -->
+  <section id="view-news" class="page-view">
+    <h2>Latest Media News Clips</h2>
+    <div class="list-item-strip" onclick="launchPlayer('Entertainment News Clip 1', 'news/news1.mp4', '#')"><span>📰 Local News Update 1</span><span>▶ Play</span></div>
+    <div class="list-item-strip" onclick="launchPlayer('International Cinema News', 'news/news2.mp4', '#')"><span>📰 International News 2</span><span>▶ Play</span></div>
+  </section>
 
-    // Auto-generate extra sample spaces on page load
-    window.onload = function() {
-      const grid = document.getElementById('all-movies-grid');
-      let html = '';
-      for(let i=1; i<=12; i++) {
-        html += `
-          <div class="movie-card" onclick="watchMovie('Movie ${i}', 'movies/movie${i}.mp4', 'https://mediafire.com')">
-            <div class="movie-thumb" style="background-color: #2c3540;"></div>
-            <div class="movie-card-title">Agasobanuye Film ${i}</div>
-            <div class="movie-card-interpreter">Rocky Kimomo</div>
-          </div>`;
-      }
-      grid.innerHTML = html;
-    }
-  </script>
-</body>
-</html>
+  <!-- ================= VIDEO THEATER PLAYER ENGINE ================= -->
+  <section id="view-player" class="page-view">
+    <h2 id="player-title" style="margin-left:15px;">Now Streaming</h2>
+    <div class="player-panel">
+      <video id="video-screen" width="100%" controls style="max-width:800px; background:#000; border-radius:4px;"></video>
+    </div>
+    <div class="btn-row">
+      <button class="action-btn download" id="download-trigger">Download Movie (MediaFire)</button>
+      <button class="action-btn back" onclick="switchPage('home')">Back Home</button>
+    </div>
+  </section>
+
+  <!-- Fixed Bottom App Style Navigation Bar -->
+  <nav class="bottom-app-bar">
+    <button class="tab-item active-tab" id="tab-home" onclick="switchPage('home')">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home
+    </button>
+    <button class="tab-item" id="tab-movies" onclick="switchPage('movies')">
+      <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>Movies
+    </button>
+    <button class="tab-item" id="tab-series" onclick="switchPage('series')">
+      <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>Series
+    </button>
