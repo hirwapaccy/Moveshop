@@ -3,93 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HirwaPaccyNow - Agasobanuye Kiriziya</title>
+  <title>Movie shop with hirwa paccy - Premium Agasobanuye Media Hub</title>
   <style>
-    /* Exact AgasobanuyeNow Dark Theme & Color Scheme */
+    /* Premium Midnight Cinematic Color Scheme */
     :root {
-      --bg-main: #141414;
-      --bg-card: #1f1f1f;
-      --bg-nav: #181818;
-      --accent-red: #e50914;
-      --accent-gold: #ffb300;
+      --bg-main: #0a0b0e;
+      --bg-card: #14161d;
+      --bg-nav: #111217;
+      --accent-red: #ff3344;
+      --accent-gold: #ffc83b;
+      --accent-blue: #0077ff;
+      --whatsapp-green: #00a884;
       --text-white: #ffffff;
-      --text-gray: #aaaaaa;
+      --text-gray: #949ba4;
     }
 
     body { 
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; 
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif; 
       margin: 0; 
       padding: 0; 
       background-color: var(--bg-main); 
       color: var(--text-white);
-      padding-bottom: 80px;
-      -webkit-user-select: none;
-      user-select: none;
+      padding-bottom: 90px;
     }
 
-    /* Sticky Premium Header */
+    /* Immersive Header Bar */
     header { 
-      background-color: rgba(20, 20, 20, 0.95); 
-      padding: 15px 20px; 
+      background-color: rgba(14, 16, 23, 0.96); 
+      padding: 15px; 
       display: flex; 
       justify-content: space-between; 
       align-items: center; 
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid #252525;
+      border-bottom: 1px solid #1f232e;
+      backdrop-filter: blur(10px);
     }
     header h1 { 
       margin: 0; 
-      font-size: 1.4rem; 
-      color: var(--accent-red); 
-      font-weight: 900; 
-      letter-spacing: -0.5px;
+      font-size: 1.15rem; 
+      color: var(--text-white); 
+      font-weight: 800; 
+      letter-spacing: -0.3px;
+    }
+    header h1 span {
+      color: var(--accent-red);
     }
     .vip-badge { 
-      background: linear-gradient(135deg, #fff3c4, var(--accent-gold)); 
+      background: linear-gradient(135deg, #fff2cc, var(--accent-gold)); 
       color: #000; 
-      padding: 6px 16px; 
-      font-weight: bold; 
+      padding: 6px 14px; 
+      font-weight: 700; 
       border-radius: 4px; 
       font-size: 0.75rem; 
       text-decoration: none;
+      box-shadow: 0 4px 12px rgba(255, 200, 59, 0.2);
     }
 
-    /* WhatsApp Promo Box */
-    .wa-banner { 
-      background-color: #00a884; 
-      margin: 15px; 
+    /* Advanced Global Filter Engine (Better than AgasobanuyeNow) */
+    .filter-dashboard {
+      background: var(--bg-card);
+      margin: 12px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #1f232e;
+    }
+    .search-input-wrapper {
+      position: relative;
+      margin-bottom: 8px;
+    }
+    .search-input-wrapper input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      background: #1c1f26;
+      border: 1px solid #2d3240;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.85rem;
+    }
+    .filter-select-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .filter-select-row select {
+      background: #1c1f26;
+      color: white;
+      border: 1px solid #2d3240;
+      padding: 8px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* Highly Optimized WhatsApp Conversion Anchor */
+    .wa-premium-banner { 
+      background: linear-gradient(135deg, #00b386, var(--whatsapp-green)); 
+      margin: 12px; 
       padding: 15px; 
-      border-radius: 6px; 
+      border-radius: 8px; 
       text-align: center; 
       font-size: 0.85rem; 
-      font-weight: bold;
+      font-weight: 700;
       line-height: 1.4;
+      box-shadow: 0 4px 15px rgba(0, 168, 132, 0.25);
     }
-    .wa-banner a { 
+    .wa-premium-banner p { margin: 0 0 10px 0; }
+    .wa-premium-banner a { 
       display: inline-block; 
-      background-color: white; 
-      color: #00a884; 
-      padding: 6px 18px; 
+      background-color: var(--text-white); 
+      color: var(--whatsapp-green); 
+      padding: 8px 20px; 
       border-radius: 4px; 
       text-decoration: none; 
-      margin-top: 10px;
+      font-weight: 800;
+      font-size: 0.8rem;
+      letter-spacing: 0.3px;
     }
 
-    /* Multi-Page Switching System */
+    /* Page Panel States */
     .page-view { display: none; padding: 0 0 20px 0; }
     .page-view.active-page { display: block; }
 
-    /* Layout Headers */
     h2 { 
-      font-size: 1.2rem; 
-      margin: 20px 0 10px 15px; 
-      font-weight: bold;
-      letter-spacing: 0.5px;
+      font-size: 1.1rem; 
+      margin: 22px 0 12px 15px; 
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 15px;
     }
+    h2 .row-count { font-size: 0.75rem; color: var(--accent-red); background: rgba(255,51,68,0.1); padding: 2px 6px; border-radius: 10px; }
 
-    /* AgasobanuyeNow Signature Feature: Horizontal Swiping Row */
+    /* Horizontal Browsing Track */
     .swipe-row {
       display: flex;
       overflow-x: auto;
@@ -97,23 +146,23 @@
       padding: 5px 15px 15px 15px;
       scroll-behavior: smooth;
     }
-    .swipe-row::-webkit-scrollbar { display: none; } /* Hide ugly scrollbars */
+    .swipe-row::-webkit-scrollbar { display: none; }
 
-    /* Premium Movie Poster Card */
+    /* Media Poster Blueprint */
     .media-card { 
-      flex: 0 0 110px; /* Forces items to stay side-by-side */
+      flex: 0 0 115px; 
       background-color: var(--bg-card); 
       border-radius: 6px; 
       overflow: hidden; 
       display: flex; 
       flex-direction: column; 
       cursor: pointer;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+      border: 1px solid #1f232e;
     }
     .thumbnail-box { 
       width: 100%; 
       aspect-ratio: 2/3; 
-      background: #2a2a2a center/cover; 
+      background: #1c1f26 center/cover; 
       position: relative; 
     }
     .quality-tag {
@@ -121,24 +170,24 @@
       top: 5px;
       left: 5px;
       background: var(--accent-red);
-      padding: 2px 5px;
+      padding: 2px 6px;
       font-size: 0.6rem;
-      font-weight: bold;
+      font-weight: 800;
       border-radius: 2px;
     }
-    .info-box { padding: 8px; }
+    .info-box { padding: 8px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
     .card-title { 
       font-size: 0.8rem;
-      font-weight: bold; 
+      font-weight: 700; 
       margin: 0 0 4px 0;
       white-space: nowrap; 
       overflow: hidden; 
       text-overflow: ellipsis; 
     }
-    .card-subtitle { font-size: 0.7rem; color: var(--text-gray); margin-bottom: 4px; }
-    .card-interpreter { color: var(--accent-gold); font-size: 0.7rem; font-weight: bold; }
+    .card-subtitle { font-size: 0.7rem; color: var(--text-gray); margin-bottom: 5px; }
+    .card-interpreter { color: var(--accent-gold); font-size: 0.7rem; font-weight: 700; }
 
-    /* Vertical Grid Lists for Full Pages */
+    /* Vertical Discovery Configurations */
     .vertical-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
@@ -146,28 +195,31 @@
       padding: 15px;
     }
 
-    /* Native Media Video/Audio Player panel */
+    /* Embedded Theater Stage */
     .player-panel { background-color: #000; padding: 10px; text-align: center; }
     .btn-row { display: flex; gap: 10px; padding: 15px; }
-    .action-btn { flex: 1; padding: 14px; border-radius: 4px; border: none; font-weight: bold; cursor: pointer; }
+    .action-btn { flex: 1; padding: 14px; border-radius: 4px; border: none; font-weight: 700; cursor: pointer; font-size: 0.85rem; }
     .action-btn.download { background-color: var(--accent-red); color: white; }
-    .action-btn.back { background-color: #333; color: white; }
+    .action-btn.back { background-color: #232630; color: white; }
 
-    /* List items for Interpreters, Sports, and News */
+    /* Info Lists (Sports, Music, News) Layout */
     .list-item-strip {
       background-color: var(--bg-card);
-      padding: 18px;
-      margin: 10px 15px;
+      padding: 16px;
+      margin: 8px 15px;
       border-radius: 6px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       text-decoration: none;
       color: white;
-      font-weight: bold;
+      font-weight: 600;
+      font-size: 0.85rem;
+      border: 1px solid #1f232e;
     }
+    .list-item-strip span.sub-lbl { font-size: 0.75rem; color: var(--text-gray); font-weight: 400; }
 
-    /* Fixed Bottom Application Bar */
+    /* Fixed Bottom Application Command Bar (All Menus Included) */
     nav.bottom-app-bar { 
       position: fixed; 
       bottom: 0; 
@@ -176,113 +228,88 @@
       background-color: var(--bg-nav); 
       display: flex; 
       justify-content: space-around; 
-      padding: 12px 0; 
-      border-top: 1px solid #252525; 
+      padding: 12px 0 14px 0; 
+      border-top: 1px solid #1f232e; 
       z-index: 2000; 
     }
     .tab-item { 
       background: none; 
       border: none; 
-      color: #777777; 
-      font-size: 0.65rem; 
+      color: #626978; 
+      font-size: 0.62rem; 
       cursor: pointer; 
       display: flex; 
       flex-direction: column; 
       align-items: center; 
-      gap: 4px;
+      gap: 5px;
+      width: 15%;
+      font-weight: 600;
     }
-    .tab-item.active-tab { color: var(--text-white); font-weight: bold; }
-    .tab-item svg { width: 22px; height: 22px; fill: currentColor; }
+    .tab-item.active-tab { color: var(--text-white); }
+    .tab-item svg { width: 20px; height: 20px; fill: currentColor; }
     .tab-item.active-tab svg { fill: var(--accent-red); }
   </style>
 </head>
 <body>
 
-  <!-- Top Sticky Header -->
+  <!-- Premium Main Header -->
   <header>
-    <h1>HirwaPaccyNow</h1>
-    <a href="#" class="vip-badge">Go VIP 👑</a>
+    <h1>Movie shop with <span>hirwa paccy</span></h1>
+    <a href="#" class="vip-badge">VIP Access 👑</a>
   </header>
 
-  <!-- ================= PAGE 1: HOME PAGE ================= -->
+  <!-- ================= DYNAMIC FILTER DASHBOARD (BETTER THAN AGASOBANUYE NOW) ================= -->
+  <div class="filter-dashboard">
+    <div class="search-input-wrapper">
+      <input type="text" id="liveSearchInput" onkeyup="executeLiveSearch()" placeholder="Search movies, series or musicians...">
+    </div>
+    <div class="filter-select-row">
+      <select id="genreFilter" onchange="executeLiveSearch()">
+        <option value="">All Categories</option>
+        <option value="Action">Action</option>
+        <option value="Sci-Fi">Sci-Fi</option>
+        <option value="Afrobeat">Afrobeat</option>
+      </select>
+      <select id="interpreterFilter" onchange="executeLiveSearch()">
+        <option value="">All Sources</option>
+        <option value="Junior Giti">Junior Giti</option>
+        <option value="Rocky Kimomo">Rocky Kimomo</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ================= PERSISTENT WHATSAPP CONVERSION CHANNEL ================= -->
+  <div class="wa-premium-banner">
+    <p>Dukurikire kuri WhatsApp Channel ubone filme n'indirimbo nshyashya kugihe!</p>
+    <a href="https://wa.me" target="_blank">👉 JIRA WHATSAPP YACU</a>
+  </div>
+
+  <!-- ================= PAGE 1: HOME PLATFORM ================= -->
   <section id="view-home" class="page-view active-page">
-    <div class="wa-banner">
-      Dukurikire kuri WhatsApp Channel ubone filme nshyashya kugihe cyose!
-      <br>
-      <a href="https://wa.me" target="_blank">JOIN CHANNEL</a>
-    </div>
+    <h2>Trending Movies <span class="row-count">HOT</span></h2>
+    <div class="swipe-row" id="home-trending-swipe"></div>
 
-    <h2>Trending Agasobanuye</h2>
-    <div class="swipe-row" id="home-trending-swipe">
-      <!-- Injected Automatically -->
-    </div>
-
-    <h2>Popular Series</h2>
-    <div class="swipe-row" id="home-series-swipe">
-      <!-- Injected Automatically -->
-    </div>
+    <h2>Popular Series Seasons <span class="row-count">NEW</span></h2>
+    <div class="swipe-row" id="home-series-swipe"></div>
   </section>
 
   <!-- ================= PAGE 2: MOVIES DIRECTORY ================= -->
   <section id="view-movies" class="page-view">
-    <h2>All Movies</h2>
-    <div class="vertical-grid" id="movies-all-grid">
-      <!-- Injected Automatically -->
-    </div>
+    <h2>All Movies Catalog</h2>
+    <div class="vertical-grid" id="movies-all-grid"></div>
   </section>
 
   <!-- ================= PAGE 3: SERIES DIRECTORY ================= -->
   <section id="view-series" class="page-view">
-    <h2>All Series Seasons</h2>
-    <div class="vertical-grid" id="series-all-grid">
-      <!-- Injected Automatically -->
+    <h2>All Series Catalog</h2>
+    <div class="vertical-grid" id="series-all-grid"></div>
+  </section>
+
+  <!-- ================= PAGE 4: MUSIC SPACE (NEWLY ADDED) ================= -->
+  <section id="view-music" class="page-view">
+    <h2>Trending Music Tracks</h2>
+    <div class="list-item-strip" onclick="launchAudioPlayer('Bwiza - Ready', 'music/song1.mp3')">
+      <div>🎵 Bwiza - Ready <br><span class="sub-lbl">Audio • Afrobeat</span></div>
+      <span>▶ Play</span>
     </div>
-  </section>
-
-  <!-- ================= PAGE 4: INTERPRETERS (ABASOBANUZI) ================= -->
-  <section id="view-interpreters" class="page-view">
-    <h2>Abasobanuzi Bose</h2>
-    <div class="list-item-strip" onclick="switchPage('movies')"><span>🎙️ Junior Giti</span><span>➔</span></div>
-    <div class="list-item-strip" onclick="switchPage('movies')"><span>🎙️ Rocky Kimomo</span><span>➔</span></div>
-    <div class="list-item-strip" onclick="switchPage('movies')"><span>🎙️ Movie Joker</span><span>➔</span></div>
-    <div class="list-item-strip" onclick="switchPage('movies')"><span>🎙️ Yanga</span><span>➔</span></div>
-  </section>
-
-  <!-- ================= PAGE 5: SPORTS (ADDED EXTRA) ================= -->
-  <section id="view-sports" class="page-view">
-    <h2>Live Sports Scores</h2>
-    <a href="https://livescore.com" target="_blank" class="list-item-strip"><span>⚽ Football (LiveScore)</span><span>🌐 Open</span></a>
-    <a href="https://espn.com" target="_blank" class="list-item-strip"><span>🏀 Basketball (ESPN)</span><span>🌐 Open</span></a>
-    <a href="https://volleybox.net" target="_blank" class="list-item-strip"><span>🏐 Volleyball Box</span><span>🌐 Open</span></a>
-  </section>
-
-  <!-- ================= PAGE 6: NEWS (ADDED EXTRA) ================= -->
-  <section id="view-news" class="page-view">
-    <h2>Latest Media News Clips</h2>
-    <div class="list-item-strip" onclick="launchPlayer('Entertainment News Clip 1', 'news/news1.mp4', '#')"><span>📰 Local News Update 1</span><span>▶ Play</span></div>
-    <div class="list-item-strip" onclick="launchPlayer('International Cinema News', 'news/news2.mp4', '#')"><span>📰 International News 2</span><span>▶ Play</span></div>
-  </section>
-
-  <!-- ================= VIDEO THEATER PLAYER ENGINE ================= -->
-  <section id="view-player" class="page-view">
-    <h2 id="player-title" style="margin-left:15px;">Now Streaming</h2>
-    <div class="player-panel">
-      <video id="video-screen" width="100%" controls style="max-width:800px; background:#000; border-radius:4px;"></video>
-    </div>
-    <div class="btn-row">
-      <button class="action-btn download" id="download-trigger">Download Movie (MediaFire)</button>
-      <button class="action-btn back" onclick="switchPage('home')">Back Home</button>
-    </div>
-  </section>
-
-  <!-- Fixed Bottom App Style Navigation Bar -->
-  <nav class="bottom-app-bar">
-    <button class="tab-item active-tab" id="tab-home" onclick="switchPage('home')">
-      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>Home
-    </button>
-    <button class="tab-item" id="tab-movies" onclick="switchPage('movies')">
-      <svg viewBox="0 0 24 24"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>Movies
-    </button>
-    <button class="tab-item" id="tab-series" onclick="switchPage('series')">
-      <svg viewBox="0 0 24 24"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 3c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>Series
-    </button>
+    <div class="list-item-strip" onclick="launchAudioPlayer('Bruce Melodie - Love Me', 'music/song2.mp3')">
