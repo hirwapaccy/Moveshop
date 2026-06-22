@@ -2,85 +2,32 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Moveshop Web</title>
+  <title>Hirwa Paccy Movieshop</title>
   <style>
     body { font-family: Arial, sans-serif; margin:0; padding:0; }
-    nav { background:#333; padding:10px; }
-    nav a { color:white; margin:0 15px; text-decoration:none; cursor:pointer; }
-    section { display:none; padding:20px; }
-    section.active { display:block; }
-    iframe { margin:10px 0; }
-  </style>
-</head>
-<body>
-
-  <!-- Navigation -->
-  <nav>
-    <a onclick="showSection('movies')">Movies</a>
-    <a onclick="showSection('music')">Music</a>
-    <a onclick="showSection('news')">News</a>
-  </nav>
-
-  <!-- Movies Section -->
-  <section id="movies">
-    <h2>Trending Movies</h2>
-    <!-- Oshakuru -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_OSHAKURU" frameborder="0" allowfullscreen></iframe>
-    <!-- Agasobanuye -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_AGASOBANUYE" frameborder="0" allowfullscreen></iframe>
-    <!-- Movie Box -->
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_MOVIEBOX" frameborder="0" allowfullscreen></iframe>
-  </section>
-
-  <!-- Music Section -->
-  <section id="music">
-    <h2>Trending Music</h2>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_RWANDA" frameborder="0" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_TANZANIA" frameborder="0" allowfullscreen></iframe>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/VIDEO_ID_EAC" frameborder="0" allowfullscreen></iframe>
-  </section>
-
-  <!-- News Section -->
-  <section id="news">
-    <h2>Latest News</h2>
-    <!-- Igihe -->
-    <iframe src="https://igihe.com" width="100%" height="600"></iframe>
-    <!-- RBA -->
-    <iframe src="https://rba.co.rw" width="100%" height="600"></iframe>
-    <!-- The New Times -->
-    <iframe src="https://www.newtimes.co.rw" width="100%" height="600"></iframe>
-  </section>
-
-  <script>
-    function showSection(id) {
-      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
-      document.getElementById(id).classList.add('active');
-    }
-  </script>
-
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Moveshop Web</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin:0; padding:0; }
+    header, footer { background:#004080; color:white; text-align:center; padding:15px; }
     nav { background:#333; padding:10px; }
     nav a { color:white; margin:0 15px; text-decoration:none; cursor:pointer; }
     section { display:none; padding:20px; }
     section.active { display:block; }
     button { margin:5px; padding:8px 12px; cursor:pointer; }
+    input[type="text"] { padding:8px; width:300px; }
   </style>
 </head>
 <body>
+
+  <!-- Header -->
+  <header>
+    <h1>Hirwa Paccy Movieshop</h1>
+  </header>
 
   <!-- Navigation -->
   <nav>
     <a onclick="showSection('movies')">Movies</a>
     <a onclick="showSection('music')">Music</a>
+    <a onclick="showSection('sports')">Sports</a>
     <a onclick="showSection('news')">News</a>
+    <a onclick="showSection('search')">Search</a>
   </nav>
 
   <!-- Movies Section -->
@@ -88,18 +35,32 @@
     <h2>Trending Movies</h2>
     <div>
       <p>Oshakuru Movie</p>
-      <button onclick="window.open('https://www.youtube.com/watch?v=VIDEO_ID_OSHAKURU','_blank')">Watch</button>
-      <button onclick="shareContent('Oshakuru Movie','https://www.youtube.com/watch?v=VIDEO_ID_OSHAKURU')">Share</button>
+      <video width="560" height="315" controls>
+        <source src="movies/oshakuru.mp4" type="video/mp4">
+      </video>
+      <br>
+      <button onclick="shareContent('Oshakuru Movie','movies/oshakuru.mp4')">Share</button>
+      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_OSHAKURU/movie.mp4/file','_blank')">Download</button>
     </div>
+
     <div>
       <p>Agasobanuye Now</p>
-      <button onclick="window.open('https://www.tiktok.com/@agasobanuye/video/VIDEO_ID','_blank')">Watch</button>
-      <button onclick="shareContent('Agasobanuye Now','https://www.tiktok.com/@agasobanuye/video/VIDEO_ID')">Share</button>
+      <video width="560" height="315" controls>
+        <source src="movies/agasobanuye.mp4" type="video/mp4">
+      </video>
+      <br>
+      <button onclick="shareContent('Agasobanuye Now','movies/agasobanuye.mp4')">Share</button>
+      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_AGASOBANUYE/movie.mp4/file','_blank')">Download</button>
     </div>
+
     <div>
       <p>Movie Box</p>
-      <button onclick="window.open('https://moviebox.com/trending','_blank')">Watch</button>
-      <button onclick="shareContent('Movie Box','https://moviebox.com/trending')">Share</button>
+      <video width="560" height="315" controls>
+        <source src="movies/moviebox.mp4" type="video/mp4">
+      </video>
+      <br>
+      <button onclick="shareContent('Movie Box','movies/moviebox.mp4')">Share</button>
+      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_MOVIEBOX/movie.mp4/file','_blank')">Download</button>
     </div>
   </section>
 
@@ -108,3 +69,77 @@
     <h2>Trending Music</h2>
     <div>
       <p>Trending Song Rwanda</p>
+      <audio controls>
+        <source src="music/rwanda_song.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+      <button onclick="shareContent('Trending Song Rwanda','music/rwanda_song.mp3')">Share</button>
+      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_RWANDA/song.mp3/file','_blank')">Download</button>
+    </div>
+
+    <div>
+      <p>Trending Song Tanzania</p>
+      <audio controls>
+        <source src="music/tanzania_song.mp3" type="audio/mpeg">
+      </audio>
+      <br>
+      <button onclick="shareContent('Trending Song Tanzania','music/tanzania_song.mp3')">Share</button>
+      <button onclick="window.open('https://www.mediafire.com/file/FILE_ID_TANZANIA/song.mp3/file','_blank')">Download</button>
+    </div>
+  </section>
+
+  <!-- Sports Section -->
+  <section id="sports">
+    <h2>Sports</h2>
+    <ul>
+      <li><a href="https://www.livescore.com" target="_blank">Football (LiveScore)</a></li>
+      <li><a href="https://www.espn.com/nba/" target="_blank">Basketball</a></li>
+      <li><a href="https://www.volleybox.net/" target="_blank">Volleyball</a></li>
+      <li><a href="https://www.atptour.com/" target="_blank">Tennis</a></li>
+    </ul>
+  </section>
+
+  <!-- News Section -->
+  <section id="news">
+    <h2>Latest News</h2>
+    <iframe src="https://igihe.com" width="100%" height="600"></iframe>
+    <iframe src="https://rba.co.rw" width="100%" height="600"></iframe>
+    <iframe src="https://www.newtimes.co.rw" width="100%" height="600"></iframe>
+  </section>
+
+  <!-- Search Section -->
+  <section id="search">
+    <h2>Search the Web</h2>
+    <input type="text" id="searchQuery" placeholder="Type your search here...">
+    <button onclick="searchWeb()">Search</button>
+    <div id="searchResults"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2026 Hirwa Paccy Movieshop | All Rights Reserved</p>
+  </footer>
+
+  <script>
+    function showSection(id) {
+      document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+
+    function shareContent(title, url) {
+      if (navigator.share) {
+        navigator.share({ title: title, url: url });
+      } else {
+        let fb = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+        let ig = `https://www.instagram.com/?url=${encodeURIComponent(url)}`;
+        let wa = `https://wa.me/?text=${encodeURIComponent(title + ' ' + url)}`;
+        window.open(fb,'_blank'); // default to Facebook
+        alert("If you prefer Instagram or WhatsApp, copy this link:\nInstagram: " + ig + "\nWhatsApp: " + wa);
+      }
+    }
+
+    function searchWeb() {
+      let query = document.getElementById('searchQuery').value;
+      if(query) {
+        let url = `https://www.bing.com/search?q=${encodeURIComponent(query)}`;
+        document.getElementById('searchResults').innerHTML = `
