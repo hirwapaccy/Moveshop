@@ -1,142 +1,1105 @@
-<!DOCTYPE html> <html lang="en"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Movie Shop Pro</title> <style> *{ margin:0; padding:0; box-sizing:border-box; font-family:Arial,sans-serif; } body{ background:#141414; color:white; } /* HEADER */ header{ position:fixed; top:0; width:100%; background:#000; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; z-index:1000; } .logo{ color:#e50914; font-size:28px; font-weight:bold; } nav a{ color:white; text-decoration:none; margin:0 10px; } nav a:hover{ color:#e50914; } #search{ padding:8px; border:none; border-radius:5px; } /* HERO */ .hero{ height:70vh; display:flex; align-items:center; justify-content:center; text-align:center; background:linear-gradient( rgba(0,0,0,.6), rgba(0,0,0,.8) ), url("https://picsum.photos/1600/900"); background-size:cover; background-position:center; } .hero h1{ font-size:60px; } /* MAIN */ main{ margin-top:90px; } .section{ padding:30px; } .row{ display:flex; gap:15px; overflow-x:auto; } .card{ min-width:280px; background:#181818; border-radius:8px; padding:10px; transition:.3s; } .card:hover{ transform:scale(1.05); } .card video{ width:100%; border-radius:8px; } .download-btn{ background:#e50914; color:white; border:none; padding:8px 12px; cursor:pointer; margin-top:10px; } /* UPLOAD */ #upload{ background:#111; } #upload input{ width:100%; padding:10px; margin:8px 0; } #upload button{ background:#e50914; color:white; border:none; padding:10px 15px; cursor:pointer; } /* COMMENTS */ .comments textarea{ width:100%; height:120px; } /* FOOTER */ footer{ background:#000; text-align:center; padding:30px; } </style> </head> <body> <header> <div class="logo">🎬 Movie Shop Pro</div> <nav> <a href="#movies">Movies</a> <a href="#music">Music</a> <a href="#sports">Sports</a> <a href="#news">News</a> <a href="#upload">Upload</a> <a href="#comments">Comments</a> <a href="#profile">Profile</a> </nav> <input type="search" id="search" placeholder="Search..."> </header> <main> <section class="hero"> <div> <h1>Movie Shop Pro</h1> <p>Movies • Music • Sports • News</p> </div> </section> <section id="movies" class="section"> <h2>🎬 Movies</h2> ``` <div id="movieContainer" class="row"> <div class="card"> <h3>Sample Movie</h3> <video controls> <source src="" type="video/mp4"> </video> <button class="download-btn">📥 Download</button> </div> </div> ``` </section> <section id="music" class="section"> <h2>🎵 Music</h2> </section> <section id="sports" class="section"> <h2>🏆 Sports</h2> </section> <section id="news" class="section"> <h2>📰 News</h2> </section> <section id="upload" class="section"> <h2>Upload From Your Phone</h2> ``` <input type="text" id="movieTitle" placeholder="Movie Title"> <input type="file" id="movieFile" accept="video/*"> <button onclick="uploadMovie()"> Upload Movie </button> <div id="uploadStatus"></div> ``` </section> <section id="comments" class="section comments"> <h2>💬 Comments</h2> ``` <textarea placeholder="Write a comment..."></textarea> ``` </section> <section id="profile" class="section"> <h2>👤 Profile</h2> </section> </main> <footer> <h3>🎬 Movie Shop Pro</h3> ``` <p>Movies • Music • Sports • News</p> <p>Facebook: Hirwa Paccy</p> <p>Instagram</p> <p>WhatsApp</p> <p>Designed by Hirwa Paccy</p> <p>© 2026 Movie Shop Pro</p> ``` </footer> <script> let uploadedMovies = []; function uploadMovie() { const title = document.getElementById("movieTitle").value; const file = document.getElementById("movieFile").files[0]; if(!title || !file){ alert("Choose a movie and enter a title."); return; } const url = URL.createObjectURL(file); uploadedMovies.push({ title:title, url:url }); displayMovies(); document.getElementById("uploadStatus") .innerHTML = "✅ Movie uploaded successfully!"; } function displayMovies(){ const container = document.getElementById("movieContainer"); container.innerHTML = ""; uploadedMovies.forEach(movie => { container.innerHTML += ` <div class="card"> <h3>${movie.title}</h3> <video controls> <source src="${movie.url}"> </video> <a href="${movie.url}" download="${movie.title}"> <button class="download-btn"> 📥 Download </button> </a> </div> `; }); } </script> </body> </html><section id="music">
-  <h2>🎵 Music</h2>
 
-  <ul>
-    <li><a href="https://open.spotify.com" target="_blank">Spotify</a></li>
-    <li><a href="https://music.youtube.com" target="_blank">YouTube Music</a></li>
-    <li><a href="https://soundcloud.com" target="_blank">SoundCloud</a></li>
-  </ul>
-</section>
-
-<section id="sports">
-  <h2>🏆 Sports</h2>
-
-  <ul>
-    <li><a href="https://www.livescore.com" target="_blank">LiveScore</a></li>
-    <li><a href="https://www.rba.co.rw" target="_blank">RBA Sports</a></li>
-    <li><a href="https://inyarwanda.com" target="_blank">Inyarwanda Sports</a></li>
-  </ul>
-</section>
-
-<section id="news">
-  <h2>📰 News</h2>
-
-  <ul>
-    <li><a href="https://igihe.com" target="_blank">IGIHE</a></li>
-    <li><a href="https://www.bbc.com/news" target="_blank">BBC News</a></li>
-    <li><a href="https://www.rba.co.rw" target="_blank">RBA News</a></li>
-    <li><a href="https://imvahonshya.co.rw" target="_blank">Imvaho Nshya</a></li>
-  </ul></html><!-- Movie Sources Section -->
-<section class="movie-sources">
-    <h2>Movie Sources</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Shop Pro | Hirwa Paccy</title>
 
 <style>
-.movie-sources{
-    padding:30px;
-    margin:20px;
-    background:#111;
-    border-radius:12px;
+:root {
+  --red: #e50914;
+  --bg: #080b12;
+  --panel: #111722;
+  --text: #ffffff;
+  --muted: #aab2c0;
 }
 
-.movie-sources h2{
-    color:#e50914;
-    font-family:Arial,sans-serif;
-    margin-bottom:20px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.source-links{
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 95px;
 }
 
-.source-links a{
-    text-decoration:none;
-    color:white;
-    background:#e50914;
-    padding:12px 20px;
-    border-radius:8px;
-    transition:0.3s;
-    font-weight:bold;
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
 }
 
-.source-links a:hover{
-    transform:scale(1.05);
-    <div class="source-links">
-        <a href="https://oshakuru.rw" target="_blank">Oshakuru</a>
-        <a href="https://agasobanuyenow.com" target="_blank">Agasobanuyenow</a>
-        <a href="https://agasobanuye.com" target="_blank">Agasobanuye</a>
-        <a href="#" target="_blank">Agasobanuye Box</a>
-        <a href="#" target="_blank">Rujama Movies</a>
-        <a href="https://igiti.net" target="_blank">Igiti.net</a>
-        <a href="#" target="_blank">Movie Box</a>
-</section><!DOCTYPE html>
-<html>
-...
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-    </div>
-</section>
+button, input {
+  font: inherit;
+}
 
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: rgba(5, 8, 15, .96);
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #242b38;
+}
+
+.header-inner {
+  max-width: 1450px;
+  margin: auto;
+  padding: 15px 4%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: var(--red);
+  font-size: 25px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.logo span {
+  color: white;
+}
+
+nav {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+nav a {
+  padding: 10px 13px;
+  color: #d5d9e2;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: .25s;
+}
+
+nav a:hover, nav a.active {
+  color: white;
+  background: var(--red);
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+#search {
+  width: 175px;
+  padding: 11px;
+  border: 1px solid #343d4d;
+  border-radius: 8px;
+  outline: none;
+  color: white;
+  background: #151c28;
+}
+
+main {
+  padding-top: 80px;
+}
+
+.hero {
+  min-height: 510px;
+  display: flex;
+  align-items: center;
+  padding: 70px 8%;
+  background:
+    linear-gradient(90deg, #080b12 5%, rgba(8,11,18,.65)),
+    linear-gradient(rgba(0,0,0,.2), rgba(0,0,0,.8)),
+    url("https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1600")
+    center/cover;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero small {
+  color: var(--red);
+  font-weight: bold;
+  letter-spacing: 3px;
+}
+
+.hero h1 {
+  font-size: clamp(38px, 7vw, 75px);
+  margin: 18px 0;
+  line-height: 1.05;
+}
+
+.hero p {
+  color: #c3cad5;
+  font-size: 17px;
+  line-height: 1.8;
+}
+
+.hero-button {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  padding: 14px 24px;
+  margin-top: 25px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
+.section {
+  max-width: 1450px;
+  margin: auto;
+  padding: 45px 4%;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  gap: 15px;
+}
+
+.section-heading h2 {
+  font-size: 26px;
+}
+
+.section-heading h2 span {
+  color: var(--red);
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.movie-card {
+  background: var(--panel);
+  border: 1px solid #252d3a;
+  border-radius: 13px;
+  overflow: hidden;
+  transition: .3s;
+}
+
+.movie-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--red);
+}
+
+.movie-card video {
+  width: 100%;
+  aspect-ratio: 16/10;
+  display: block;
+  background: #000;
+  object-fit: contain;
+}
+
+.movie-info {
+  padding: 15px;
+}
+
+.movie-info h3 {
+  font-size: 17px;
+  margin-bottom: 10px;
+  overflow-wrap: anywhere;
+}
+
+.movie-info small {
+  color: var(--muted);
+}
+
+.download-btn {
+  display: inline-block;
+  background: var(--red);
+  color: white;
+  border: 0;
+  border-radius: 7px;
+  padding: 10px 15px;
+  margin-top: 14px;
+  cursor: pointer;
+}
+
+.empty {
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 50px 15px;
+  background: var(--panel);
+  border-radius: 12px;
+  color: var(--muted);
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 18px;
+}
+
+.resource-card {
+  background: var(--panel);
+  border: 1px solid #293243;
+  padding: 25px;
+  border-radius: 12px;
+  transition: .3s;
+}
+
+.resource-card:hover {
+  border-color: var(--red);
+  transform: translateY(-4px);
+}
+
+.resource-card h3 {
+  margin-bottom: 10px;
+  color: white;
+}
+
+.resource-card p {
+  color: var(--muted);
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.resource-card a {
+  color: var(--red);
+  font-weight: bold;
+}
+
+#upload, #profile {
+  background: #101722;
+  border: 1px solid #293243;
+  border-radius: 14px;
+  padding: 25px;
+}
+
+#upload h2, #profile h2 {
+  margin-bottom: 18px;
+}
+
+.upload-form {
+  max-width: 600px;
+}
+
+.upload-form input {
+  display: block;
+  width: 100%;
+  padding: 13px;
+  margin: 12px 0;
+  border: 1px solid #344054;
+  border-radius: 8px;
+  color: white;
+  background: #080d17;
+}
+
+.primary-btn {
+  background: var(--red);
+  color: white;
+  border: 0;
+  padding: 13px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.primary-btn:disabled {
+  opacity: .5;
+  cursor: not-allowed;
+}
+
+.secondary-btn {
+  background: #293243;
+  color: white;
+  border: 0;
+  padding: 12px 17px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.status {
+  margin-top: 15px;
+  color: #d6dce6;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.progress {
+  width: 100%;
+  height: 9px;
+  background: #293243;
+  border-radius: 10px;
+  margin-top: 15px;
+  overflow: hidden;
+}
+
+#progressBar {
+  width: 0%;
+  height: 100%;
+  background: var(--red);
+  transition: width .2s;
+}
+
+.hidden {
+  display: none !important;
+}
+
+footer {
+  background: #030509;
+  border-top: 1px solid #242b38;
+  padding: 40px 5%;
+  text-align: center;
+  color: var(--muted);
+  line-height: 2;
+}
+
+footer strong {
+  color: var(--red);
+  font-size: 23px;
+}
+
+@media(max-width: 850px) {
+  .header-inner {
+    justify-content: center;
+  }
+
+  nav {
+    justify-content: center;
+  }
+
+  .header-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  #search {
+    width: 100%;
+  }
+
+  main {
+    padding-top: 145px;
+  }
+}
+
+@media(max-width: 480px) {
+  .logo {
+    font-size: 21px;
+  }
+
+  nav a {
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .hero {
+    min-height: 400px;
+    padding: 35px 6%;
+  }
+
+  .section {
+    padding: 30px 5%;
+  }
+
+  .movie-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>
-<!-- Movie Sources -->
-<section class="movie-sources">
+</head>
 
-    <h2>🎬 Movie Sources</h2>
+<body>
 
-    <div class="source-links">
+<header>
+  <div class="header-inner">
 
-        <a href="https://oshakuru.rw" target="_blank">
-            Oshakuru
-        </a>
+    <a href="#home" class="logo">
+      🎬 Movie <span>Shop Pro</span>
+    </a>
 
-        <a href="https://agasobanuyenow.com" target="_blank">
-            Agasobanuye Now
-        </a>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#movies">Movies</a>
+      <a href="#music">Music</a>
+      <a href="#sports">Sports</a>
+      <a href="#news">News</a>
+      <a href="#profile">Profile</a>
+    </nav>
 
-        <a href="https://igiti.net" target="_blank">
-            Igiti.net
-        </a>
-
+    <div class="header-actions">
+      <input type="search" id="search"
+        placeholder="Search movies...">
     </div>
+
+  </div>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <small>WELCOME TO THE FUTURE</small>
+    <h1>Movie Shop Pro</h1>
+    <p>
+      Your entertainment destination.
+      Discover movies, music, sports and the latest news
+      in one modern platform.
+    </p>
+    <a href="#movies" class="hero-button">
+      Explore Movies →
+    </a>
+  </div>
+</section>
+
+<section class="section" id="movies">
+
+  <div class="section-heading">
+    <h2>🎬 <span>Movies</span></h2>
+    <span id="movieCount">Loading...</span>
+  </div>
+
+  <div class="movie-grid" id="movieContainer">
+    <div class="empty">Loading movies...</div>
+  </div>
 
 </section>
 
-<style>
+<section class="section" id="music">
 
-.movie-sources{
-    background:#111;
-    padding:40px;
-    margin:30px;
-    border-radius:12px;
+  <div class="section-heading">
+    <h2>🎵 <span>Music</span></h2>
+  </div>
+
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <h3>Spotify</h3>
+      <p>Discover music and artists.</p>
+      <a href="https://open.spotify.com"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+    <div class="resource-card">
+      <h3>YouTube Music</h3>
+      <p>Listen to your favorite music.</p>
+      <a href="https://music.youtube.com"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+    <div class="resource-card">
+      <h3>SoundCloud</h3>
+      <p>Discover music and new creators.</p>
+      <a href="https://soundcloud.com"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="sports">
+
+  <div class="section-heading">
+    <h2>🏆 <span>Sports</span></h2>
+  </div>
+
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <h3>LiveScore</h3>
+      <p>Follow live sports scores.</p>
+      <a href="https://www.livescore.com"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+    <div class="resource-card">
+      <h3>RBA</h3>
+      <p>Explore sports and local news.</p>
+      <a href="https://www.rba.co.rw"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+    <div class="resource-card">
+      <h3>Inyarwanda</h3>
+      <p>Discover sports updates.</p>
+      <a href="https://inyarwanda.com"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="news">
+
+  <div class="section-heading">
+    <h2>📰 <span>News</span></h2>
+  </div>
+
+  <div class="resource-grid">
+
+    <div class="resource-card">
+      <h3>IGIHE</h3>
+      <p>Read news from Rwanda.</p>
+      <a href="https://igihe.com"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+    <div class="resource-card">
+      <h3>BBC News</h3>
+      <p>Read international news.</p>
+      <a href="https://www.bbc.com/news"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+    <div class="resource-card">
+      <h3>Imvaho Nshya</h3>
+      <p>Discover local news.</p>
+      <a href="https://imvahonshya.co.rw"
+        target="_blank" rel="noopener">Explore →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="section" id="profile">
+
+  <div id="loginPanel">
+    <h2>👤 Founder Login</h2>
+    <p>Only the authorized founder can access the upload dashboard.</p>
+
+    <form id="loginForm" class="upload-form">
+      <input type="email" id="email"
+        placeholder="Founder email" required>
+
+      <input type="password" id="password"
+        placeholder="Password" required>
+
+      <button type="submit" class="primary-btn"
+        id="loginBtn">Sign In</button>
+    </form>
+
+    <div class="status" id="loginStatus"></div>
+  </div>
+
+  <div id="founderPanel" class="hidden">
+
+    <h2>👑 Founder Dashboard</h2>
+    <p>Signed in as: <strong id="founderEmail"></strong></p>
+
+    <button id="logoutBtn" class="secondary-btn">
+      Sign Out
+    </button>
+
+  </div>
+
+</section>
+
+<section class="section hidden" id="upload">
+
+  <h2>☁️ Founder Upload Center</h2>
+
+  <p>Upload your own or properly licensed video content.</p>
+
+  <form id="uploadForm" class="upload-form">
+
+    <input type="text" id="movieTitle"
+      placeholder="Enter movie title" required>
+
+    <input type="file" id="movieFile"
+      accept="video/mp4,video/webm,video/ogg,video/quicktime"
+      required>
+
+    <button type="submit" class="primary-btn"
+      id="uploadBtn">
+      ☁️ Upload Movie
+    </button>
+
+  </form>
+
+  <div class="progress">
+    <div id="progressBar"></div>
+  </div>
+
+  <div class="status" id="uploadStatus"></div>
+
+</section>
+
+</main>
+
+<footer>
+  <strong>🎬 Movie Shop Pro</strong>
+  <p>Movies • Music • Sports • News</p>
+  <p>Facebook: Hirwa Paccy</p>
+  <p>Instagram | WhatsApp</p>
+  <p>Designed by Hirwa Paccy</p>
+  <p>© 2026 Movie Shop Pro. All rights reserved.</p>
+</footer>
+
+<script type="module">
+
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+
+import {
+  getAuth,
+  setPersistence,
+  browserLocalPersistence,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  signOut,
+  sendEmailVerification
+}
+from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  orderBy,
+  onSnapshot,
+  serverTimestamp
+}
+from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+import {
+  getStorage,
+  ref,
+  uploadBytesResumable,
+  getDownloadURL
+}
+from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
+
+
+// ======================================
+// FIREBASE CONFIGURATION
+// Replace these values with your own.
+// ======================================
+
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_STORAGE_BUCKET",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+
+// ======================================
+// FOUNDER INFORMATION
+// ======================================
+
+const FOUNDER_EMAIL = "ishimwehirwapacifique@gmail.com";
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+const loginPanel = document.getElementById("loginPanel");
+const founderPanel = document.getElementById("founderPanel");
+const uploadSection = document.getElementById("upload");
+
+const loginStatus = document.getElementById("loginStatus");
+const uploadStatus = document.getElementById("uploadStatus");
+
+const uploadBtn = document.getElementById("uploadBtn");
+const loginBtn = document.getElementById("loginBtn");
+
+let currentFounder = false;
+
+
+// ======================================
+// AUTHENTICATION PERSISTENCE
+// ======================================
+
+try {
+  await setPersistence(auth, browserLocalPersistence);
+} catch (error) {
+  console.error("Persistence error:", error);
 }
 
-.movie-sources h2{
-    color:#e50914;
-    margin-bottom:20px;
-    text-align:center;
+
+// ======================================
+// FOUNDER LOGIN
+// ======================================
+
+document.getElementById("loginForm")
+.addEventListener("submit", async (event) => {
+
+  event.preventDefault();
+
+  const email = document.getElementById("email")
+    .value.trim().toLowerCase();
+
+  const password = document.getElementById("password").value;
+
+  if (email !== FOUNDER_EMAIL.toLowerCase()) {
+    loginStatus.textContent = "Access denied. Founder account only.";
+    return;
+  }
+
+  loginBtn.disabled = true;
+  loginStatus.textContent = "Signing in...";
+
+  try {
+
+    const result = await signInWithEmailAndPassword(
+      auth, email, password
+    );
+
+    if (!result.user.emailVerified) {
+
+      await sendEmailVerification(result.user);
+
+      await signOut(auth);
+
+      loginStatus.textContent =
+        "Please verify your email using the verification link sent to your inbox, then sign in again.";
+
+      return;
+    }
+
+    loginStatus.textContent = "Welcome, Founder!";
+
+  } catch (error) {
+
+    loginStatus.textContent = "Login failed: " + error.message;
+
+  } finally {
+    loginBtn.disabled = false;
+  }
+
+});
+
+
+// ======================================
+// AUTHENTICATION STATE
+// ======================================
+
+onAuthStateChanged(auth, (user) => {
+
+  currentFounder = Boolean(
+    user &&
+    user.email &&
+    user.email.toLowerCase() === FOUNDER_EMAIL.toLowerCase() &&
+    user.emailVerified
+  );
+
+  if (currentFounder) {
+
+    loginPanel.classList.add("hidden");
+    founderPanel.classList.remove("hidden");
+    uploadSection.classList.remove("hidden");
+
+    document.getElementById("founderEmail").textContent =
+      user.email;
+
+  } else {
+
+    loginPanel.classList.remove("hidden");
+    founderPanel.classList.add("hidden");
+    uploadSection.classList.add("hidden");
+
+    if (user) signOut(auth);
+
+  }
+
+});
+
+
+// ======================================
+// FOUNDER LOGOUT
+// ======================================
+
+document.getElementById("logoutBtn")
+.addEventListener("click", async () => {
+
+  await signOut(auth);
+
+  loginStatus.textContent = "You have signed out.";
+
+});
+
+
+// ======================================
+// PERMANENT MOVIE UPLOAD
+// ======================================
+
+document.getElementById("uploadForm")
+.addEventListener("submit", async (event) => {
+
+  event.preventDefault();
+
+  if (!currentFounder || !auth.currentUser) {
+    uploadStatus.textContent = "Access denied.";
+    return;
+  }
+
+  if (
+    auth.currentUser.email.toLowerCase() !==
+    FOUNDER_EMAIL.toLowerCase() ||
+    !auth.currentUser.emailVerified
+  ) {
+    uploadStatus.textContent = "Founder verification required.";
+    return;
+  }
+
+  const title = document.getElementById("movieTitle")
+    .value.trim();
+
+  const file = document.getElementById("movieFile").files[0];
+
+  if (!title || !file) {
+    uploadStatus.textContent = "Enter a title and select a video.";
+    return;
+  }
+
+  if (!file.type.startsWith("video/")) {
+    uploadStatus.textContent = "Please select a valid video file.";
+    return;
+  }
+
+  const allowedTypes = [
+    "video/mp4",
+    "video/webm",
+    "video/ogg",
+    "video/quicktime"
+  ];
+
+  if (!allowedTypes.includes(file.type)) {
+    uploadStatus.textContent = "Unsupported video format.";
+    return;
+  }
+
+  if (file.size > 500 * 1024 * 1024) {
+    uploadStatus.textContent =
+      "The video exceeds the 500 MB upload limit.";
+    return;
+  }
+
+  uploadBtn.disabled = true;
+  uploadStatus.textContent = "Preparing upload...";
+
+  try {
+
+    const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
+
+    const filePath =
+      "movies/" + auth.currentUser.uid + "/" +
+      Date.now() + "_" + safeName;
+
+    const storageRef = ref(storage, filePath);
+
+    const uploadTask = uploadBytesResumable(
+      storageRef,
+      file,
+      { contentType: file.type }
+    );
+
+    const downloadURL = await new Promise((resolve, reject) => {
+
+      uploadTask.on(
+        "state_changed",
+
+        (snapshot) => {
+
+          const percent =
+            (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+          document.getElementById("progressBar")
+            .style.width = percent + "%";
+
+          uploadStatus.textContent =
+            "Uploading: " + Math.round(percent) + "%";
+
+        },
+
+        (error) => reject(error),
+
+        async () => {
+
+          try {
+            resolve(await getDownloadURL(uploadTask.snapshot.ref));
+          } catch (error) {
+            reject(error);
+          }
+
+        }
+      );
+
+    });
+
+    // Save permanent movie information in Firestore.
+
+    await addDoc(collection(db, "movies"), {
+
+      title: title,
+      downloadURL: downloadURL,
+      storagePath: filePath,
+      fileName: file.name,
+      fileSize: file.size,
+      createdAt: serverTimestamp(),
+      ownerEmail: FOUNDER_EMAIL,
+      ownerUid: auth.currentUser.uid
+
+    });
+
+    document.getElementById("uploadForm").reset();
+
+    document.getElementById("progressBar").style.width = "100%";
+
+    uploadStatus.textContent =
+      "✅ Movie uploaded and saved successfully!";
+
+  } catch (error) {
+
+    console.error("Upload error:", error);
+
+    uploadStatus.textContent =
+      "Upload failed: " + error.message +
+      ". Check Firebase Storage and Firestore rules.";
+
+  } finally {
+
+    uploadBtn.disabled = false;
+
+  }
+
+});
+
+
+// ======================================
+// LOAD MOVIES FROM FIRESTORE
+// AUTOMATICALLY WHEN WEBSITE OPENS
+// ======================================
+
+const movieContainer =
+  document.getElementById("movieContainer");
+
+const movieCount =
+  document.getElementById("movieCount");
+
+let allMovies = [];
+
+const moviesQuery = query(
+  collection(db, "movies"),
+  orderBy("createdAt", "desc")
+);
+
+onSnapshot(
+  moviesQuery,
+
+  (snapshot) => {
+
+    allMovies = snapshot.docs.map(document => ({
+      id: document.id,
+      ...document.data()
+    }));
+
+    displayMovies(allMovies);
+
+  },
+
+  (error) => {
+
+    console.error("Movie loading error:", error);
+
+    movieContainer.innerHTML =
+      '<div class="empty">Unable to load movies. Check Firestore rules and configuration.</div>';
+
+    movieCount.textContent = "Unavailable";
+
+  }
+
+);
+
+
+// ======================================
+// DISPLAY MOVIES
+// ======================================
+
+function displayMovies(movies) {
+
+  movieContainer.innerHTML = "";
+
+  movieCount.textContent =
+    movies.length + " Movies";
+
+  if (movies.length === 0) {
+
+    movieContainer.innerHTML =
+      '<div class="empty">🎬 No movies uploaded yet. Come back soon!</div>';
+
+    return;
+  }
+
+  movies.forEach(movie => {
+
+    if (!movie.downloadURL) return;
+
+    const card = document.createElement("article");
+    card.className = "movie-card";
+
+    const video = document.createElement("video");
+    video.controls = true;
+    video.preload = "metadata";
+    video.src = movie.downloadURL;
+
+    const info = document.createElement("div");
+    info.className = "movie-info";
+
+    const title = document.createElement("h3");
+    title.textContent = movie.title || "Untitled Movie";
+
+    const details = document.createElement("small");
+    details.textContent = "Movie Shop Pro";
+
+    const download = document.createElement("a");
+    download.href = movie.downloadURL;
+    download.target = "_blank";
+    download.rel = "noopener";
+    download.download = movie.fileName || "movie";
+
+    const button = document.createElement("button");
+    button.className = "download-btn";
+    button.textContent = "📥 Download";
+
+    download.appendChild(button);
+
+    info.append(title, details, download);
+    card.append(video, info);
+
+    movieContainer.appendChild(card);
+
+  });
+
 }
 
-.source-links{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:15px;
-}
 
-.source-links a{
-    text-decoration:none;
-    background:#e50914;
-    color:#fff;
-    padding:12px 20px;
-    border-radius:8px;
-    font-weight:bold;
-    transition:0.3s;
-}
+// ======================================
+// MOVIE SEARCH
+// ======================================
 
-.source-links a:hover{
-    background:#b20710;
-    transform:scale(1.05);
-}
+document.getElementById("search")
+.addEventListener("input", (event) => {
 
-</style>
+  const term = event.target.value.trim().toLowerCase();
+
+  const filtered = allMovies.filter(movie =>
+    (movie.title || "").toLowerCase().includes(term)
+  );
+
+  displayMovies(filtered);
+
+});
+
+</script>
+
+</body>
+</html>
