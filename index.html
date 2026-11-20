@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +6,7 @@
 <title>Hirwa Paccy Movie Shop | Movie Shop Pro</title>
 <meta name="description" content="Hirwa Paccy Movie Shop (Movie Shop Pro) - movies, music, sports and news from Rwanda in one place.">
 <link rel="canonical" href="https://hirwapaccy.github.io/Moveshop/">
-
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎬</text></svg>">
 
 <style>
 :root {
@@ -16,6 +15,7 @@
   --panel: #111722;
   --text: #ffffff;
   --muted: #aab2c0;
+  --header-h: 80px;
 }
 
 * {
@@ -26,7 +26,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 95px;
+  scroll-padding-top: calc(var(--header-h) + 15px);
 }
 
 body {
@@ -111,7 +111,7 @@ nav a:hover, nav a.active {
 }
 
 main {
-  padding-top: 80px;
+  padding-top: var(--header-h);
 }
 
 .hero {
@@ -219,6 +219,7 @@ main {
 
 .movie-info small {
   color: var(--muted);
+  display: block;
 }
 
 .download-btn {
@@ -239,6 +240,11 @@ main {
   background: var(--panel);
   border-radius: 12px;
   color: var(--muted);
+}
+
+.load-more-wrap {
+  text-align: center;
+  margin-top: 25px;
 }
 
 .resource-grid {
@@ -276,11 +282,11 @@ main {
   font-weight: bold;
 }
 
+/* Box styling only: spacing comes from .section so all sections match */
 #upload, #profile {
   background: #101722;
   border: 1px solid #293243;
   border-radius: 14px;
-  padding: 25px;
 }
 
 #upload h2, #profile h2 {
@@ -353,6 +359,15 @@ main {
   display: none !important;
 }
 
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
 footer {
   background: #030509;
   border-top: 1px solid #242b38;
@@ -383,10 +398,6 @@ footer strong {
 
   #search {
     width: 100%;
-  }
-
-  main {
-    padding-top: 145px;
   }
 }
 
@@ -435,8 +446,8 @@ footer strong {
     </nav>
 
     <div class="header-actions">
-      <input type="search" id="search"
-        placeholder="Search movies...">
+      <label for="search" class="sr-only">Search movies</label>
+      <input type="search" id="search" placeholder="Search movies...">
     </div>
 
   </div>
@@ -470,6 +481,10 @@ footer strong {
     <div class="empty">Loading movies...</div>
   </div>
 
+  <div class="load-more-wrap">
+    <button id="loadMoreBtn" class="secondary-btn hidden">Load more movies</button>
+  </div>
+
 </section>
 
 <section class="section" id="music">
@@ -483,22 +498,19 @@ footer strong {
     <div class="resource-card">
       <h3>Spotify</h3>
       <p>Discover music and artists.</p>
-      <a href="https://open.spotify.com"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://open.spotify.com" target="_blank" rel="noopener">Explore →</a>
     </div>
 
     <div class="resource-card">
       <h3>YouTube Music</h3>
       <p>Listen to your favorite music.</p>
-      <a href="https://music.youtube.com"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://music.youtube.com" target="_blank" rel="noopener">Explore →</a>
     </div>
 
     <div class="resource-card">
       <h3>SoundCloud</h3>
       <p>Discover music and new creators.</p>
-      <a href="https://soundcloud.com"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://soundcloud.com" target="_blank" rel="noopener">Explore →</a>
     </div>
 
   </div>
@@ -515,22 +527,19 @@ footer strong {
     <div class="resource-card">
       <h3>LiveScore</h3>
       <p>Follow live sports scores.</p>
-      <a href="https://www.livescore.com"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://www.livescore.com" target="_blank" rel="noopener">Explore →</a>
     </div>
 
     <div class="resource-card">
       <h3>RBA</h3>
       <p>Explore sports and local news.</p>
-      <a href="https://www.rba.co.rw"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://www.rba.co.rw" target="_blank" rel="noopener">Explore →</a>
     </div>
 
     <div class="resource-card">
       <h3>Inyarwanda</h3>
       <p>Discover sports updates.</p>
-      <a href="https://inyarwanda.com"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://inyarwanda.com" target="_blank" rel="noopener">Explore →</a>
     </div>
 
   </div>
@@ -547,22 +556,19 @@ footer strong {
     <div class="resource-card">
       <h3>IGIHE</h3>
       <p>Read news from Rwanda.</p>
-      <a href="https://igihe.com"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://igihe.com" target="_blank" rel="noopener">Explore →</a>
     </div>
 
     <div class="resource-card">
       <h3>BBC News</h3>
       <p>Read international news.</p>
-      <a href="https://www.bbc.com/news"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://www.bbc.com/news" target="_blank" rel="noopener">Explore →</a>
     </div>
 
     <div class="resource-card">
       <h3>Imvaho Nshya</h3>
       <p>Discover local news.</p>
-      <a href="https://imvahonshya.co.rw"
-        target="_blank" rel="noopener">Explore →</a>
+      <a href="https://imvahonshya.co.rw" target="_blank" rel="noopener">Explore →</a>
     </div>
 
   </div>
@@ -575,28 +581,18 @@ footer strong {
     <p>Only the authorized founder can access the upload dashboard.</p>
 
     <form id="loginForm" class="upload-form">
-      <input type="email" id="email"
-        placeholder="Founder email" required>
-
-      <input type="password" id="password"
-        placeholder="Password" required>
-
-      <button type="submit" class="primary-btn"
-        id="loginBtn">Sign In</button>
+      <input type="email" id="email" placeholder="Founder email" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <button type="submit" class="primary-btn" id="loginBtn">Sign In</button>
     </form>
 
     <div class="status" id="loginStatus"></div>
   </div>
 
   <div id="founderPanel" class="hidden">
-
     <h2>👑 Founder Dashboard</h2>
     <p>Signed in as: <strong id="founderEmail"></strong></p>
-
-    <button id="logoutBtn" class="secondary-btn">
-      Sign Out
-    </button>
-
+    <button id="logoutBtn" class="secondary-btn">Sign Out</button>
   </div>
 
 </section>
@@ -609,15 +605,13 @@ footer strong {
 
   <form id="uploadForm" class="upload-form">
 
-    <input type="text" id="movieTitle"
-      placeholder="Enter movie title" required>
+    <input type="text" id="movieTitle" placeholder="Enter movie title" required>
 
     <input type="file" id="movieFile"
-      accept="video/mp4,video/webm,video/ogg,video/quicktime"
+      accept="video/mp4,video/webm,video/ogg,video/quicktime,.mp4,.webm,.ogv,.mov"
       required>
 
-    <button type="submit" class="primary-btn"
-      id="uploadBtn">
+    <button type="submit" class="primary-btn" id="uploadBtn">
       ☁️ Upload Movie
     </button>
 
@@ -636,8 +630,12 @@ footer strong {
 <footer>
   <strong>🎬 Movie Shop Pro</strong>
   <p>Movies • Music • Sports • News</p>
-  <p>Facebook: Hirwa Paccy</p>
-  <p>Instagram | WhatsApp</p>
+  <!-- TODO: replace "#" with your real profile links -->
+  <p>
+    <a href="#" rel="noopener">Facebook: Hirwa Paccy</a> |
+    <a href="#" rel="noopener">Instagram</a> |
+    <a href="#" rel="noopener">WhatsApp</a>
+  </p>
   <p>Designed by Hirwa Paccy</p>
   <p>© 2026 Movie Shop Pro. All rights reserved.</p>
 </footer>
@@ -649,8 +647,6 @@ from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
 
 import {
   getAuth,
-  setPersistence,
-  browserLocalPersistence,
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
@@ -664,6 +660,7 @@ import {
   addDoc,
   query,
   orderBy,
+  limit,
   onSnapshot,
   serverTimestamp
 }
@@ -673,74 +670,105 @@ import {
   getStorage,
   ref,
   uploadBytesResumable,
-  getDownloadURL
+  getDownloadURL,
+  deleteObject
 }
 from "https://www.gstatic.com/firebasejs/10.14.1/firebase-storage.js";
 
 
 // ======================================
 // FIREBASE CONFIGURATION
-// Replace these values with your own.
+// Web app config for project hirwa-paccy-movieshop.
+// (This config is public by design; security comes from the
+//  Firebase rules in firebase-rules.txt.)
 // ======================================
 
 const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID"
+  apiKey: "AIzaSyA6OJl8lIE2pNHXRNE-b5LEGOh_bnMhwtc",
+  authDomain: "hirwa-paccy-movieshop.firebaseapp.com",
+  projectId: "hirwa-paccy-movieshop",
+  storageBucket: "hirwa-paccy-movieshop.firebasestorage.app",
+  messagingSenderId: "792483160196",
+  appId: "1:792483160196:web:59bc41a4de5fbd1fd2a2d1"
 };
 
-
-// ======================================
-// FOUNDER INFORMATION
-// ======================================
-
+// NOTE: this check only controls what the page SHOWS.
+// Real protection comes from the rules in firebase-rules.txt.
 const FOUNDER_EMAIL = "ishimwehirwapacifique@gmail.com";
 
 const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
+const auth = getAuth(app);   // local persistence is already the default on web
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-const loginPanel = document.getElementById("loginPanel");
-const founderPanel = document.getElementById("founderPanel");
-const uploadSection = document.getElementById("upload");
+const $ = (id) => document.getElementById(id);
 
-const loginStatus = document.getElementById("loginStatus");
-const uploadStatus = document.getElementById("uploadStatus");
-
-const uploadBtn = document.getElementById("uploadBtn");
-const loginBtn = document.getElementById("loginBtn");
+const loginPanel = $("loginPanel");
+const founderPanel = $("founderPanel");
+const uploadSection = $("upload");
+const loginStatus = $("loginStatus");
+const uploadStatus = $("uploadStatus");
+const uploadBtn = $("uploadBtn");
+const loginBtn = $("loginBtn");
+const progressBar = $("progressBar");
 
 let currentFounder = false;
 
 
 // ======================================
-// AUTHENTICATION PERSISTENCE
+// HEADER HEIGHT (fixes header covering content on phones)
 // ======================================
 
-try {
-  await setPersistence(auth, browserLocalPersistence);
-} catch (error) {
-  console.error("Persistence error:", error);
+const headerEl = document.querySelector("header");
+
+function setHeaderOffset() {
+  document.documentElement.style.setProperty(
+    "--header-h", headerEl.offsetHeight + "px"
+  );
 }
+
+setHeaderOffset();
+window.addEventListener("resize", setHeaderOffset);
+if ("ResizeObserver" in window) {
+  new ResizeObserver(setHeaderOffset).observe(headerEl);
+}
+
+
+// ======================================
+// NAV: highlight the section being viewed
+// ======================================
+
+const navLinks = [...document.querySelectorAll("nav a")];
+const sectionIds = navLinks.map(a => a.getAttribute("href").slice(1));
+
+function updateActiveNav() {
+  const line = headerEl.offsetHeight + 40;
+  let current = sectionIds[0];
+
+  for (const id of sectionIds) {
+    const el = $(id);
+    if (el && el.getBoundingClientRect().top <= line) current = id;
+  }
+
+  navLinks.forEach(a =>
+    a.classList.toggle("active", a.getAttribute("href") === "#" + current)
+  );
+}
+
+window.addEventListener("scroll", updateActiveNav, { passive: true });
+updateActiveNav();
 
 
 // ======================================
 // FOUNDER LOGIN
 // ======================================
 
-document.getElementById("loginForm")
-.addEventListener("submit", async (event) => {
+$("loginForm").addEventListener("submit", async (event) => {
 
   event.preventDefault();
 
-  const email = document.getElementById("email")
-    .value.trim().toLowerCase();
-
-  const password = document.getElementById("password").value;
+  const email = $("email").value.trim().toLowerCase();
+  const password = $("password").value;
 
   if (email !== FOUNDER_EMAIL.toLowerCase()) {
     loginStatus.textContent = "Access denied. Founder account only.";
@@ -752,13 +780,15 @@ document.getElementById("loginForm")
 
   try {
 
-    const result = await signInWithEmailAndPassword(
-      auth, email, password
-    );
+    const result = await signInWithEmailAndPassword(auth, email, password);
 
     if (!result.user.emailVerified) {
 
-      await sendEmailVerification(result.user);
+      try {
+        await sendEmailVerification(result.user);
+      } catch (mailError) {
+        console.error("Verification email error:", mailError);
+      }
 
       await signOut(auth);
 
@@ -783,6 +813,8 @@ document.getElementById("loginForm")
 
 // ======================================
 // AUTHENTICATION STATE
+// (no signOut here: the login handler already handles
+//  unverified users, which removes the race condition)
 // ======================================
 
 onAuthStateChanged(auth, (user) => {
@@ -794,23 +826,12 @@ onAuthStateChanged(auth, (user) => {
     user.emailVerified
   );
 
+  loginPanel.classList.toggle("hidden", currentFounder);
+  founderPanel.classList.toggle("hidden", !currentFounder);
+  uploadSection.classList.toggle("hidden", !currentFounder);
+
   if (currentFounder) {
-
-    loginPanel.classList.add("hidden");
-    founderPanel.classList.remove("hidden");
-    uploadSection.classList.remove("hidden");
-
-    document.getElementById("founderEmail").textContent =
-      user.email;
-
-  } else {
-
-    loginPanel.classList.remove("hidden");
-    founderPanel.classList.add("hidden");
-    uploadSection.classList.add("hidden");
-
-    if (user) signOut(auth);
-
+    $("founderEmail").textContent = user.email;
   }
 
 });
@@ -820,22 +841,33 @@ onAuthStateChanged(auth, (user) => {
 // FOUNDER LOGOUT
 // ======================================
 
-document.getElementById("logoutBtn")
-.addEventListener("click", async () => {
-
+$("logoutBtn").addEventListener("click", async () => {
   await signOut(auth);
-
   loginStatus.textContent = "You have signed out.";
-
 });
 
 
 // ======================================
-// PERMANENT MOVIE UPLOAD
+// MOVIE UPLOAD
 // ======================================
 
-document.getElementById("uploadForm")
-.addEventListener("submit", async (event) => {
+const ALLOWED_TYPES = [
+  "video/mp4",
+  "video/webm",
+  "video/ogg",
+  "video/quicktime"
+];
+
+// Some devices report an empty file.type, so fall back to the extension.
+const EXT_TYPES = {
+  mp4: "video/mp4",
+  webm: "video/webm",
+  ogv: "video/ogg",
+  ogg: "video/ogg",
+  mov: "video/quicktime"
+};
+
+$("uploadForm").addEventListener("submit", async (event) => {
 
   event.preventDefault();
 
@@ -845,65 +877,56 @@ document.getElementById("uploadForm")
   }
 
   if (
-    auth.currentUser.email.toLowerCase() !==
-    FOUNDER_EMAIL.toLowerCase() ||
+    auth.currentUser.email.toLowerCase() !== FOUNDER_EMAIL.toLowerCase() ||
     !auth.currentUser.emailVerified
   ) {
     uploadStatus.textContent = "Founder verification required.";
     return;
   }
 
-  const title = document.getElementById("movieTitle")
-    .value.trim();
-
-  const file = document.getElementById("movieFile").files[0];
+  const title = $("movieTitle").value.trim();
+  const file = $("movieFile").files[0];
 
   if (!title || !file) {
     uploadStatus.textContent = "Enter a title and select a video.";
     return;
   }
 
-  if (!file.type.startsWith("video/")) {
-    uploadStatus.textContent = "Please select a valid video file.";
-    return;
-  }
+  const ext = file.name.split(".").pop().toLowerCase();
+  const contentType = file.type || EXT_TYPES[ext] || "";
 
-  const allowedTypes = [
-    "video/mp4",
-    "video/webm",
-    "video/ogg",
-    "video/quicktime"
-  ];
-
-  if (!allowedTypes.includes(file.type)) {
-    uploadStatus.textContent = "Unsupported video format.";
+  if (!ALLOWED_TYPES.includes(contentType)) {
+    uploadStatus.textContent =
+      "Unsupported video format. Use MP4 (H.264), WebM or OGG.";
     return;
   }
 
   if (file.size > 500 * 1024 * 1024) {
-    uploadStatus.textContent =
-      "The video exceeds the 500 MB upload limit.";
+    uploadStatus.textContent = "The video exceeds the 500 MB upload limit.";
     return;
   }
 
   uploadBtn.disabled = true;
+  progressBar.style.width = "0%";           // reset from any previous upload
   uploadStatus.textContent = "Preparing upload...";
+
+  let storageRef = null;
+  let fileUploaded = false;
 
   try {
 
     const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, "_");
 
     const filePath =
-      "movies/" + auth.currentUser.uid + "/" +
-      Date.now() + "_" + safeName;
+      "movies/" + auth.currentUser.uid + "/" + Date.now() + "_" + safeName;
 
-    const storageRef = ref(storage, filePath);
+    storageRef = ref(storage, filePath);
 
-    const uploadTask = uploadBytesResumable(
-      storageRef,
-      file,
-      { contentType: file.type }
-    );
+    const uploadTask = uploadBytesResumable(storageRef, file, {
+      contentType: contentType,
+      // makes the Download button really download the file
+      contentDisposition: 'attachment; filename="' + safeName + '"'
+    });
 
     const downloadURL = await new Promise((resolve, reject) => {
 
@@ -911,37 +934,29 @@ document.getElementById("uploadForm")
         "state_changed",
 
         (snapshot) => {
-
           const percent =
             (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
 
-          document.getElementById("progressBar")
-            .style.width = percent + "%";
-
-          uploadStatus.textContent =
-            "Uploading: " + Math.round(percent) + "%";
-
+          progressBar.style.width = percent + "%";
+          uploadStatus.textContent = "Uploading: " + Math.round(percent) + "%";
         },
 
         (error) => reject(error),
 
         async () => {
-
           try {
             resolve(await getDownloadURL(uploadTask.snapshot.ref));
           } catch (error) {
             reject(error);
           }
-
         }
       );
 
     });
 
-    // Save permanent movie information in Firestore.
+    fileUploaded = true;
 
     await addDoc(collection(db, "movies"), {
-
       title: title,
       downloadURL: downloadURL,
       storagePath: filePath,
@@ -950,19 +965,21 @@ document.getElementById("uploadForm")
       createdAt: serverTimestamp(),
       ownerEmail: FOUNDER_EMAIL,
       ownerUid: auth.currentUser.uid
-
     });
 
-    document.getElementById("uploadForm").reset();
-
-    document.getElementById("progressBar").style.width = "100%";
-
-    uploadStatus.textContent =
-      "✅ Movie uploaded and saved successfully!";
+    $("uploadForm").reset();
+    progressBar.style.width = "100%";
+    uploadStatus.textContent = "✅ Movie uploaded and saved successfully!";
 
   } catch (error) {
 
     console.error("Upload error:", error);
+
+    // If the file reached Storage but saving the database record failed,
+    // remove the orphan file so it doesn't waste storage.
+    if (fileUploaded && storageRef) {
+      try { await deleteObject(storageRef); } catch (e) { console.error(e); }
+    }
 
     uploadStatus.textContent =
       "Upload failed: " + error.message +
@@ -978,76 +995,93 @@ document.getElementById("uploadForm")
 
 
 // ======================================
-// LOAD MOVIES FROM FIRESTORE
-// AUTOMATICALLY WHEN WEBSITE OPENS
+// LOAD MOVIES (paged, live updates)
 // ======================================
 
-const movieContainer =
-  document.getElementById("movieContainer");
+const PAGE_SIZE = 12;
 
-const movieCount =
-  document.getElementById("movieCount");
+const movieContainer = $("movieContainer");
+const movieCount = $("movieCount");
+const loadMoreBtn = $("loadMoreBtn");
+const searchInput = $("search");
 
-let allMovies = [];
+let pageLimit = PAGE_SIZE;
+let searchTerm = "";
+let unsubscribeMovies = null;
 
-const moviesQuery = query(
-  collection(db, "movies"),
-  orderBy("createdAt", "desc")
-);
+function subscribeMovies() {
 
-onSnapshot(
-  moviesQuery,
+  if (unsubscribeMovies) unsubscribeMovies();
 
-  (snapshot) => {
+  const moviesQuery = query(
+    collection(db, "movies"),
+    orderBy("createdAt", "desc"),
+    limit(pageLimit)
+  );
 
-    allMovies = snapshot.docs.map(document => ({
-      id: document.id,
-      ...document.data()
-    }));
+  unsubscribeMovies = onSnapshot(
+    moviesQuery,
 
-    displayMovies(allMovies);
+    (snapshot) => {
 
-  },
+      const movies = snapshot.docs.map(docSnap => ({
+        id: docSnap.id,
+        ...docSnap.data()
+      }));
 
-  (error) => {
+      renderMovies(movies);
 
-    console.error("Movie loading error:", error);
+      // If we got a full page there may be more to load.
+      loadMoreBtn.classList.toggle("hidden", snapshot.size < pageLimit);
 
-    movieContainer.innerHTML =
-      '<div class="empty">Unable to load movies. Check Firestore rules and configuration.</div>';
+    },
 
-    movieCount.textContent = "Unavailable";
+    (error) => {
 
-  }
+      console.error("Movie loading error:", error);
 
-);
+      movieContainer.innerHTML =
+        '<div class="empty">Unable to load movies. Check Firestore rules and configuration.</div>';
+
+      movieCount.textContent = "Unavailable";
+      loadMoreBtn.classList.add("hidden");
+
+    }
+  );
+}
+
+loadMoreBtn.addEventListener("click", () => {
+  pageLimit += PAGE_SIZE;
+  subscribeMovies();
+});
+
+subscribeMovies();
 
 
 // ======================================
-// DISPLAY MOVIES
+// DISPLAY + SEARCH
+// Cards are built once per data update. Searching only
+// shows/hides them, so videos are not reloaded on each keystroke.
 // ======================================
 
-function displayMovies(movies) {
+function renderMovies(movies) {
 
   movieContainer.innerHTML = "";
 
-  movieCount.textContent =
-    movies.length + " Movies";
+  const valid = movies.filter(m => m.downloadURL);
 
-  if (movies.length === 0) {
-
+  if (valid.length === 0) {
     movieContainer.innerHTML =
       '<div class="empty">🎬 No movies uploaded yet. Come back soon!</div>';
-
+    movieCount.textContent = "0 Movies";
     return;
   }
 
-  movies.forEach(movie => {
-
-    if (!movie.downloadURL) return;
+  valid.forEach(movie => {
 
     const card = document.createElement("article");
     card.className = "movie-card";
+    card.dataset.title = (movie.title || "").toLowerCase();
 
     const video = document.createElement("video");
     video.controls = true;
@@ -1063,43 +1097,52 @@ function displayMovies(movies) {
     const details = document.createElement("small");
     details.textContent = "Movie Shop Pro";
 
+    // The link itself is the button (a <button> inside <a> is invalid HTML)
     const download = document.createElement("a");
+    download.className = "download-btn";
     download.href = movie.downloadURL;
     download.target = "_blank";
     download.rel = "noopener";
     download.download = movie.fileName || "movie";
-
-    const button = document.createElement("button");
-    button.className = "download-btn";
-    button.textContent = "📥 Download";
-
-    download.appendChild(button);
+    download.textContent = "📥 Download";
 
     info.append(title, details, download);
     card.append(video, info);
-
     movieContainer.appendChild(card);
 
   });
 
+  const noResults = document.createElement("div");
+  noResults.id = "noResults";
+  noResults.className = "empty hidden";
+  noResults.textContent = "🔍 No movies match your search.";
+  movieContainer.appendChild(noResults);
+
+  applyFilter();
 }
 
+function applyFilter() {
 
-// ======================================
-// MOVIE SEARCH
-// ======================================
+  const cards = movieContainer.querySelectorAll(".movie-card");
+  if (cards.length === 0) return;
 
-document.getElementById("search")
-.addEventListener("input", (event) => {
+  let visible = 0;
 
-  const term = event.target.value.trim().toLowerCase();
+  cards.forEach(card => {
+    const show = card.dataset.title.includes(searchTerm);
+    card.classList.toggle("hidden", !show);
+    if (show) visible++;
+  });
 
-  const filtered = allMovies.filter(movie =>
-    (movie.title || "").toLowerCase().includes(term)
-  );
+  const noResults = $("noResults");
+  if (noResults) noResults.classList.toggle("hidden", visible !== 0);
 
-  displayMovies(filtered);
+  movieCount.textContent = visible + (visible === 1 ? " Movie" : " Movies");
+}
 
+searchInput.addEventListener("input", (event) => {
+  searchTerm = event.target.value.trim().toLowerCase();
+  applyFilter();
 });
 
 </script>
